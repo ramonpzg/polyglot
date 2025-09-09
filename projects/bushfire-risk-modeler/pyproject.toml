@@ -1,0 +1,41 @@
+[project]
+name = "bushfire-risk-modeler"
+version = "0.1.0"
+description = "High-performance Australian bushfire risk modeling system combining C++20/23 computational engine with Python orchestration"
+readme = "README.md"
+authors = [
+    { name = "Ramon Perez", email = "ramonpzg@protonmail.com" }
+]
+requires-python = ">=3.12"
+dependencies = [
+    "numpy>=1.24.0",
+    "pandas>=2.0.0", 
+    "matplotlib>=3.7.0",
+    "seaborn>=0.12.0",
+    "psutil>=5.9.0"
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0.0",
+    "pytest-benchmark>=4.0.0",
+    "black>=23.0.0",
+    "ruff>=0.1.0",
+    "mypy>=1.5.0"
+]
+jupyter = [
+    "jupyter>=1.0.0",
+    "ipywidgets>=8.0.0",
+    "plotly>=5.0.0"
+]
+
+[project.scripts]
+bushfire-risk-modeler = "bushfire_risk_modeler:main"
+
+[tool.scikit-build]
+minimum-version = "build-system.requires"
+build-dir = "build/{wheel_tag}"
+
+[build-system]
+requires = ["scikit-build-core>=0.10", "pybind11"]
+build-backend = "scikit_build_core.build"
