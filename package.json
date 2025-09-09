@@ -1,0 +1,22 @@
+{
+  "name": "polyglot",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "build": "slidev build",
+    "dev": "slidev --open",
+    "export": "slidev export"
+  },
+  "dependencies": {
+    "@daytonaio/sdk": "^0.26.0",
+    "@slidev/cli": "^52.1.0",
+    "@slidev/theme-default": "latest",
+    "@slidev/theme-seriph": "latest",
+    "@vueuse/motion": "latest",
+    "socket.io-client": "latest",
+    "three": "latest",
+    "install": "^0.13.0",
+    "modal": "^0.3.20",
+    "vue": "^3.5.18"
+  }
+}
