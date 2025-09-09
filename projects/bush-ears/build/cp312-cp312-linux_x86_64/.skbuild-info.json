@@ -1,0 +1,8 @@
+{
+  "source_dir": "/home/rpg/d2/projects/polyglot/projects/bush-ears",
+  "build_dir": "/home/rpg/d2/projects/polyglot/projects/bush-ears/build/cp312-cp312-linux_x86_64",
+  "cmake_path": "/usr/bin/cmake",
+  "skbuild_path": "/home/rpg/.cache/uv/builds-v0/.tmpoyUXYU/lib/python3.12/site-packages/scikit_build_core",
+  "skbuild_version": "0.11.6",
+  "python_executable": "/home/rpg/.cache/uv/builds-v0/.tmpoyUXYU/bin/python"
+}

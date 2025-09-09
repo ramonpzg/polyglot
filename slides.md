@@ -1017,3 +1017,258 @@ bushfire-sim serve --port 8001
 - Leverage Rust's safety for long-running processes
 
 **Business case:** 100x performance improvement enables real-time applications impossible with pure Python
+
+---
+layout: section
+---
+
+# Python + C++
+Real-Time AI for Conservation
+
+---
+
+# The AI Performance Gap
+
+Modern AI applications need both speed and flexibility:
+
+- **Real-time audio processing** - 44.1kHz continuous streams
+- **Low-latency ML inference** - millisecond response times
+- **Complex feature extraction** - FFT, spectral analysis, MFCC
+- **Memory efficiency** - hours of continuous monitoring
+
+**The hidden truth:** Most "Python AI" is actually C++ under the hood  
+(TensorFlow, PyTorch, OpenCV, NumPy, SciPy)
+
+---
+
+# Bush Ears
+
+Real-time Australian wildlife identification for ecosystem monitoring:
+
+```bash
+pip install bush-ears
+bush-ears live-demo --scenario dawn_chorus
+```
+
+**Novel Application:**
+- **Audio-based biodiversity monitoring** (not typical visual AI)
+- **Real-time species identification** for conservation research
+- **Ecosystem health assessment** from acoustic data
+
+**Architecture:**
+- **C++**: Real-time audio processing, ML inference, SIMD optimization
+- **Python**: Ecosystem analysis, conservation metrics, research APIs
+
+---
+layout: two-cols
+layoutClass: gap-16
+---
+
+# Implementation: C++ Engine
+
+Real-time audio processing with C++23:
+
+```cpp {1|3-8|10-16|18-25|all}
+#include <ranges>
+#include <expected>
+#include <execution>
+
+class AudioProcessor {
+    std::expected<std::vector<double>, std::string>
+    extract_features(std::span<const double> audio) {
+        
+        // Apply window and compute FFT
+        std::ranges::transform(
+            audio | std::ranges::views::enumerate,
+            fft_buffer_.begin(),
+            [this](auto pair) {
+                auto [i, sample] = pair;
+                return sample * window_[i];
+            }
+        );
+        
+        // Parallel spectral analysis  
+        std::transform(std::execution::par_unseq,
+                      fft_buffer_.begin(), 
+                      fft_buffer_.end(),
+                      magnitude_spectrum_.begin(),
+                      [](auto c) { return std::abs(c); });
+        
+        return extract_wildlife_features();
+    }
+};
+```
+
+::right::
+
+# Python Ecosystem Analysis
+
+Conservation science with Python:
+
+```python {1|3-10|12-18|20-25|all}
+class BushEarsAnalyzer:
+    
+    SPECIES_INFO = {
+        AustralianSpecies.Kookaburra: {
+            'habitat': 'Woodland, urban parks',
+            'conservation_status': 'Least Concern',
+            'ecosystem_role': 'Top predator'
+        },
+        # Koala, Dingo, Magpie, Galah...
+    }
+    
+    def analyze_audio_stream(self, audio: np.ndarray):
+        # C++ does the heavy lifting
+        result = self.monitor.process_audio_stream(audio)
+        
+        # Python adds ecological context
+        return self.add_conservation_analysis(result)
+    
+    def get_ecosystem_health(self):
+        # Shannon biodiversity index
+        # Conservation importance scoring
+        # Temporal pattern analysis
+        return EcosystemHealth(...)
+```
+
+---
+
+# Why C++ for Audio AI?
+
+```mermaid {scale: 0.85}
+graph TB
+    A[Audio Stream 44.1kHz] --> B[C++ Feature Extraction]
+    B --> C[FFT + Windowing]
+    C --> D[SIMD Spectral Analysis]
+    D --> E[ML Inference Engine]
+    E --> F[Species Classification]
+    F --> G[Return to Python]
+    G --> H[Ecosystem Analysis]
+    G --> I[Conservation Metrics]
+    G --> J[Research APIs]
+    
+    style B fill:#00599c,stroke:#fff,color:#fff
+    style C fill:#00599c,stroke:#fff,color:#fff
+    style D fill:#00599c,stroke:#fff,color:#fff
+    style E fill:#00599c,stroke:#fff,color:#fff
+    style H fill:#3776ab,stroke:#fff,color:#fff
+    style I fill:#3776ab,stroke:#fff,color:#fff
+```
+
+**C++ handles:** Real-time constraints, vectorized math, memory efficiency  
+**Python handles:** Research workflows, data analysis, scientific integration
+
+---
+
+# Real-Time Performance Requirements
+
+Audio AI demands **continuous processing** without dropping samples:
+
+| Requirement | C++ | Pure Python |
+|-------------|-----|-------------|
+| 44.1kHz processing | ✅ 2-5ms latency | ❌ 50-200ms latency |
+| Parallel feature extraction | ✅ SIMD + threads | ❌ GIL bottleneck |
+| Memory efficiency | ✅ 5MB continuous | ❌ 50MB+ with GC pauses |
+| **Real-time capable** | **✅ YES** | **❌ NO** |
+
+**The Gap:** C++ enables **20-100x faster** audio processing than Python
+
+**Why it matters:** Real-time wildlife monitoring requires processing 44,100 samples **every second** without falling behind.
+
+---
+
+# Live Demo
+
+<BushEarsDemo />
+
+*Start with `bush-ears monitor` for full interface*
+
+---
+
+# Unique Technical Innovations
+
+**C++23 Modern Features:**
+```cpp
+// Error handling with std::expected
+std::expected<Species, Error> classify_audio(std::span<const double> features);
+
+// Parallel algorithms
+std::transform(std::execution::par_unseq, data.begin(), data.end(), ...);
+
+// Range-based processing  
+auto features = audio_data 
+    | std::views::chunk(1024)
+    | std::views::transform(extract_features)
+    | std::views::filter(is_valid);
+```
+
+**Novel Applications:**
+- **Acoustic biodiversity monitoring** (not typical computer vision)
+- **Real-time conservation technology**
+- **Ecosystem health from audio patterns**
+
+---
+
+# The Hidden AI Stack
+
+Most Python AI libraries are **C++ underneath**:
+
+```python
+# This is actually C++ under the hood
+import torch          # C++ core
+import numpy as np    # C++ operations  
+import cv2            # C++ OpenCV
+import scipy.fft      # C++ FFTW
+
+# Our approach: Direct C++ integration
+from bush_ears import AudioProcessor  # Our C++ module
+```
+
+**Advantage:** **Direct control** over the performance-critical path  
+**Result:** Purpose-built for your specific use case, not general library overhead
+
+---
+
+# Developer Experience
+
+**Installation:**
+```bash
+pip install bush-ears  # scikit-build-core handles C++ compilation
+```
+
+**Audio Analysis:**
+```bash
+# Generate and analyze wildlife scenarios
+bush-ears simulate --scenario outback_night --analyze
+
+# Real-time monitoring demo
+bush-ears live-demo --scenario dawn_chorus
+
+# Performance comparison
+bush-ears benchmark --samples 100000
+```
+
+**API Integration:**
+```bash
+bush-ears monitor --headless  # API-only server for custom UIs
+```
+
+---
+
+# Key Insights
+
+**When C++ + Python makes sense for AI:**
+- Real-time processing requirements (audio, video, sensors)
+- Custom ML inference engines (not just calling PyTorch)
+- Memory-constrained environments (edge computing, embedded)
+- Domain-specific optimizations (audio DSP, computer vision, robotics)
+
+**Architecture principles:**
+- C++ for the performance bottleneck, Python for everything else
+- Use modern C++ features for safer, cleaner code
+- Design Python APIs that hide C++ complexity
+- Focus on the 10% of code that uses 90% of CPU time
+
+**Innovation opportunity:** Build domain-specific AI tools that leverage both languages' strengths
+
+**Conservation impact:** Technology enabling new forms of automated wildlife research and ecosystem monitoring
