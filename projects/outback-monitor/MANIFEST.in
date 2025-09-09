@@ -1,0 +1,2 @@
+include outback_monitor/static/*
+recursive-include outback_monitor/static *

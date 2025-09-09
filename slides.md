@@ -641,3 +641,176 @@ class: text-center
 [Documentation](https://sli.dev) · [GitHub](https://github.com/slidevjs/slidev) · [Showcases](https://sli.dev/resources/showcases)
 
 <PoweredBySlidev mt-10 />
+
+---
+layout: section
+---
+
+# Python + JavaScript
+Real-time Agricultural Monitoring
+
+---
+
+# The Challenge
+
+Modern agricultural monitoring requires:
+
+- **Real-time data streams** - conditions change rapidly
+- **Interactive dashboards** - users need responsive interfaces  
+- **Complex simulations** - weather patterns, soil conditions
+- **Easy deployment** - farmers shouldn't need a CS degree
+
+Python handles the backend brilliantly, but web interfaces need JavaScript.
+
+---
+
+# Outback Monitor
+
+A practical solution for Australian agricultural monitoring:
+
+```bash
+pip install outback-monitor
+outback-monitor --region queensland
+```
+
+**Architecture:**
+- **Python**: FastAPI server, NumPy simulations, CLI interface
+- **JavaScript**: Real-time charts, WebSocket client, vanilla DOM
+
+**Data Flow:**
+```
+NumPy → FastAPI → WebSocket → Chart.js → Browser
+```
+
+---
+layout: two-cols
+layoutClass: gap-16
+---
+
+# Implementation: Python Backend
+
+FastAPI server with real-time simulation:
+
+```python {1|3-8|10-15|17-22|all}
+from fastapi import FastAPI, WebSocket
+import numpy as np
+
+# Australian regions with realistic baselines
+REGIONS = {
+    "queensland": {"temp_base": 28, "humidity_base": 70},
+    "nsw": {"temp_base": 24, "humidity_base": 60},
+    "victoria": {"temp_base": 20, "humidity_base": 65}
+}
+
+class DataSimulator:
+    def generate_data(self) -> Dict:
+        temp_cycle = 5 * np.sin(self.time_step * 0.1)
+        temp = self.config["temp_base"] + temp_cycle
+        return {"temperature": temp, "humidity": humidity}
+
+@app.websocket("/ws/{region}")
+async def websocket_endpoint(websocket: WebSocket, region: str):
+    while True:
+        data = simulators[region].generate_data()
+        await websocket.send_text(json.dumps(data))
+        await asyncio.sleep(1)
+```
+
+::right::
+
+# JavaScript Frontend
+
+Vanilla JS with Chart.js for real-time visualization:
+
+```javascript {1|3-8|10-15|17-22|all}
+class OutbackMonitor {
+    constructor() { this.initializeCharts() }
+    
+    start() {
+        const wsUrl = `ws://localhost:8000/ws/${region}`
+        this.ws = new WebSocket(wsUrl)
+        this.ws.onmessage = (event) => {
+            this.updateData(JSON.parse(event.data))
+        }
+    }
+    
+    updateData(data) {
+        // Update live metrics
+        document.getElementById('temperature')
+            .textContent = `${data.temperature}°C`
+    }
+    
+    updateCharts() {
+        this.charts.environment.data.datasets[0]
+            .data = this.dataHistory.temperature
+        this.charts.environment.update('none')
+    }
+}
+```
+
+---
+
+# Why This Architecture Works
+
+```mermaid {scale: 0.8}
+graph LR
+    A[CLI Command] --> B[Python FastAPI]
+    B --> C[NumPy Simulation]
+    B --> D[WebSocket Server]
+    D --> E[JavaScript Client]
+    E --> F[Chart.js Rendering]
+    F --> G[Live Dashboard]
+    
+    style B fill:#3776ab,stroke:#fff,color:#fff
+    style E fill:#f7df1e,stroke:#000,color:#000
+```
+
+**Python handles:** Data simulation, WebSocket server, CLI interface, packaging  
+**JavaScript handles:** Real-time rendering, user interaction, smooth animations
+
+Each language does what it's best at.
+
+---
+
+# Live Demo
+
+<OutbackDemo />
+
+*Start the server with `outback-monitor` in your terminal*
+
+---
+
+# The Developer Experience
+
+**Installation:**
+```bash
+pip install outback-monitor
+```
+
+**Usage:**
+```bash
+outback-monitor --region victoria
+# Opens browser automatically
+# Select region → Click START → Live data flows
+```
+
+**Packaging:** Static files bundled with Python package using hatchling
+
+**Result:** Single pip-installable package that starts a web server
+
+---
+
+# Key Takeaways
+
+**When to use Python + JavaScript:**
+- Real-time web interfaces with complex backend logic
+- Data science applications needing interactive visualization
+- Tools that benefit from both pip distribution and web UI
+
+**Architecture principles:**
+- Python for data processing, server logic, CLI interfaces
+- JavaScript for DOM manipulation, real-time updates, user interaction  
+- WebSockets for seamless real-time communication
+- Vanilla JavaScript keeps it simple and fast
+
+**Deployment:** Package static assets with Python using proper manifest files

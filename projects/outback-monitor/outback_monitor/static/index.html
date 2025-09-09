@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Outback Monitor</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Monaco', 'Menlo', monospace;
+            background: #000;
+            color: #fff;
+            line-height: 1.4;
+        }
+        
+        .header {
+            padding: 20px;
+            border-bottom: 1px solid #333;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 24px;
+            font-weight: normal;
+            letter-spacing: 2px;
+        }
+        
+        .controls {
+            padding: 20px;
+            text-align: center;
+        }
+        
+        select {
+            background: #000;
+            color: #fff;
+            border: 1px solid #333;
+            padding: 8px 16px;
+            font-family: inherit;
+            margin: 0 10px;
+        }
+        
+        button {
+            background: #000;
+            color: #fff;
+            border: 1px solid #333;
+            padding: 8px 16px;
+            font-family: inherit;
+            cursor: pointer;
+            margin: 0 10px;
+        }
+        
+        button:hover { border-color: #666; }
+        button.active { border-color: #fff; }
+        
+        .status {
+            padding: 10px 20px;
+            text-align: center;
+            color: #666;
+            font-size: 12px;
+        }
+        
+        .metrics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+        
+        .metric {
+            border: 1px solid #333;
+            padding: 15px;
+            text-align: center;
+        }
+        
+        .metric-label {
+            font-size: 11px;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .metric-value {
+            font-size: 20px;
+            font-weight: normal;
+            margin-top: 5px;
+        }
+        
+        .charts {
+            padding: 20px;
+        }
+        
+        .chart-container {
+            margin-bottom: 30px;
+            border: 1px solid #333;
+            padding: 15px;
+        }
+        
+        .chart-title {
+            font-size: 12px;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+        }
+        
+        canvas {
+            max-height: 200px;
+        }
+        
+        .hidden { display: none; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>OUTBACK MONITOR</h1>
+    </div>
+    
+    <div class="controls">
+        <select id="regionSelect">
+            <option value="">Select Region</option>
+            <option value="queensland">Queensland</option>
+            <option value="nsw">New South Wales</option>
+            <option value="victoria">Victoria</option>
+            <option value="sa">South Australia</option>
+            <option value="wa">Western Australia</option>
+        </select>
+        <button id="startBtn">START</button>
+        <button id="stopBtn" class="hidden">STOP</button>
+    </div>
+    
+    <div class="status" id="status">Select a region to begin monitoring</div>
+    
+    <div id="dashboard" class="hidden">
+        <div class="metrics">
+            <div class="metric">
+                <div class="metric-label">Temperature</div>
+                <div class="metric-value" id="temperature">--°C</div>
+            </div>
+            <div class="metric">
+                <div class="metric-label">Humidity</div>
+                <div class="metric-value" id="humidity">--%</div>
+            </div>
+            <div class="metric">
+                <div class="metric-label">Rainfall</div>
+                <div class="metric-value" id="rainfall">--mm</div>
+            </div>
+            <div class="metric">
+                <div class="metric-label">Soil Moisture</div>
+                <div class="metric-value" id="soilMoisture">--%</div>
+            </div>
+            <div class="metric">
+                <div class="metric-label">Evaporation</div>
+                <div class="metric-value" id="evaporation">--mm</div>
+            </div>
+        </div>
+        
+        <div class="charts">
+            <div class="chart-container">
+                <div class="chart-title">Environmental Conditions</div>
+                <canvas id="environmentChart"></canvas>
+            </div>
+            
+            <div class="chart-container">
+                <div class="chart-title">Water Balance</div>
+                <canvas id="waterChart"></canvas>
+            </div>
+        </div>
+    </div>
+    
+    <script src="/static/app.js"></script>
+</body>
+</html>
