@@ -15,6 +15,14 @@ transition: slide-left
 mdc: true
 ---
 
+<!--
+SPEAKER NOTES - OPENING:
+- Start with the controversial "Python is slow" - gets attention
+- Use humor but keep it professional
+- The orchestra metaphor sets up the entire talk
+- Don't apologize for Python being slow, embrace it
+-->
+
 # Building with Multiple Languages
 
 ## A Python-First Approach
@@ -73,8 +81,8 @@ layout: center
 
 </div>
 
-<div v-click="3" class="mt-12">
-  <h2 class="text-center">There's a better way.</h2>
+<div v-click="3" class="mt-12 text-center">
+  <h2>There's a better way.</h2>
 </div>
 
 <!--
@@ -83,33 +91,32 @@ The punchline sets up our approach.
 -->
 
 ---
+layout: image-right
+image: ./images/placeholder.jpg
 transition: slide-up
 ---
 
-# Option 3: Python as the Orchestra Conductor
+# Maestro Python
 
 <div v-click="1" class="mt-8">
 
-**The insight:** Python doesn't need to play every instrument.
+Python doesn't need to play every instrument.
 
 </div>
 
 <div v-click="2" class="grid grid-cols-3 gap-4 mt-8">
 
 <div class="text-center">
-  <div class="text-4xl mb-2">🎻</div>
   <div class="font-mono text-sm">JavaScript</div>
   <div class="text-xs opacity-60">Real-time UI</div>
 </div>
 
 <div class="text-center">
-  <div class="text-4xl mb-2">🎺</div>
   <div class="font-mono text-sm">Rust</div>
   <div class="text-xs opacity-60">Data processing</div>
 </div>
 
 <div class="text-center">
-  <div class="text-4xl mb-2">🥁</div>
   <div class="font-mono text-sm">C++</div>
   <div class="text-xs opacity-60">Number crunching</div>
 </div>
@@ -117,24 +124,28 @@ transition: slide-up
 </div>
 
 <div v-click="3" class="text-center mt-8">
-  <div class="text-5xl mb-2">🎼</div>
-  <div class="font-mono">Python</div>
-  <div class="text-sm opacity-80">Orchestrating everything</div>
+  <div class="font-mono text-lg">Python</div>
+  <div class="text-sm opacity-80">Orchestrates everything</div>
 </div>
 
-<!-- PLACEHOLDER: AI-generated image of Python as orchestra conductor -->
+
+<!--
+IMAGE GENERATION: Python as orchestra conductor
+Style: Professional illustration, tech conference appropriate
+Description: A blue and yellow Python snake logo dressed as an orchestra conductor, holding a baton, standing on a podium. In the orchestra pit are smaller logos/mascots: JavaScript (yellow JS square), Rust (black gear with R), C++ (blue C++ text), and Zig (orange zigzag). The Python conductor is clearly in charge, directing the other languages. Background should be minimal, focus on the conductor metaphor.
+-->
 
 <!--
 Musical metaphor introduces the concept nicely. Python coordinates, other languages specialize.
+TIMING: 2 minutes for opening hook
+TRANSITION: Build excitement about the third option
 -->
 
 ---
 transition: fade
 ---
 
-# This Isn't New
-
-Python has been the glue language since the 90s.
+# Python has been a glue language since the 90s
 
 <div v-click="1" class="mt-8">
 
@@ -186,7 +197,8 @@ Historical context showing this pattern has deep roots. The timeline builds up t
 -->
 
 ---
-layout: center
+layout: image-right
+image: ./images/placeholder.jpg
 ---
 
 # The Modern Polyglot Renaissance
@@ -200,10 +212,7 @@ Your favorite "Python" tools are barely Python:
 <div class="grid grid-cols-2 gap-8 mt-8">
 
 <div v-click="2">
-  <h3 class="flex items-center gap-2">
-    <span class="text-lg">📓</span>
-    Jupyter Notebooks
-  </h3>
+  <h3>Jupyter Notebooks</h3>
   <div class="text-sm opacity-80 mt-2">
     Frontend: JavaScript (React, CodeMirror)<br/>
     Backend: Python kernels<br/>
@@ -212,10 +221,7 @@ Your favorite "Python" tools are barely Python:
 </div>
 
 <div v-click="3">
-  <h3 class="flex items-center gap-2">
-    <span class="text-lg">🔥</span>
-    PyTorch
-  </h3>
+  <h3>PyTorch</h3>
   <div class="text-sm opacity-80 mt-2">
     Core: C++/CUDA<br/>
     Bindings: Python<br/>
@@ -224,10 +230,7 @@ Your favorite "Python" tools are barely Python:
 </div>
 
 <div v-click="4">
-  <h3 class="flex items-center gap-2">
-    <span class="text-lg">⚡</span>
-    Modern Tooling
-  </h3>
+  <h3>Modern Tooling</h3>
   <div class="text-sm opacity-80 mt-2">
     <span class="font-mono">uv</span>: Package management<br/>
     <span class="font-mono">ruff</span>: Linting/formatting<br/>
@@ -236,12 +239,9 @@ Your favorite "Python" tools are barely Python:
 </div>
 
 <div v-click="5">
-  <h3 class="flex items-center gap-2">
-    <span class="text-lg">🐧</span>
-    Even Linux
-  </h3>
+  <h3>Linux Kernel</h3>
   <div class="text-sm opacity-80 mt-2">
-    Kernel drivers in Rust<br/>
+    Drivers in Rust<br/>
     Build tools in Python<br/>
     Shell scripts everywhere
   </div>
@@ -249,47 +249,56 @@ Your favorite "Python" tools are barely Python:
 
 </div>
 
-<!-- PLACEHOLDER: Meme about "Is it Python or is it Rust with Python bindings?" -->
+<!--
+IMAGE GENERATION: Is it Python or Rust with Python bindings?
+Style: Black and white New Yorker style gag cartoon
+Description: Two developers standing in front of a whiteboard covered in code. One developer is pointing at the code saying "It's definitely Python!" while the other says "No, it's Rust with Python bindings!" The code on the whiteboard should be ambiguous, showing something like "import polars" or "from ruff import". Caption at bottom: "The eternal question in modern Python development."
+-->
 
 <!--
 Modern examples that audience will recognize. Shows polyglot is mainstream, not exotic.
+TIMING: 3 minutes for historical context
+KEY POINT: Everyone already uses polyglot without realizing it
+AUDIENCE CHECK: "How many use NumPy? That's Fortran/C under the hood!"
 -->
 
 ---
 transition: slide-left
 ---
 
-# The Performance Racing Circuit
+# Performance Racing Circuit
 
-<!-- PLACEHOLDER: AI-generated image of racing circuit with different vehicles representing languages -->
+<img src="./images/placeholder.jpg" alt="Racing circuit" class="mb-4 mx-auto opacity-50" style="max-width: 600px" />
+
+<!--
+IMAGE GENERATION: Programming languages as race cars
+Style: Technical diagram / infographic style
+Description: Top-down view of a racing circuit. Different programming languages as vehicles: C++ as a Formula 1 car (sleek, fast), Rust as a McLaren (modern, safe), JavaScript as a rally car (versatile, everywhere), and Python as the pit crew team (not racing but coordinating everything). The pit lane should be prominent with Python crew members managing all the cars. Track should have labels like "Performance Corner", "Memory Management Straight", "Concurrency Chicane".
+-->
 
 <div class="mt-8">
 
 <div v-click="1" class="grid grid-cols-4 gap-4 text-center">
 
 <div>
-  <div class="text-4xl mb-2">🏎️</div>
   <div class="font-mono text-sm">C++</div>
   <div class="text-xs opacity-60">Formula 1</div>
   <div class="text-xs">Raw speed</div>
 </div>
 
 <div>
-  <div class="text-4xl mb-2">🚗</div>
   <div class="font-mono text-sm">Rust</div>
   <div class="text-xs opacity-60">McLaren</div>
   <div class="text-xs">Fast + safe</div>
 </div>
 
 <div>
-  <div class="text-4xl mb-2">🚙</div>
   <div class="font-mono text-sm">JavaScript</div>
   <div class="text-xs opacity-60">Rally car</div>
   <div class="text-xs">Everywhere</div>
 </div>
 
 <div>
-  <div class="text-4xl mb-2">🐍</div>
   <div class="font-mono text-sm">Python</div>
   <div class="text-xs opacity-60">Pit crew</div>
   <div class="text-xs">Coordinates</div>
@@ -299,20 +308,26 @@ transition: slide-left
 
 <div v-click="2" class="mt-8 text-center">
 
-**The secret:** Python has ropes attached to all three.
+Python controls all three.
 
 </div>
 
 <div v-click="3" class="mt-4 text-center text-sm opacity-80">
 
-While everyone argues about which car is fastest,<br/>
-Python is busy winning races.
+While everyone argues about speed,<br/>
+Python wins races.
 
 </div>
 
 </div>
 
-<!-- PLACEHOLDER: Meme of Python as pit crew managing all the race cars -->
+<img src="./images/placeholder.jpg" alt="Python pit crew" class="mt-4 mx-auto opacity-50" style="max-width: 400px" />
+
+<!--
+IMAGE GENERATION: Python as pit crew chief
+Style: Black and white New Yorker style gag cartoon
+Description: A Formula 1 pit stop scene. The race car (labeled "C++") is in the pit with wheels being changed. The pit crew chief (wearing a shirt with Python logo) is holding a clipboard and stopwatch, coordinating the team. One crew member is saying "But we could optimize the tire change algorithm!" The chief responds "Just change the tires, we'll optimize in Python later." Caption: "Sometimes the best optimization is knowing when not to optimize."
+-->
 
 <!--
 Fun racing metaphor that shows Python's orchestration role. Sets up the practical section.
@@ -325,33 +340,30 @@ transition: fade
 
 <div v-click class="text-center">
 
-# Why This Talk Matters
+# Division of Labour for this Talk
 
 </div>
 
 <div v-click class="mt-8 grid grid-cols-3 gap-8">
 
 <div class="text-center">
-  <div class="text-3xl mb-4">🎯</div>
   <h3>Practical Patterns</h3>
   <div class="text-sm opacity-80 mt-2">
-    Real integration strategies,<br/>not theoretical concepts
+    Real integration strategies
   </div>
 </div>
 
 <div class="text-center">
-  <div class="text-3xl mb-4">⚡</div>
   <h3>Working Examples</h3>
   <div class="text-sm opacity-80 mt-2">
-    Live demos you can<br/>pip install and run
+    Live demos. pip installable.
   </div>
 </div>
 
 <div class="text-center">
-  <div class="text-3xl mb-4">🛠️</div>
   <h3>Production Ready</h3>
   <div class="text-sm opacity-80 mt-2">
-    Patterns from systems<br/>running in production
+    From actual systems
   </div>
 </div>
 
@@ -359,7 +371,7 @@ transition: fade
 
 <div v-click class="mt-8 text-center">
 
-**Next up:** Four languages, four use cases, zero marketing fluff.
+Four languages. Four use cases. Real code.
 
 </div>
 
@@ -373,9 +385,24 @@ layout: section
 
 # Part I: Architecture Patterns
 
+<!--
+SPEAKER NOTES - ARCHITECTURE:
+- This is the meat of the talk - practical patterns
+- Emphasize the 90/10 rule strongly
+- Share real failure stories if time permits
+- The decision tree is critical - not every project needs polyglot
+-->
+
 How to build polyglot applications without losing your sanity
 
+<!--
+TIMING: 10 minutes for architecture patterns section
+CRITICAL SECTION: This is where we provide real value
+-->
+
 ---
+layout: image-left
+image: ./images/placeholder.jpg
 transition: slide-up
 ---
 
@@ -419,23 +446,31 @@ O(n²) → O(n log n) beats any language switch.
 
 <div v-click="7" class="mt-8 text-center">
 
-If yes to all three: **Welcome to polyglot programming.**
+If yes to all embrace the polyglot
 
 </div>
 
-<!-- PLACEHOLDER: Meme of "Choose your adventure" book but for polyglot decisions -->
+
+<!--
+IMAGE GENERATION: Choose Your Own Polyglot Adventure book cover
+Style: Retro 1980s "Choose Your Own Adventure" book cover parody
+Description: Book cover titled "Choose Your Own Polyglot Adventure" with subtitle "Will You Survive the FFI?" Shows a developer at a crossroads with three paths: left path labeled "Rewrite Everything in Rust" leading to a mountain, middle path "Keep it Pure Python" leading to a swamp labeled "Performance Issues", right path "Go Polyglot" leading to a complex but beautiful city. Vintage book cover aesthetic with worn edges.
+-->
 
 <!--
 Practical decision framework. Sets up when polyglot makes sense vs when it's just over-engineering.
+AUDIENCE INTERACTION: Ask "Who's tried polyglot and failed?"
+TIMING: 2 minutes - keep it punchy
 -->
 
 ---
+layout: two-cols-header
 transition: fade
 ---
 
 # The 90/10 Rule
 
-<div class="mt-8">
+::left::
 
 <div v-click="1">
 
@@ -448,21 +483,21 @@ transition: fade
 
 </div>
 
-<div v-click="2" class="mt-8">
+<div v-click="3" class="mt-8 text-center">
+
+**The insight:** Optimize the 10%, orchestrate with Python.
+
+</div>
+
+::right::
+
+<div v-click="2">
 
 **10% of your code** does the heavy lifting:
 - Number crunching
 - Real-time processing
 - Graphics rendering
 - Network protocols
-
-</div>
-
-<div v-click="3" class="mt-8 text-center">
-
-**The insight:** Optimize the 10%, orchestrate with Python.
-
-</div>
 
 </div>
 
@@ -477,11 +512,15 @@ Classic performance principle applied to language choice. Shows focus should be 
 -->
 
 ---
-layout: two-cols
-layoutClass: gap-16
+layout: center
 ---
 
 # Common Polyglot Patterns
+
+---
+layout: two-cols
+layoutClass: gap-16
+---
 
 <div v-click="1">
 
@@ -547,12 +586,13 @@ Four main patterns for polyglot integration. Each has trade-offs we'll see in ex
 -->
 
 ---
+layout: center
 transition: slide-left
 ---
 
 # Data Flow Architecture
 
-```mermaid {scale: 0.9}
+```mermaid {scale: 0.5, theme: 'dark'}
 flowchart LR
     A[Python Orchestrator] --> B[Data Validation]
     B --> C{Performance Critical?}
@@ -571,7 +611,7 @@ flowchart LR
 
 <div v-click class="mt-4 text-center text-sm">
 
-**Key insight:** Python stays in control of the data pipeline
+Python stays in control of the data pipeline
 
 </div>
 
@@ -580,10 +620,11 @@ Visual representation of how data flows through polyglot system. Python maintain
 -->
 
 ---
-layout: center
+layout: image-right
+image: ./images/placeholder.jpg
 ---
 
-# Integration Complexity Matrix
+# Integration Matrix
 
 <div class="grid grid-cols-3 gap-8 mt-8">
 
@@ -625,7 +666,11 @@ layout: center
 
 </div>
 
-<!-- PLACEHOLDER: Meme about "It's always DNS" but "It's always the FFI bindings" -->
+<!--
+IMAGE GENERATION: It's always the FFI bindings
+Style: Black and white New Yorker style gag cartoon
+Description: A detective scene in an office. A detective is pointing at a crime board with strings connecting various items: "Segfault", "Memory leak", "Mysterious crash", "Works on my machine". All strings lead to a photo in the center labeled "FFI Bindings". The detective is saying to their partner: "It's ALWAYS the FFI bindings." Partner responds: "But we checked those three times!" Caption: "The usual suspect."
+-->
 
 <!--
 Complexity vs performance trade-off matrix. Guides architectural decisions.
@@ -642,24 +687,24 @@ transition: fade
 <div v-click="1" class="grid grid-cols-2 gap-8">
 
 <div>
-  <h3 class="text-red-400">❌ Don't Do This</h3>
-  <div class="text-sm mt-4">
-    • Polyglot for the sake of polyglot<br/>
+  <h3 class="text-red-400">Don't</h3>
+  <div>
+    • Polyglot for the sake of it<br/>
     • Premature optimization<br/>
     • "Let's try this new language"<br/>
-    • No clear performance target<br/>
-    • Micro-optimizing the wrong thing
+    • No performance target<br/>
+    • Micro-optimize the wrong thing
   </div>
 </div>
 
 <div>
-  <h3 class="text-green-400">✅ Do This Instead</h3>
+  <h3 class="text-green-400">Do</h3>
   <div class="text-sm mt-4">
-    • Profile first, optimize second<br/>
-    • Clear performance requirements<br/>
-    • Start simple, add complexity gradually<br/>
-    • Measure actual improvement<br/>
-    • Document the integration points
+    • Profile first<br/>
+    • Clear requirements<br/>
+    • Start simple<br/>
+    • Measure improvement<br/>
+    • Document integration
   </div>
 </div>
 
@@ -667,7 +712,7 @@ transition: fade
 
 <div v-click="2" class="mt-12 text-center text-sm opacity-80">
 
-**Reminder:** The goal is shipping working software, not impressing other developers.
+Ship working software. Period.
 
 </div>
 
@@ -676,6 +721,960 @@ transition: fade
 <!--
 Common mistakes and how to avoid them. Keeps the focus on pragmatism over perfectionism.
 -->
+
+---
+layout: section
+---
+
+# Build Patterns
+
+How polyglot projects actually get built
+
+<!--
+TIMING: 8 minutes for build patterns
+WARNING: Can get too technical here - keep it high level
+DEMO PREP: Make sure all build commands are ready to show
+-->
+
+---
+
+# Repository Structure Evolution
+
+Watch how a Python project grows to integrate other languages:
+
+````md magic-move {lines: true}
+```bash {*|3-7|all}
+# Pure Python project
+your-project/
+├── pyproject.toml
+├── src/
+│   └── your_package/
+│       ├── __init__.py
+│       └── app.py
+└── tests/
+    └── test_app.py
+```
+
+```bash {*|8-16|4-7|all}
+# Adding JavaScript frontend
+your-project/
+├── pyproject.toml
+├── src/
+│   └── your_package/
+│       ├── __init__.py
+│       ├── server.py       # FastAPI backend
+│       └── static/         # JS will go here
+├── frontend/               # JavaScript lives here
+│   ├── package.json
+│   ├── src/
+│   │   └── app.js
+│   └── dist/              # npm run build output
+│       └── bundle.js
+└── scripts/
+    └── build.sh           # Orchestrates both builds
+```
+
+```bash {*|2-3|5-7|9-11|all}
+# Adding Rust for performance
+your-project/
+├── Cargo.toml              # Rust dependencies
+├── pyproject.toml          # Now uses maturin
+├── src/
+│   ├── lib.rs             # Rust implementation
+│   └── python.rs          # PyO3 bindings
+├── python/
+│   └── your_package/
+│       ├── __init__.py    # Imports Rust module
+│       └── api.py         # Python wrapper
+├── frontend/
+│   └── ...                # JS unchanged
+└── target/
+    └── wheels/            # Built wheels with .so
+```
+
+```bash {*|2|6-9|all}
+# Adding C++ for legacy integration
+your-project/
+├── CMakeLists.txt          # C++ build system
+├── pyproject.toml          # Uses scikit-build-core
+├── src/
+│   └── cpp/
+│      ├── core.cpp       # C++ implementation
+│      └── bindings.cpp   # pybind11 bindings
+├── python/
+│   └── your_package/
+│       ├── __init__.py
+│       ├── api.py
+│       └── _core.*.so     # Platform-specific binary
+└── frontend/
+    └── ...
+```
+
+```bash {*|3|5-7|16|all}
+# Zig for SIMD operations (standalone)
+your-project/
+├── build.zig               # Zig build system configuration
+├── pyproject.toml          # Uses custom build backend for Zig
+├── src/
+│   ├── main.zig           # Core SIMD algorithms
+│   └── bindings.zig       # Python FFI using C ABI
+├── python/
+│   └── your_package/
+│       ├── __init__.py    # from your_package._zig import *
+│       ├── api.py         # Pythonic API wrapper
+│       └── _zig.*.so      # Platform-specific binary
+├── tests/
+│   ├── test_zig.zig      # Zig unit tests
+│   └── test_python.py    # Python integration tests
+└── zig-cache/             # Build artifacts (gitignored)
+```
+````
+
+<div v-click class="mt-8 text-center">
+
+Each language adds its own build system. Python orchestrates them all.
+
+</div>
+
+---
+layout: center
+---
+
+# Build Systems
+
+```mermaid {scale: 0.55, theme: 'dark'}
+graph LR
+    A[Developer Push] --> B{CI/CD Pipeline}
+    B --> C[JavaScript Build]
+    B --> D[Rust Build]
+    B --> E[C++ Build]
+    B --> F[Zig Build]
+
+    C --> G[npm run build]
+    D --> H[maturin build]
+    E --> I[cmake && make]
+    F --> J[zig build]
+
+    G --> K[Static Assets]
+    H --> L[.so/.pyd files]
+    I --> L
+    J --> L
+
+    K --> M[Python Wheel]
+    L --> M
+
+    M --> N[PyPI Upload]
+    N --> O[pip install your-package]
+
+    style A fill:#3776ab
+    style O fill:#3776ab
+    style M fill:#ff6b6b
+```
+
+<div v-click class="mt-4 text-center text-sm">
+
+Four build systems → One Python wheel → Simple user experience
+
+</div>
+
+---
+
+# Build Output: Where Things Live
+
+<div class="grid grid-cols-2 gap-8 mt-8">
+
+<div>
+Development Mode
+```sh
+# JavaScript: Separate processes
+npm run dev         # localhost:3000
+python server.py    # localhost:8000
+
+# Rust/C++/Zig: In-place builds
+maturin develop
+pip install -e .
+
+# Files live in:
+- JS: node_modules + dist/
+- Native: .so files in src/
+```
+</div>
+
+<div>
+Production Mode
+```sh
+# Single wheel contains everything
+your_package-1.0.0-cp39-cp39-linux_x86_64.whl
+├── your_package/
+│   ├── __init__.py
+│   ├── static/       # JS bundle
+│   └── _native.so    # Compiled code
+└── your_package-1.0.0.dist-info/
+
+# User just runs:
+pip install your_package
+```
+</div>
+
+</div>
+
+**The magic:** Python wheels can contain arbitrary binary files
+
+---
+layout: center
+---
+
+# CI/CD: Building for Multiple Platforms
+
+---
+layout: center
+---
+
+```yaml {*|2-5|7-9|10-14|15-23|all}
+# .github/workflows/build.yml
+strategy:
+  matrix:
+    os: [ubuntu-latest, macos-latest, windows-latest]
+    python: ["3.10", "3.11", "3.12", "3.13", '...']
+
+steps:
+  # JavaScript: Build once
+  - run: cd frontend && npm ci && npm run build
+  # Rust: Use maturin-action
+  - uses: PyO3/maturin-action@v1
+    with:
+      command: build
+      args: --release
+  # C++: Platform-specific toolchains
+  - run: |
+      if [ "$RUNNER_OS" == "Linux" ]; then
+        sudo apt-get install -y build-essential
+      elif [ "$RUNNER_OS" == "macOS" ]; then
+        brew install cmake
+      elif [ "$RUNNER_OS" == "Windows" ]; then
+        choco install visualstudio2022buildtools
+      fi
+  # Upload wheels
+  - uses: actions/upload-artifact@v3
+```
+
+**For Prod:** You'll build 12-20 different wheels (3 OS × 4-5 Python versions)
+
+---
+
+# Testing Polyglot Code
+
+<div class="grid grid-cols-2 gap-8">
+
+<div>
+
+**Unit Tests (Each Language)**
+
+```python
+# test_python.py
+def test_python_logic():
+    assert process(data) == expected
+```
+
+```rust
+// tests/test_rust.rs
+#[test]
+fn test_rust_processing() {
+    assert_eq!(compute(data), expected);
+}
+```
+
+```javascript
+// test.js
+test('validates input', () => {
+  expect(validate(data)).toBe(true);
+});
+```
+
+</div>
+
+<div>
+
+**Integration Tests (Boundaries)**
+
+```python {*|2-6|7-9|13-16|all}
+# test_integration.py
+def test_rust_python_boundary():
+    # Test data transfer
+    py_data = np.array([1, 2, 3])
+    # Call Rust
+    rust_result = rust_module.process(py_data)
+    # Verify types and values
+    assert isinstance(rust_result, np.ndarray)
+
+def test_error_propagation():
+    # Rust panic should become Python exception
+    with pytest.raises(RuntimeError):
+        rust_module.panic_function()
+```
+
+**Memory leak detection:**
+```bash
+valgrind --leak-check=full python test_integration.py
+```
+
+</div>
+
+</div>
+
+---
+
+# Cost-Benefit Analysis
+
+<div class="mt-8">
+
+**When polyglot pays off:**
+
+| Scenario | Pure Python | Polyglot | Worth it? |
+|----------|------------|----------|-----------|
+| 100ms endpoint | 100ms | 10ms | ❌ Not worth complexity |
+| 10s data processing | 10s | 0.1s | ✅ 100x improvement |
+| Real-time audio | Impossible | 5ms latency | ✅ Enables new features |
+| UI interactions | 200ms lag | Native speed | ✅ UX improvement |
+
+</div>
+
+---
+
+# Hidden costs to consider
+
+<div v-click class="mt-8">
+
+- **Development time:** 2-5x longer initial development
+- **Debugging complexity:** Cross-language stack traces
+- **Team expertise:** Need polyglot developers
+- **Build infrastructure:** CI/CD complexity
+- **Maintenance:** Multiple dependency chains
+
+</div>
+
+<div v-click class="mt-8 text-center">
+
+**Rule of thumb:** Need 10x performance gain to justify complexity
+
+</div>
+
+---
+
+# Packaging Expectations
+
+<div v-click="1">
+
+**What users want:**
+
+```bash
+pip install your-package
+```
+</div>
+
+<div v-click="2" class="mt-8">
+
+**What that actually means:**
+
+| Language | Build Requirement | Distribution |
+|----------|------------------|--------------|
+| JavaScript | Node.js + npm | Bundle in wheel |
+| Rust | None (pre-compiled) | Binary in wheel |
+| C++ | None (pre-compiled) | Binary in wheel |
+| Zig | None (pre-compiled) | Binary in wheel |
+
+</div>
+
+---
+layout: center
+---
+
+# `cibuildwheel` handles the complexity
+
+<div v-click="1" class="mt-8">
+
+```bash
+# Builds all platform wheels automatically
+pip install cibuildwheel
+cibuildwheel --platform linux
+```
+</div>
+
+<div v-click="2" class="mt-8 text-center">
+
+Users never see the polyglot complexity. Just Python.
+
+</div>
+
+---
+
+# When Builds Break
+
+
+**Common failure points:**
+
+```bash
+# JavaScript: The node_modules abyss
+Error: Cannot find module 'left-pad'
+# Solution: rm -rf node_modules package-lock.json && npm install
+
+# Rust: Linking errors
+error: linking with `cc` failed
+# Solution: Missing system libraries, check target triple
+
+# C++: ABI incompatibility
+undefined symbol: _ZNSt7__cxx1112basic_stringIcSt11char
+# Solution: Compiler version mismatch, rebuild everything
+
+# Zig: Path confusion
+error: unable to find 'std'
+# Solution: Zig version mismatch with ziggy-pydust
+```
+
+---
+
+# Platform-specific nightmares
+
+<div v-click="1" class="mt-8">
+
+| Platform | Common Issue | Fix |
+|----------|-------------|-----|
+| macOS | Missing xcrun | Install Xcode CLT |
+| Linux | GLIBC version | Use manylinux images |
+| Windows | MSVC not found | Install Build Tools |
+| ARM | No wheels available | Build from source |
+
+</div>
+
+<div v-click="2" class="mt-8 text-center">
+
+Build failures teach you about linking, ABIs, and why Docker exists.
+
+</div>
+
+---
+layout: section
+---
+
+# War Stories
+
+Where polyglot goes wrong
+
+<!--
+TIMING: 10 minutes for war stories
+TONE: Humor is good here - everyone has these problems
+EMPHASIZE: These aren't reasons to avoid polyglot, just reality
+-->
+
+---
+layout: image-right
+image: ./images/placeholder.jpg
+---
+
+# JS + Python Async
+
+e.g., Real-time dashboard for trading system
+
+```javascript
+// JavaScript WebSocket handler
+ws.on('message', async (data) => {
+  const result = await processData(data)
+  ws.send(result)  // Sent out of order!
+})
+```
+
+```python
+# Python side assumes ordered messages
+async def handle_stream(websocket):
+    sequence = 0
+    async for message in websocket:
+        if message.seq != sequence + 1:
+            # 💥 Messages arrived out of order
+            raise ProtocolError("Sequence broken")
+```
+Takeaway
+
+- JavaScript's event loop != Python's assumptions about ordering
+- Explicit sequence numbers and buffering on both sides
+
+<!--
+IMAGE GENERATION: Async message ordering chaos
+Style: Black and white New Yorker style gag cartoon
+Description: A restaurant kitchen scene. A waiter (labeled "JavaScript") is rapidly passing orders to a chef (labeled "Python"). The orders are flying through the air in chaos - some arriving out of order, some colliding mid-air. The chef looks panicked, holding orders numbered "3", "1", "5" while looking for "2" and "4". The waiter cheerfully says "They're all async, you'll figure it out!" Caption: "When JavaScript's event loop meets Python's expectations."
+
+SPEAKER NOTE: This usually gets a laugh - pause for effect
+-->
+
+---
+layout: two-cols-header
+---
+
+# Rust + Python: The Ownership Battle
+
+::left::
+
+**The setup:** High-frequency data processor
+
+**What went wrong:**
+```rust
+#[pyfunction]
+fn process_data(data: &PyList) -> PyResult<Vec<f64>> {
+    // Rust borrows data immutably
+    let results = parallel_process(&data)?;
+
+    // Meanwhile in another thread...
+    // Python modifies the list 💥
+    Ok(results)
+}
+```
+
+::right::
+
+```python
+# Python has no concept of Rust's borrowing rules
+data = [1, 2, 3, 4, 5]
+future = rust_module.process_data_async(data)
+data.append(6)  # Modified while Rust is borrowing!
+result = await future  # Segfault or corrupted data
+```
+
+**The lesson:** Rust's safety guarantees end at the FFI boundary
+
+**The fix:** Always copy data at boundaries or use Arc<Mutex<>>
+
+<style>
+.two-cols-header {
+  column-gap: 25px; /* Adjust the gap size as needed */
+}
+</style>
+
+---
+layout: image-right
+image: ./images/placeholder.jpg
+---
+
+# The GIL Deadlock
+
+**The setup:** ML inference engine with callbacks
+
+**What went wrong:**
+```cpp
+// C++ thread pool for inference
+void infer(py::function callback) {
+    std::thread([callback]() {
+        auto result = run_model();
+        callback(result);  // 💥 Tries to acquire GIL
+    }).detach();
+}
+```
+
+```python
+# Python callback needs GIL
+def handle_result(result):
+    # GIL is held by main thread
+    self.results.append(result)
+# Main thread
+model.infer(handle_result)
+time.sleep(1)  # Holds GIL during sleep!
+```
+
+C++ threads + Python callbacks = GIL nightmare
+
+Release GIL explicitly, use queues for comms
+
+
+<!--
+IMAGE GENERATION: GIL bottleneck visualization
+Style: Black and white New Yorker style gag cartoon
+Description: A narrow doorway labeled "GIL" (Global Interpreter Lock). On one side, multiple C++ threads (drawn as runners) are queued up trying to get through. On the other side, a single Python thread is leisurely walking through while the others wait. One C++ thread says to another: "I thought parallel meant parallel." The other responds: "Welcome to Python." Caption: "The GIL: Where parallelism goes to become concurrent."
+-->
+
+---
+
+# Zig + Python: The ABI Assumption
+
+**The setup:** SIMD-optimized math library
+
+**What went wrong:**
+```zig
+// Zig assumes C ABI
+export fn matrix_multiply(a: [*]f64, b: [*]f64, out: [*]f64, n: usize) void {
+    // SIMD operations assume aligned memory
+    @setRuntimeSafety(false);
+    // Process 4 doubles at once (32-byte aligned)
+    const vec_a = @ptrCast(*const @Vector(4, f64), a);
+    // 💥 Python's numpy array not aligned!
+}
+```
+
+```python
+# Python/NumPy doesn't guarantee alignment
+a = np.random.rand(1000, 1000)  # Maybe aligned, maybe not
+result = zig_lib.matrix_multiply(
+    a.ctypes.data,  # Could be misaligned!
+    b.ctypes.data,
+    out.ctypes.data,
+    1000
+)
+# Segfault on AVX instructions
+```
+
+Language X's assumptions != Language Y's guarantees
+Check alignment, copy if needed, or use aligned allocators
+
+---
+
+# Error Handling Across Boundaries
+
+<div class="grid grid-cols-2 gap-8">
+
+<div>
+
+**The Problem:**
+
+Each language has different error models:
+- Python: Exceptions
+- Rust: Result<T, E>
+- JavaScript: Exceptions + Promises
+- C++: Exceptions (maybe)
+- Zig: Error unions
+
+```python
+try:
+    result = rust_func()
+except Exception as e:
+    # Is this a Rust panic?
+    # A Python exception?
+    # Memory corruption?
+    # Who knows!
+    pass
+```
+
+</div>
+
+<div>
+
+**The Solution:**
+
+Standardize at boundaries:
+
+```rust
+#[pyfunction]
+fn safe_process(data: &PyAny) -> PyResult<PyObject> {
+    match internal_process(data) {
+        Ok(result) => Ok(result.into_py(py)),
+        Err(e) => match e {
+            Error::InvalidInput(msg) =>
+                Err(PyValueError::new_err(msg)),
+            Error::Internal(msg) =>
+                Err(PyRuntimeError::new_err(msg)),
+            _ => Err(PyException::new_err("Unknown"))
+        }
+    }
+}
+```
+
+Always map to Python exceptions at boundary.
+
+</div>
+
+</div>
+
+---
+
+# Memory Management
+
+```python
+# Looks innocent enough
+def process_video(video_path):
+    frames = rust_module.decode_video(video_path)  # Returns 4GB of frames
+    processed = cpp_module.apply_filters(frames)   # Copies? References?
+    result = js_bridge.stream_to_client(processed) # Who owns memory now?
+    return result  # When does memory get freed?
+```
+
+<div v-click="1">
+
+**Memory ownership across languages:**
+
+| From → To | Ownership Transfer | Gotcha |
+|-----------|-------------------|---------|
+| Python → Rust | Rust borrows or copies | Python can mutate during borrow |
+| Rust → Python | Python owns new object | Must increment refcount |
+| Python → C++ | C++ copies or views | Views invalid after Python GC |
+| C++ → Python | Depends on binding | Memory leaks if unclear |
+| JS → Python | Always copies | Network serialization cost |
+
+</div>
+
+<div v-click="2" class="mt-8">
+
+**The Three Rules:**
+1. Copy at boundaries (safe but slow)
+2. Transfer ownership explicitly (fast but complex)
+3. Never share mutable state (unless you love debugging)
+
+</div>
+
+---
+
+# Debugging Part 1
+
+Simulating cross-language stack traces with Pyodide:
+
+```python {monaco-run}
+# Run this in your browser - powered by Pyodide!
+import json
+import time
+
+class PolyglotDebugger:
+    def __init__(self):
+        self.call_stack = []
+        self.error_count = 0
+
+    def trace_call(self, lang, func_name, args):
+        """Track calls across language boundaries"""
+        entry = {
+            'language': lang,
+            'function': func_name,
+            'args': str(args)[:30],
+            'timestamp': time.time()
+        }
+        self.call_stack.append(entry)
+        return f"→ {lang}: {func_name}"
+
+    def simulate_polyglot_execution(self):
+        """Simulate a typical polyglot call chain"""
+        print("=== SIMULATING POLYGLOT EXECUTION ===\n")
+
+        # Python initiates
+        print(self.trace_call("Python", "handle_request", {"endpoint": "/api/process"}))
+
+        # Calls JavaScript for validation
+        print(self.trace_call("JavaScript", "validateInput", {"data": "user_input"}))
+
+        # JS calls Rust for heavy computation
+        print(self.trace_call("Rust", "compute_parallel", {"size": 10000}))
+
+        # Rust calls C++ for SIMD operations
+        print(self.trace_call("C++", "simd_multiply", {"matrices": 2}))
+
+        # Error occurs!
+        print("\n✗ ERROR: Segmentation fault in C++!")
+        self.print_stack()
+
+    def print_stack(self):
+        print("\n=== POLYGLOT STACK TRACE ===")
+        for i, call in enumerate(reversed(self.call_stack)):
+            print(f"#{i} {call['language']}: {call['function']}({call['args']})")
+        print("=============================")
+
+# Run the simulation
+debugger = PolyglotDebugger()
+debugger.simulate_polyglot_execution()
+
+print("\n💡 The error is in C++, but originated from Python!")
+print("📝 Each language adds a layer to the stack.")
+```
+
+---
+
+# Debugging Part 2
+
+Interactive boundary debugging pattern:
+
+```python {monaco-run}
+# Practical debugging wrapper for polyglot calls
+import time
+from typing import Any, Callable
+
+class BoundaryDebugger:
+    """Add this to every language boundary in your polyglot project"""
+
+    def __init__(self, verbose=True):
+        self.verbose = verbose
+        self.call_history = []
+
+    def wrap_call(self, language: str, func_name: str):
+        """Decorator to wrap polyglot function calls"""
+        def decorator(func: Callable):
+            def wrapper(*args, **kwargs):
+                call_id = len(self.call_history)
+
+                # Log entry
+                if self.verbose:
+                    print(f"[{call_id}] ENTER {language}::{func_name}")
+                    print(f"     Args: {args[:2] if args else 'none'}")  # Truncate for display
+
+                start_time = time.perf_counter()
+                error = None
+                result = None
+
+                try:
+                    # Simulate the actual call
+                    result = func(*args, **kwargs)
+                except Exception as e:
+                    error = str(e)
+                    if self.verbose:
+                        print(f"[{call_id}] ERROR in {language}: {error}")
+                    raise
+                finally:
+                    elapsed = (time.perf_counter() - start_time) * 1000
+
+                    # Log exit
+                    if self.verbose:
+                        print(f"[{call_id}] EXIT  {language}::{func_name} ({elapsed:.2f}ms)")
+
+                    # Record call
+                    self.call_history.append({
+                        'id': call_id,
+                        'language': language,
+                        'function': func_name,
+                        'duration_ms': elapsed,
+                        'error': error
+                    })
+
+                return result
+            return wrapper
+        return decorator
+
+    def get_slowest_calls(self, n=3):
+        """Find performance bottlenecks"""
+        sorted_calls = sorted(self.call_history,
+                            key=lambda x: x['duration_ms'],
+                            reverse=True)
+        return sorted_calls[:n]
+
+# Example usage
+debugger = BoundaryDebugger()
+
+@debugger.wrap_call("Python", "process_data")
+def process_data(data):
+    time.sleep(0.01)  # Simulate work
+    return len(data)
+
+@debugger.wrap_call("Rust", "heavy_compute")
+def heavy_compute(size):
+    time.sleep(0.02)  # Simulate Rust processing
+    return size * 2
+
+@debugger.wrap_call("JavaScript", "update_ui")
+def update_ui(result):
+    time.sleep(0.005)  # Simulate UI update
+    return f"Updated: {result}"
+
+# Run the wrapped functions
+print("=== EXECUTING POLYGLOT PIPELINE ===\n")
+data = "Hello from Pyodide!"
+result1 = process_data(data)
+result2 = heavy_compute(result1)
+result3 = update_ui(result2)
+
+print(f"\n=== PERFORMANCE ANALYSIS ===")
+for call in debugger.get_slowest_calls():
+    print(f"{call['language']}: {call['function']} took {call['duration_ms']:.2f}ms")
+```
+
+---
+
+# Debugging Part 3
+
+Memory tracking across boundaries:
+
+```python {monaco-run}
+# Track memory ownership across language boundaries
+import sys
+import gc
+
+class MemoryTracker:
+    """Track object lifecycle across polyglot boundaries"""
+
+    def __init__(self):
+        self.objects = {}
+        self.ownership = {}
+
+    def register_object(self, obj_id: str, language: str, size_bytes: int):
+        """Register object creation"""
+        self.objects[obj_id] = {
+            'language': language,
+            'size': size_bytes,
+            'transferred_to': None,
+            'alive': True
+        }
+        print(f"✓ {language} created {obj_id} ({size_bytes} bytes)")
+
+    def transfer_ownership(self, obj_id: str, from_lang: str, to_lang: str):
+        """Track ownership transfer between languages"""
+        if obj_id in self.objects:
+            self.objects[obj_id]['transferred_to'] = to_lang
+            print(f"→ {obj_id}: {from_lang} → {to_lang}")
+        else:
+            print(f"⚠ Unknown object: {obj_id}")
+
+    def release_object(self, obj_id: str, language: str):
+        """Mark object as released"""
+        if obj_id in self.objects:
+            obj = self.objects[obj_id]
+            if obj['alive']:
+                obj['alive'] = False
+                print(f"✗ {language} released {obj_id}")
+            else:
+                print(f"⚠ DOUBLE FREE: {obj_id} already released!")
+        else:
+            print(f"⚠ Trying to free unknown object: {obj_id}")
+
+    def check_leaks(self):
+        """Find potential memory leaks"""
+        print("\n=== MEMORY LEAK CHECK ===")
+        leaks = [k for k, v in self.objects.items() if v['alive']]
+        if leaks:
+            for obj_id in leaks:
+                obj = self.objects[obj_id]
+                print(f"LEAK: {obj_id} ({obj['size']} bytes) from {obj['language']}")
+        else:
+            print("✓ No memory leaks detected")
+
+# Simulate polyglot memory management
+tracker = MemoryTracker()
+
+print("=== SIMULATING POLYGLOT MEMORY FLOW ===\n")
+
+# Python creates data
+tracker.register_object("numpy_array_1", "Python", 8000)
+
+# Transfer to Rust for processing
+tracker.transfer_ownership("numpy_array_1", "Python", "Rust")
+
+# Rust creates result
+tracker.register_object("rust_result_1", "Rust", 4000)
+
+# Transfer back to Python
+tracker.transfer_ownership("rust_result_1", "Rust", "Python")
+
+# Python properly releases Rust result
+tracker.release_object("rust_result_1", "Python")
+
+# Oops! Forgot to release the numpy array
+# tracker.release_object("numpy_array_1", "Rust")  # Commented out to show leak
+
+# Check for leaks
+tracker.check_leaks()
+
+print("\n💡 Common issues:")
+print("• Python GC vs manual memory management")
+print("• Reference counting across FFI boundaries")
+print("• Ownership confusion between languages")
+```
+
+<div v-click class="mt-4 text-sm opacity-80">
+
+**Real tools for production debugging:**
+- `valgrind --leak-check=full` for memory leaks
+- `py-spy top` for Python profiling
+- `gdb` with Python extensions for native code
+- Structured logging with correlation IDs
+
+</div>
 
 ---
 layout: center
@@ -699,28 +1698,24 @@ Four languages, four use cases, four different integration patterns.
 <div v-click class="mt-8 grid grid-cols-4 gap-4 text-center text-xs">
 
 <div class="p-4 border border-gray-300 rounded">
-  <div class="text-2xl mb-2">🌐</div>
   <div class="font-mono">JavaScript</div>
   <div class="opacity-60">Real-time UI</div>
   <div class="opacity-60">WebSocket Bridge</div>
 </div>
 
 <div class="p-4 border border-gray-300 rounded">
-  <div class="text-2xl mb-2">⚡</div>
   <div class="font-mono">Rust</div>
   <div class="opacity-60">Data Viz</div>
   <div class="opacity-60">HTTP Service</div>
 </div>
 
 <div class="p-4 border border-gray-300 rounded">
-  <div class="text-2xl mb-2">🚄</div>
   <div class="font-mono">C++</div>
   <div class="opacity-60">ML Inference</div>
   <div class="opacity-60">Native Extension</div>
 </div>
 
 <div class="p-4 border border-gray-300 rounded">
-  <div class="text-2xl mb-2">🌀</div>
   <div class="font-mono">Zig</div>
   <div class="opacity-60">Hurricane Tracking</div>
   <div class="opacity-60">SIMD Math</div>
@@ -740,6 +1735,12 @@ layout: section
 
 Same problem, four solutions, one Python conductor
 
+<!--
+TIMING: 5 minutes for language showcase
+INTERACTIVE: Let audience guess performance numbers before revealing
+DEMO: Have Haversine calculation ready to run live if time permits
+-->
+
 ---
 layout: center
 class: text-center
@@ -758,9 +1759,9 @@ Simple enough for comparison, <span v-mark.circle.orange="2">complex enough to m
   :enter="{ x: 0, y: 0, opacity: 1, transition: { delay: 1000, duration: 1000 } }">
 
 ```
-🗺️ Santo Domingo (18.4861°N, 69.9312°W)
-📍 Miami (25.7617°N, 80.1918°W)
-❓ Distance = ?
+Santo Domingo (18.4861°N, 69.9312°W)
+Miami (25.7617°N, 80.1918°W)
+Distance = ?
 ```
 
 </div>
@@ -895,11 +1896,11 @@ pub fn haversineDistance(lat1: f64, lon1: f64, lat2: f64, lon2: f64) f64 {
 
 ---
 layout: image-right
-image: /placeholder-performance-chart.png
+image: ./images/placeholder.jpg
 backgroundSize: contain
 ---
 
-# Performance Reality Check
+# Performance Check
 
 <div v-click="1">
 
@@ -957,7 +1958,11 @@ backgroundSize: contain
 
 </div>
 
-<!-- PLACEHOLDER: Actual performance chart image -->
+<!--
+IMAGE GENERATION: Performance comparison visualization
+Style: Clean, modern data visualization / infographic
+Description: Bar chart showing performance comparison for 1 million Haversine calculations. Python (2.1s) shown as long blue bar. JavaScript (0.8s) as medium yellow bar. Rust (0.12s) as short orange bar. C++ (0.08s) as tiny red bar. Zig (0.07s) as tiny purple bar. Include small icons for each language. Title: "1 Million Distance Calculations". Subtitle: "Shorter bars = faster execution". Clean, professional style suitable for technical presentation.
+-->
 
 ---
 transition: slide-up
@@ -968,36 +1973,27 @@ transition: slide-up
 <div class="grid grid-cols-2 gap-8 mt-8">
 
 <div v-click="1">
-  <h3 class="flex items-center gap-2">
-    <span class="text-2xl">🌐</span>
-    JavaScript
-  </h3>
+  <h3>JavaScript</h3>
   <div class="text-sm opacity-80 mt-2 space-y-1">
     <div class="font-mono text-xs bg-gray-100 p-2 rounded">WebSocket Bridge</div>
     <div>• Real-time UI updates</div>
     <div>• Event-driven architecture</div>
-    <div>• Seamless browser integration</div>
+    <div>• Browser integration</div>
   </div>
 </div>
 
 <div v-click="2">
-  <h3 class="flex items-center gap-2">
-    <span class="text-2xl">⚡</span>
-    Rust
-  </h3>
+  <h3>Rust</h3>
   <div class="text-sm opacity-80 mt-2 space-y-1">
     <div class="font-mono text-xs bg-gray-100 p-2 rounded">HTTP Service</div>
-    <div>• Memory-safe processing</div>
-    <div>• Concurrent by design</div>
+    <div>• Memory-safe</div>
+    <div>• Concurrent</div>
     <div>• Easy deployment</div>
   </div>
 </div>
 
 <div v-click="3">
-  <h3 class="flex items-center gap-2">
-    <span class="text-2xl">🚄</span>
-    C++
-  </h3>
+  <h3>C++</h3>
   <div class="text-sm opacity-80 mt-2 space-y-1">
     <div class="font-mono text-xs bg-gray-100 p-2 rounded">Native Extension</div>
     <div>• Maximum performance</div>
@@ -1007,10 +2003,7 @@ transition: slide-up
 </div>
 
 <div v-click="4">
-  <h3 class="flex items-center gap-2">
-    <span class="text-2xl">🌀</span>
-    Zig
-  </h3>
+  <h3>Zig</h3>
   <div class="text-sm opacity-80 mt-2 space-y-1">
     <div class="font-mono text-xs bg-gray-100 p-2 rounded">SIMD Extension</div>
     <div>• Explicit performance</div>
@@ -1023,7 +2016,7 @@ transition: slide-up
 
 <div v-click="5" class="mt-12 text-center">
 
-**Each language excels in its domain. Python orchestrates them all.**
+Each language excels. Python orchestrates.
 
 </div>
 
@@ -1125,7 +2118,7 @@ Each language optimizes for different goals:
 
 </div>
 
----
+<!-----
 layout: center
 ---
 
@@ -1139,11 +2132,10 @@ layout: center
   v-motion
   :initial="{ y: 50, opacity: 0 }"
   :click-2="{ y: 0, opacity: 1, transition: { delay: 0 } }"
-  class="p-6 border-2 border-yellow-300 rounded-lg bg-yellow-50 cursor-pointer"
+  class="p-6 border-2 border-yellow-300 rounded-lg bg-yellow-50 cursor-pointer hover:scale-105 transition-transform"
   @click="$slidev.nav.go(50)">
 
   <div class="text-center">
-    <div class="text-4xl mb-2">🌐</div>
     <h3>Real-time Dashboard</h3>
     <div class="text-sm opacity-80 mt-2">
       Python + JavaScript via WebSockets
@@ -1158,11 +2150,10 @@ layout: center
   v-motion
   :initial="{ y: 50, opacity: 0 }"
   :click-3="{ y: 0, opacity: 1, transition: { delay: 200 } }"
-  class="p-6 border-2 border-orange-300 rounded-lg bg-orange-50 cursor-pointer"
+  class="p-6 border-2 border-orange-300 rounded-lg bg-orange-50 cursor-pointer hover:scale-105 transition-transform"
   @click="$slidev.nav.go(60)">
 
   <div class="text-center">
-    <div class="text-4xl mb-2">⚡</div>
     <h3>Data Visualization</h3>
     <div class="text-sm opacity-80 mt-2">
       Python + Rust HTTP service
@@ -1177,11 +2168,10 @@ layout: center
   v-motion
   :initial="{ y: 50, opacity: 0 }"
   :click-4="{ y: 0, opacity: 1, transition: { delay: 400 } }"
-  class="p-6 border-2 border-blue-300 rounded-lg bg-blue-50 cursor-pointer"
+  class="p-6 border-2 border-blue-300 rounded-lg bg-blue-50 cursor-pointer hover:scale-105 transition-transform"
   @click="$slidev.nav.go(70)">
 
   <div class="text-center">
-    <div class="text-4xl mb-2">🚄</div>
     <h3>ML Inference</h3>
     <div class="text-sm opacity-80 mt-2">
       Python + C++ native extensions
@@ -1196,11 +2186,10 @@ layout: center
   v-motion
   :initial="{ y: 50, opacity: 0 }"
   :click-5="{ y: 0, opacity: 1, transition: { delay: 600 } }"
-  class="p-6 border-2 border-purple-300 rounded-lg bg-purple-50 cursor-pointer"
+  class="p-6 border-2 border-purple-300 rounded-lg bg-purple-50 cursor-pointer hover:scale-105 transition-transform"
   @click="$slidev.nav.go(80)">
 
   <div class="text-center">
-    <div class="text-4xl mb-2">🌀</div>
     <h3>Hurricane Tracking</h3>
     <div class="text-sm opacity-80 mt-2">
       Python + Zig SIMD calculations
@@ -1217,37 +2206,59 @@ layout: center
 
 <div v-click="6" class="mt-8 text-center text-sm opacity-80">
 <span v-mark.highlight.green="7">Interactive navigation:</span> Click any card to jump to that example
-</div>
+</div>-->
 
 ---
 transition: slide-left
 ---
 
-# Try It Yourself
+# Live Polyglot: PyScript + Pyodide
 
-Interactive playground for the Haversine formula:
+Python running directly in your browser (no server needed):
 
-```javascript {monaco-run}
-// Live JavaScript implementation
-function haversineDistance(lat1, lon1, lat2, lon2) {
-  const toRad = deg => deg * Math.PI / 180;
-  const [rlat1, rlon1, rlat2, rlon2] = [lat1, lon1, lat2, lon2].map(toRad);
+```python {monaco-run}
+# Python via Pyodide - runs in browser!
+import math
+import json
 
-  const dlat = rlat2 - rlat1;
-  const dlon = rlon2 - rlon1;
-  const a = Math.sin(dlat/2)**2 +
-            Math.cos(rlat1) * Math.cos(rlat2) * Math.sin(dlon/2)**2;
+def haversine_distance(lat1, lon1, lat2, lon2):
+    """Calculate distance between two points on Earth"""
+    R = 6371  # Earth's radius in km
 
-  return 6371 * 2 * Math.asin(Math.sqrt(a));
-}
+    # Convert to radians
+    lat1, lon1, lat2, lon2 = map(math.radians, [lat1, lon1, lat2, lon2])
 
-// Test with Santo Domingo to Miami
-const distance = haversineDistance(18.4861, -69.9312, 25.7617, -80.1918);
-console.log(`Distance: ${distance.toFixed(2)} km`);
+    # Haversine formula
+    dlat = lat2 - lat1
+    dlon = lon2 - lon1
+    a = math.sin(dlat/2)**2 + math.cos(lat1) * math.cos(lat2) * math.sin(dlon/2)**2
+    c = 2 * math.asin(math.sqrt(a))
+
+    return R * c
+
+# Test with Caribbean coordinates
+santo_domingo = (18.4861, -69.9312)
+miami = (25.7617, -80.1918)
+distance = haversine_distance(*santo_domingo, *miami)
+
+print(f"Distance: {distance:.2f} km")
+print(f"Flight time: ~{distance/800:.1f} hours")
+
+# Now let's compare with JavaScript performance
+import time
+start = time.perf_counter()
+for _ in range(10000):
+    haversine_distance(*santo_domingo, *miami)
+elapsed = (time.perf_counter() - start) * 1000
+print(f"Python (Pyodide): {elapsed:.2f}ms for 10k calculations")
 ```
 
-<div v-click class="mt-4 text-center text-sm opacity-80">
-Edit the code above and press Ctrl+Enter to run!
+<div v-click class="mt-4">
+
+**The polyglot twist:** Pyodide is CPython compiled to WebAssembly using Emscripten (C++)!
+
+Python → C → WebAssembly → JavaScript VM → Your browser
+
 </div>
 
 ---
@@ -1256,44 +2267,142 @@ layout: section
 
 # Part III: Real-World Applications
 
+Four projects you can actually use
+
+<!--
+TIMING: 20 minutes total for all demos (5 min each)
+FALLBACK: Have recorded demos if live fails
+EMPHASIZE: All code is on GitHub, they can run it themselves
+-->
+
+---
+
+# Unified Demo Flow
+
+<!--
+SPEAKER NOTES - DEMOS:
+- Keep demos snappy - 5 minutes each maximum
+- Have backup slides if demos fail
+- Emphasize the performance improvements with actual numbers
+- Show the code but don't dwell on syntax
+- Each demo should follow: Problem → Profile → Solution → Result
+-->
+
+Each demo follows the same pattern for clarity:
+
+<div class="grid grid-cols-2 gap-8 mt-8">
+
+<div>
+
+**1. Show the Problem**
+```python
+# Pure Python attempt
+def process_intensive_task(data):
+    # Takes 30 seconds...
+    result = slow_computation(data)
+    return result
+```
+
+**2. Profile & Measure**
+```bash
+$ python -m cProfile app.py
+  50000003 function calls in 32.1 seconds
+  ncalls  cumtime  percall  filename
+  1000000   28.5    0.000    slow_computation
+```
+
+</div>
+
+<div>
+
+**3. Polyglot Solution**
+```python
+# With native extension
+import rust_accelerator
+
+def process_intensive_task(data):
+    # Now takes 0.3 seconds
+    result = rust_accelerator.compute(data)
+    return result
+```
+
+**4. Show Improvement**
+```
+Before: 32.1 seconds
+After:  0.3 seconds
+Speedup: 107x
+
+Worth the complexity? YES
+```
+
+</div>
+
+</div>
+
+<div v-click class="mt-8 text-center text-sm opacity-80">
+
+Same structure. Different languages. Consistent story.
+
+</div>
+
 ---
 layout: section
 ---
 
 # Python + JavaScript
-Real-time Agricultural Monitoring
+## Real-time Agricultural Monitoring
+
+<!--
+DEMO 1 TIMING: 5 minutes
+KEY POINTS: WebSocket for real-time, vanilla JS keeps it simple
+IF DEMO FAILS: Show screenshots, move on quickly
+-->
 
 ---
 
-# The Challenge
+# Python + JavaScript: The Challenge
 
 Modern agricultural monitoring requires:
 
-- **Real-time data streams** - conditions change rapidly
-- **Interactive dashboards** - users need responsive interfaces
-- **Complex simulations** - weather patterns, soil conditions
-- **Easy deployment** - farmers shouldn't need a CS degree
+- Real-time data streams - conditions change rapidly
+- Interactive dashboards - users need responsive interfaces
+- Complex simulations - weather patterns, soil conditions
+- Easy deployment - farmers shouldn't need a CS degree
 
-Python handles the backend brilliantly, but web interfaces need JavaScript.
+Python handles the backend. JavaScript owns the browser.
 
 ---
 
 # Outback Monitor
 
-A practical solution for Australian agricultural monitoring:
+**Step 1: The Problem**
+```python
+# Pure Python: 3 seconds to process sensor data
+for reading in sensor_stream:
+    processed = complex_calculation(reading)  # 30ms each
+    update_dashboard(processed)  # Blocks UI
+```
 
+**Step 2: Profile Results**
+```
+30ms × 100 readings/sec = 3000ms = Can't keep up!
+```
+
+**Step 3: Polyglot Solution**
 ```bash
 pip install outback-monitor
 outback-monitor --region queensland
 ```
 
 **Architecture:**
-- **Python**: FastAPI server, NumPy simulations, CLI interface
-- **JavaScript**: Real-time charts, WebSocket client, vanilla DOM
+- Python: FastAPI server, NumPy simulations, CLI interface
+- JavaScript: Real-time charts, WebSocket client, vanilla DOM
 
-**Data Flow:**
+**Step 4: Result**
 ```
-NumPy → FastAPI → WebSocket → Chart.js → Browser
+Python processes data: 3ms
+JS updates UI: Non-blocking
+User experience: Smooth real-time updates
 ```
 
 ---
@@ -1301,7 +2410,7 @@ layout: two-cols
 layoutClass: gap-16
 ---
 
-# Implementation: Python Backend
+# Python Backend
 
 FastAPI server with real-time simulation:
 
@@ -1309,8 +2418,7 @@ FastAPI server with real-time simulation:
 from fastapi import FastAPI, WebSocket
 import numpy as np
 
-# Australian regions with realistic baselines
-REGIONS = {
+REGIONS = { # Australian regions with realistic baselines
     "queensland": {"temp_base": 28, "humidity_base": 70},
     "nsw": {"temp_base": 24, "humidity_base": 60},
     "victoria": {"temp_base": 20, "humidity_base": 65}
@@ -1347,13 +2455,11 @@ class OutbackMonitor {
             this.updateData(JSON.parse(event.data))
         }
     }
-
     updateData(data) {
         // Update live metrics
         document.getElementById('temperature')
             .textContent = `${data.temperature}°C`
     }
-
     updateCharts() {
         this.charts.environment.data.datasets[0]
             .data = this.dataHistory.temperature
@@ -1408,33 +2514,39 @@ outback-monitor --region victoria
 # Select region → Click START → Live data flows
 ```
 
-**Packaging:** Static files bundled with Python package using hatchling
+**Packaging:** Static files bundled with Python package using `uv`
 
 **Result:** Single pip-installable package that starts a web server
 
 ---
 
-# Key Takeaways
+# JavaScript + Python: Summary
 
-**When to use Python + JavaScript:**
-- Real-time web interfaces with complex backend logic
-- Data science applications needing interactive visualization
-- Tools that benefit from both pip distribution and web UI
+**When it makes sense:**
+- Real-time web interfaces
+- Interactive visualizations
+- Existing JavaScript ecosystem needs
 
-**Architecture principles:**
-- Python for data processing, server logic, CLI interfaces
-- JavaScript for DOM manipulation, real-time updates, user interaction
-- WebSockets for seamless real-time communication
-- Vanilla JavaScript keeps it simple and fast
+**Pattern:** WebSocket bridge or embedded static files
 
-**Deployment:** Package static assets with Python using proper manifest files
+**Build complexity:** Medium (two build systems)
+
+**Performance gain:** UI responsiveness, not computation
+
+**Gotcha:** Async ordering assumptions differ
 
 ---
 layout: section
 ---
 
 # Python + Rust
-High-Performance Bushfire Modeling
+## High-Performance Bushfire Modeling
+
+<!--
+DEMO 2 TIMING: 5 minutes
+KEY POINTS: 100x speedup, Rust parallelism
+EMPHASIZE: maturin makes it easy
+-->
 
 ---
 
@@ -1454,20 +2566,40 @@ With Rust: **~0.02 seconds** - **100x faster**
 
 # Bushfire Simulation
 
-Real-time fire spread modeling for Australian conditions:
+**Step 1: The Problem**
+```python
+# Pure Python: 2.15 seconds for simulation
+def simulate_fire_spread(grid, steps=50):
+    for step in range(steps):
+        for y in range(100):
+            for x in range(100):
+                # O(n²) neighbor checks
+                update_cell(grid, x, y)
+```
 
+**Step 2: Profile Results**
+```
+100×100 grid × 50 steps = 500,000 cell updates
+Pure Python: 2.15 seconds (too slow for real-time)
+```
+
+---
+
+**Step 3: Polyglot Solution**
 ```bash
 pip install bushfire-sim
 bushfire-sim simulate --danger catastrophic --show
 ```
 
 **Architecture:**
-- **Rust**: Cellular automata engine, parallel processing with Rayon
-- **Python**: API, visualization, CLI, Australian fire danger ratings
+- Rust: Parallel cellular automata with Rayon
+- Python: API, visualization, CLI
 
-**Performance Critical Path:**
+**Step 4: Result**
 ```
-Rust cellular automata → Python matplotlib → Web interface
+Rust parallel processing: 0.021 seconds
+Speedup: 102x
+Enables: Real-time fire spread visualization
 ```
 
 ---
@@ -1475,7 +2607,7 @@ layout: two-cols
 layoutClass: gap-16
 ---
 
-# Implementation: Rust Core
+# Rust Core
 
 High-performance cellular automata in Rust:
 
@@ -1489,7 +2621,6 @@ pub struct FireSimulation {
     humidity: f64,
     temperature: f64,
 }
-
 impl FireSimulation {
     fn step(&mut self) -> PyResult<()> {
         let updates: Vec<_> = (0..height)
@@ -1512,7 +2643,7 @@ impl FireSimulation {
 
 # Python Wrapper
 
-Ergonomic interface with Australian fire conditions:
+Ergonomic interface with AU fire conditions:
 
 ```python {1|3-10|12-18|20-25|all}
 class BushfireModel:
@@ -1534,19 +2665,23 @@ class BushfireModel:
         )
 
     def benchmark_rust_vs_python(self, steps=50):
-        # Rust implementation
-        rust_results = run_batch_simulation(...)
-        # Pure Python comparison
-        python_results = self._python_simulation(...)
+        rust_results = run_batch_simulation(...) # Rust implementation
+        python_results = self._python_simulation(...) # Pure Python comparison
         return {'speedup': python_time / rust_time}
 ```
+
+<style>
+.two-cols-header {
+  column-gap: 15px; /* Adjust the gap size as needed */
+}
+</style>
 
 ---
 
 # Why Rust + Python Works
 
-```mermaid {scale: 0.9}
-graph TB
+```mermaid {scale: 0.45}
+graph LR
     A[Python CLI] --> B[BushfireModel]
     B --> C[Rust FireSimulation]
     C --> D[Rayon Parallel Processing]
@@ -1616,28 +2751,33 @@ bushfire-sim serve --port 8001
 
 ---
 
-# Key Insights
+# Rust + Python: Summary
 
-**When Rust + Python makes sense:**
-- Computationally intensive algorithms (cellular automata, simulations)
-- Need for true parallelism beyond Python's GIL limitations
-- Memory-sensitive applications requiring efficient data structures
-- Real-time processing requirements
+**When it makes sense:**
+- CPU-bound parallel algorithms
+- Memory safety critical
+- No GIL restrictions needed
 
-**Architecture principles:**
-- Rust for the performance bottlenecks, Python for everything else
-- Use maturin for seamless build integration
-- Design clean APIs that hide the complexity
-- Leverage Rust's safety for long-running processes
+**Pattern:** Native extension via PyO3
 
-**Business case:** 100x performance improvement enables real-time applications impossible with pure Python
+**Build complexity:** Low (maturin handles it)
+
+**Performance gain:** 10-100x for parallel workloads
+
+**Gotcha:** Ownership rules across FFI boundary
 
 ---
 layout: section
 ---
 
 # Python + C++
-Real-Time AI for Conservation
+## Real-Time AI for Conservation
+
+<!--
+DEMO 3 TIMING: 5 minutes
+KEY POINTS: Real-time audio processing impossible in pure Python
+WARNING: Don't get lost in C++ details
+-->
 
 ---
 
@@ -1678,7 +2818,7 @@ layout: two-cols
 layoutClass: gap-16
 ---
 
-# Implementation: C++ Engine
+# C++ Engine
 
 Real-time audio processing with C++23:
 
@@ -1690,9 +2830,7 @@ Real-time audio processing with C++23:
 class AudioProcessor {
     std::expected<std::vector<double>, std::string>
     extract_features(std::span<const double> audio) {
-
-        // Apply window and compute FFT
-        std::ranges::transform(
+        std::ranges::transform( // Apply window and compute FFT
             audio | std::ranges::views::enumerate,
             fft_buffer_.begin(),
             [this](auto pair) {
@@ -1700,9 +2838,7 @@ class AudioProcessor {
                 return sample * window_[i];
             }
         );
-
-        // Parallel spectral analysis
-        std::transform(std::execution::par_unseq,
+        std::transform(std::execution::par_unseq, // Parallel spectral analysis
                       fft_buffer_.begin(),
                       fft_buffer_.end(),
                       magnitude_spectrum_.begin(),
@@ -1745,12 +2881,20 @@ class BushEarsAnalyzer:
         return EcosystemHealth(...)
 ```
 
+<style>
+.two-cols-header {
+  column-gap: 10px; /* Adjust the gap size as needed */
+}
+</style>
+
+---
+layout: center
 ---
 
 # Why C++ for Audio AI?
 
-```mermaid {scale: 0.85}
-graph TB
+```mermaid {scale: 0.45}
+graph LR
     A[Audio Stream 44.1kHz] --> B[C++ Feature Extraction]
     B --> C[FFT + Windowing]
     C --> D[SIMD Spectral Analysis]
@@ -1869,30 +3013,33 @@ bush-ears monitor --headless  # API-only server for custom UIs
 
 ---
 
-# Key Insights
+# C++ + Python: Summary
 
-**When C++ + Python makes sense for AI:**
-- Real-time processing requirements (audio, video, sensors)
-- Custom ML inference engines (not just calling PyTorch)
-- Memory-constrained environments (edge computing, embedded)
-- Domain-specific optimizations (audio DSP, computer vision, robotics)
+**When it makes sense:**
+- Existing C++ libraries
+- Real-time constraints (audio/video)
+- SIMD/vectorization needs
 
-**Architecture principles:**
-- C++ for the performance bottleneck, Python for everything else
-- Use modern C++ features for safer, cleaner code
-- Design Python APIs that hide C++ complexity
-- Focus on the 10% of code that uses 90% of CPU time
+**Pattern:** pybind11 or native extensions
 
-**Innovation opportunity:** Build domain-specific AI tools that leverage both languages' strengths
+**Build complexity:** High (platform-specific)
 
-**Conservation impact:** Technology enabling new forms of automated wildlife research and ecosystem monitoring
+**Performance gain:** Maximum possible
+
+**Gotcha:** GIL deadlocks with callbacks
 
 ---
 layout: section
 ---
 
-# Zig + Python
+Zig + Python
 Real-Time Meteorological Computing for the Caribbean
+
+<!--
+DEMO 4 TIMING: 5 minutes
+KEY POINTS: SIMD operations, cross-compilation
+NOTE: Zig is newest, audience may not know it
+-->
 
 ---
 
@@ -1905,7 +3052,7 @@ Caribbean meteorology demands both precision and speed:
 - **Massive coordinate processing** - Haversine calculations for thousands of points
 - **Memory efficiency** - continuous monitoring during hurricane season
 
-**The computational truth:** Most "Python weather" is actually C/Fortran under the hood  
+**The computational truth:** Most "Python weather" is actually C/Fortran under the hood
 (NumPy, SciPy, MetPy, Cartopy)
 
 ---
@@ -1933,33 +3080,29 @@ layout: two-cols
 layoutClass: gap-16
 ---
 
-# Implementation: Zig Engine
+# Zig Engine
 
-High-performance meteorological calculations with Zig:
+High-performance meteorological calculations:
 
 ```zig {1|3-8|10-16|18-25|all}
 const std = @import("std");
 const math = std.math;
 
-// High-performance Haversine distance
-pub fn haversine_distance(
+pub fn haversine_distance( // High-performance Haversine distance
     lat1: f64, lon1: f64, lat2: f64, lon2: f64
 ) f64 {
     const lat1_rad = math.degreesToRadians(lat1);
     const dlat = lat2_rad - lat1_rad;
     const dlon = lon2_rad - lon1_rad;
-    
     const a = math.sin(dlat/2.0) * math.sin(dlat/2.0) +
               math.cos(lat1_rad) * math.cos(lat2_rad) *
               math.sin(dlon/2.0) * math.sin(dlon/2.0);
-    
+
     return EARTH_RADIUS_KM * 2.0 * math.asin(math.sqrt(a));
 }
-
-// SIMD-optimized batch processing  
-pub fn batch_distances_to_dr(
-    latitudes: []const f64, 
-    longitudes: []const f64, 
+pub fn batch_distances_to_dr( // SIMD-optimized batch processing
+    latitudes: []const f64,
+    longitudes: []const f64,
     distances: []f64
 ) void {
     // Process in vectorized chunks of 4
@@ -1969,52 +3112,57 @@ pub fn batch_distances_to_dr(
 
 ::right::
 
-# Python Hurricane Analysis
+# Hurricane Analysis
 
 Caribbean weather science with Python:
 
 ```python {1|3-10|12-18|20-25|all}
 class CycloneTracker:
-    
+
     SANTO_DOMINGO = {
         'lat': 18.4861, 'lon': -69.9312,
         'region': 'Caribbean',
         'threat_radius_km': 500
     }
-    
+
     def analyze_dominican_threats(self):
         # Zig handles intensive calculations
         distances = self.zig_engine.batch_distances(coords)
-        
+
         # Python adds meteorological context
         return self.assess_hurricane_threats(distances)
-    
+
     def predict_storm_path(self, current_points):
         # Zig: High-performance path prediction
         predictions = self.zig_engine.predict_path(
             current_points, hours_ahead=72
         )
-        
         # Python: Weather pattern analysis
         return self.add_emergency_context(predictions)
 ```
+
+<style>
+.two-cols-header {
+  column-gap: 10px; /* Adjust the gap size as needed */
+}
+</style>
 
 ---
 
 # Why Zig for Hurricane Tracking?
 
-```mermaid {scale: 0.85}
-graph TB
+```mermaid {scale: 0.41}
+graph LR
     A[Storm Data Stream] --> B[Zig Meteorological Engine]
     B --> C[SIMD Distance Calculations]
-    C --> D[Vectorized Path Predictions]  
+    C --> D[Vectorized Path Predictions]
     D --> E[Storm Intensity Analysis]
     E --> F[Threat Assessment]
     F --> G[Return to Python]
     G --> H[Dominican Republic Analysis]
     G --> I[Emergency Alerts]
     G --> J[Historical Comparisons]
-    
+
     style B fill:#f9844a,stroke:#fff,color:#fff
     style C fill:#f9844a,stroke:#fff,color:#fff
     style D fill:#f9844a,stroke:#fff,color:#fff
@@ -2023,7 +3171,7 @@ graph TB
     style I fill:#3776ab,stroke:#fff,color:#fff
 ```
 
-**Zig handles:** SIMD mathematics, vectorized computations, memory efficiency  
+**Zig handles:** SIMD mathematics, vectorized computations, memory efficiency
 **Python handles:** Weather analysis, emergency systems, scientific workflows
 
 ---
@@ -2063,7 +3211,7 @@ pub fn batch_storm_analysis(storm_data: []const StormPoint) void {
     // Process 4 coordinates simultaneously...
 }
 
-// Compile-time meteorological constants  
+// Compile-time meteorological constants
 const DOMINICAN_REPUBLIC = comptime .{
     .lat = 18.4861, .lon = -69.9312,
     .hurricane_season = .{ .start = 6, .end = 11 }
@@ -2087,7 +3235,7 @@ Most Python weather libraries are **C/Fortran underneath**:
 ```python
 # This is actually C/Fortran under the hood
 import numpy as np        # C + BLAS/LAPACK
-import scipy.spatial      # C spatial algorithms  
+import scipy.spatial      # C spatial algorithms
 import cartopy           # C++ map projections
 import metpy             # Fortran meteorological functions
 
@@ -2095,7 +3243,7 @@ import metpy             # Fortran meteorological functions
 from caribetech import CycloneTracker  # Our Zig module
 ```
 
-**Advantage:** **Direct control** over the meteorological algorithms  
+**Advantage:** **Direct control** over the meteorological algorithms
 **Result:** Purpose-built for Caribbean hurricanes, not general library overhead
 
 ---
@@ -2113,7 +3261,7 @@ pip install caribetech  # ziggy-pydust handles Zig compilation
 caribetech analyze --years 10 --dominican-focus
 
 # Generate sample hurricane simulation
-caribetech simulate  
+caribetech simulate
 
 # Performance comparison
 caribetech benchmark --calculations 50000
@@ -2126,20 +3274,227 @@ caribetech monitor --headless  # API-only server for emergency systems
 
 ---
 
-# Key Insights
+# Zig + Python: Summary
 
-**When Zig + Python makes sense for scientific computing:**
-- Real-time processing requirements (meteorology, seismology, oceanography)
-- Large-scale mathematical computations (SIMD vector operations)
-- Memory-constrained environments (embedded weather stations)
-- Domain-specific algorithms (hurricane tracking, climate modeling)
+**When it makes sense:**
+- SIMD/vectorization crucial
+- Cross-compilation needed
+- Explicit performance control
 
-**Architecture principles:**
-- Zig for the computational bottleneck, Python for domain expertise
-- Use Zig's SIMD capabilities for vector mathematics
-- Design Python APIs that hide low-level complexity
-- Focus on the 10% of code that uses 90% of computation time
+**Pattern:** C ABI with manual bindings
 
-**Innovation opportunity:** Build region-specific tools that leverage both languages' strengths
+**Build complexity:** Medium (simpler than C++)
 
-**Dominican Republic impact:** Technology enabling real-time hurricane preparedness and emergency response systems
+**Performance gain:** Near C++ levels
+
+**Gotcha:** Memory alignment assumptions
+
+---
+layout: section
+---
+
+# Conclusion
+
+<!--
+SPEAKER NOTES - CONCLUSION:
+- Be honest about the 20% success rate
+- Leave them with actionable next steps
+- The final "Python won" message should land with impact
+- Don't oversell polyglot - it's a tool, not a silver bullet
+- End on time - respect the audience
+-->
+
+What you actually need to know
+
+---
+
+# The Truth About Polyglot
+
+<div v-click="1" class="mt-8">
+
+**A polyglot project can fail because:**
+
+<!--
+REALITY CHECK: Be honest here - builds trust
+TIMING: 2 minutes
+-->
+- Wrong problem identification
+- Underestimating integration cost
+- Team lacks multi-language expertise
+- Build complexity explosion
+
+</div>
+
+<div v-click="2" class="mt-8">
+
+**Successful polyglot projects:**
+- Profile first, found actual bottleneck
+- Clear performance requirements (10x improvement minimum)
+- Single language can't solve it
+- Team has expertise or budget for it
+
+</div>
+
+<div v-click="3" class="mt-8 text-center">
+
+Success rate: ~20% in my experience.
+
+</div>
+
+---
+
+# Tomorrow Morning
+
+<div class="mt-8">
+
+**Step 1:** Profile your slowest endpoint
+```bash
+python -m cProfile -o profile.out your_app.py
+snakeviz profile.out
+```
+
+**Step 2:** If it's CPU-bound and takes >1 second:
+```python
+# Extract the hot loop to a separate function
+def hot_function(data):
+    # This is your optimization target
+    pass
+```
+
+**Step 3:** Prototype in target language
+- JavaScript: If you need real-time UI
+- Rust: If you need memory safety + speed
+- C++: If you need absolute performance
+- Zig: If you need SIMD/vectorization
+
+**Step 4:** Measure actual improvement
+
+If < 10x improvement: **Stop. Not worth it.**
+
+</div>
+
+---
+
+# Resources
+
+<div class="grid grid-cols-2 gap-8 mt-8">
+
+<div>
+
+**Integration Tools**
+
+```
+PyO3 (Rust) - github.com/PyO3/pyo3
+pybind11 (C++) - github.com/pybind/pybind11
+Neon (JS) - neon-bindings.com
+ziggy-pydust (Zig) - github.com/fulcrum-so/ziggy-pydust
+```
+
+**Build Systems**
+```
+maturin - Rust + Python packaging
+scikit-build-core - C++ + Python
+setuptools-rust - Alternative for Rust
+```
+</div>
+
+<div>
+
+**Real Examples**
+```
+polars - Rust dataframes
+ruff - Rust linter
+cryptography - Rust crypto
+numpy - C/Fortran numerics
+opencv-python - C++ vision
+```
+
+**Debugging**
+```
+py-spy - Python profiler
+gdb with python extensions
+lldb for C++/Rust debugging
+```
+</div>
+
+</div>
+
+<div v-click class="mt-8 text-center text-sm opacity-80">
+
+All examples from this talk: **github.com/[your-username]/pycon-polyglot**
+
+</div>
+
+---
+layout: center
+---
+
+# Final Thought
+
+<div v-click class="mt-8 text-center">
+
+Python won.
+
+</div>
+
+<div v-click class="mt-4 text-center text-sm opacity-80">
+
+Not by being fastest.<br/>
+By being the best orchestrator.
+
+</div>
+
+<div v-click class="mt-8 text-center">
+
+Use that power wisely.
+
+<!--
+FINAL MOMENT: Pause after "Python won" - let it sink in
+TIMING: 1 minute for closing
+Q&A PREP: Common questions:
+- "What about Go?" (Great for services, not for extensions)
+- "What about WASM?" (Promising but not mature for Python)
+- "How do you debug this?" (With patience and good logging)
+-->
+
+</div>
+
+<div class="mt-12 text-center text-sm opacity-60">
+
+**Contact:** [your-email] | **Slides:** [url]
+
+</div>
+
+<!--
+IMAGE GENERATION: Debugging across language boundaries
+Style: Black and white New Yorker style gag cartoon
+Description: A developer sitting at a desk with multiple monitors. Each monitor shows a different debugger: "gdb" for C++, "pdb" for Python, "Chrome DevTools" for JavaScript, "rust-gdb" for Rust. The developer has multiple arms (like a Hindu deity) trying to use all debuggers simultaneously. A colleague walking by asks: "Found the bug yet?" Developer responds: "I've narrowed it down to somewhere between Python, JavaScript, Rust, C++, or the boundaries between them." Caption: "Polyglot debugging: Now with 4x the stack traces!"
+-->
+
+---
+
+# Image Generation Guide
+
+**All placeholder images point to: `./images/placeholder.jpg`**
+
+## Complete Image Generation Prompts
+
+**Orchestra Conductor (Slide 3):** Python as orchestra conductor - Professional illustration, tech conference appropriate. A blue and yellow Python snake logo dressed as an orchestra conductor, holding a baton, standing on a podium. In the orchestra pit are smaller logos/mascots: JavaScript (yellow JS square), Rust (black gear with R), C++ (blue C++ text), and Zig (orange zigzag). The Python conductor is clearly in charge, directing the other languages. Background should be minimal, focus on the conductor metaphor.
+
+**Python or Rust Meme (Slide 5):** Black and white New Yorker style gag cartoon. Two developers standing in front of a whiteboard covered in code. One developer is pointing at the code saying "It's definitely Python!" while the other says "No, it's Rust with Python bindings!" The code on the whiteboard should be ambiguous, showing something like "import polars" or "from ruff import". Caption at bottom: "The eternal question in modern Python development."
+
+**Racing Circuit (Slide 6):** Programming languages as race cars - Technical diagram/infographic style. Top-down view of a racing circuit. Different programming languages as vehicles: C++ as a Formula 1 car (sleek, fast), Rust as a McLaren (modern, safe), JavaScript as a rally car (versatile, everywhere), and Python as the pit crew team (not racing but coordinating everything). The pit lane should be prominent with Python crew members managing all the cars. Track should have labels like "Performance Corner", "Memory Management Straight", "Concurrency Chicane".
+
+**Pit Crew Meme (Slide 6):** Black and white New Yorker style gag cartoon. A Formula 1 pit stop scene. The race car (labeled "C++") is in the pit with wheels being changed. The pit crew chief (wearing a shirt with Python logo) is holding a clipboard and stopwatch, coordinating the team. One crew member is saying "But we could optimize the tire change algorithm!" The chief responds "Just change the tires, we'll optimize in Python later." Caption: "Sometimes the best optimization is knowing when not to optimize."
+
+**Choose Your Adventure (Slide 10):** Retro 1980s "Choose Your Own Adventure" book cover parody. Book cover titled "Choose Your Own Polyglot Adventure" with subtitle "Will You Survive the FFI?" Shows a developer at a crossroads with three paths: left path labeled "Rewrite Everything in Rust" leading to a mountain, middle path "Keep it Pure Python" leading to a swamp labeled "Performance Issues", right path "Go Polyglot" leading to a complex but beautiful city. Vintage book cover aesthetic with worn edges.
+
+**FFI Bindings Meme (Slide 15):** Black and white New Yorker style gag cartoon. A detective scene in an office. A detective is pointing at a crime board with strings connecting various items: "Segfault", "Memory leak", "Mysterious crash", "Works on my machine". All strings lead to a photo in the center labeled "FFI Bindings". The detective is saying to their partner: "It's ALWAYS the FFI bindings." Partner responds: "But we checked those three times!" Caption: "The usual suspect."
+
+**Async Chaos (Slide 27):** Black and white New Yorker style gag cartoon. A restaurant kitchen scene. A waiter (labeled "JavaScript") is rapidly passing orders to a chef (labeled "Python"). The orders are flying through the air in chaos - some arriving out of order, some colliding mid-air. The chef looks panicked, holding orders numbered "3", "1", "5" while looking for "2" and "4". The waiter cheerfully says "They're all async, you'll figure it out!" Caption: "When JavaScript's event loop meets Python's expectations."
+
+**GIL Bottleneck (Slide 29):** Black and white New Yorker style gag cartoon. A narrow doorway labeled "GIL" (Global Interpreter Lock). On one side, multiple C++ threads (drawn as runners) are queued up trying to get through. On the other side, a single Python thread is leisurely walking through while the others wait. One C++ thread says to another: "I thought parallel meant parallel." The other responds: "Welcome to Python." Caption: "The GIL: Where parallelism goes to become concurrent."
+
+**Performance Chart (Slide 40):** Clean, modern data visualization/infographic. Bar chart showing performance comparison for 1 million Haversine calculations. Python (2.1s) shown as long blue bar. JavaScript (0.8s) as medium yellow bar. Rust (0.12s) as short orange bar. C++ (0.08s) as tiny red bar. Zig (0.07s) as tiny purple bar. Include small icons for each language. Title: "1 Million Distance Calculations". Subtitle: "Shorter bars = faster execution". Clean, professional style suitable for technical presentation.
+
+**Final Debugging Meme (End):** Black and white New Yorker style gag cartoon. A developer sitting at a desk with multiple monitors. Each monitor shows a different debugger: "gdb" for C++, "pdb" for Python, "Chrome DevTools" for JavaScript, "rust-gdb" for Rust. The developer has multiple arms (like a Hindu deity) trying to use all debuggers simultaneously. A colleague walking by asks: "Found the bug yet?" Developer responds: "I've narrowed it down to somewhere between Python, JavaScript, Rust, C++, or the boundaries between them." Caption: "Polyglot debugging: Now with 4x the stack traces!"
