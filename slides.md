@@ -1,646 +1,1260 @@
 ---
-# You can also start simply with 'default'
 theme: seriph
-# random image from a curated Unsplash collection by Anthony
-# like them? see https://unsplash.com/collections/94734566/slidev
-# background: https://cover.sli.dev
-# some information about your slides (markdown enabled)
-title: Welcome to Slidev
+title: Building with Multiple Languages - A Python-First Approach
 info: |
-  ## Slidev Starter Template
-  Presentation slides for developers.
+  ## Building with Multiple Languages: A Python-First Approach
 
-  Learn more at [Sli.dev](https://sli.dev)
-# apply unocss classes to the current slide
+  Python is slow for certain tasks. That's not news. The usual response is to either accept
+  the performance hit or rewrite everything in another language. There's a third option:
+  use Python as the control centre and delegate specific tasks to languages that excel at them.
+
 class: text-center
-# https://sli.dev/features/drawing
 drawings:
   persist: false
-# slide transition: https://sli.dev/guide/animations.html#slide-transitions
 transition: slide-left
-# enable MDC Syntax: https://sli.dev/features/mdc
 mdc: true
-# open graph
-seoMeta:
-  # By default, Slidev will use ./og-image.png if it exists,
-  # or generate one from the first slide if not found.
-  ogImage: false
-  # ogImage: https://cover.sli.dev
 ---
 
-# Welcome to Slidev
+# Building with Multiple Languages
 
-Presentation slides for developers
+## A Python-First Approach
+
+<div v-click class="mt-8">
+
+*Python is slow for certain tasks.*
+
+</div>
+
+<div v-click class="mt-4 opacity-60">
+
+That's not news.
+
+</div>
 
 <div @click="$slidev.nav.next" class="mt-12 py-1" hover:bg="white op-10">
-  Press Space for next page <carbon:arrow-right />
+  <div v-click>
+    There's a third option <carbon:arrow-right />
+  </div>
 </div>
-
-<div class="abs-br m-6 text-xl">
-  <button @click="$slidev.nav.openInEditor()" title="Open in Editor" class="slidev-icon-btn">
-    <carbon:edit />
-  </button>
-  <a href="https://github.com/slidevjs/slidev" target="_blank" class="slidev-icon-btn">
-    <carbon:logo-github />
-  </a>
-</div>
-
-<CodeParticles />
 
 <!--
-The last comment block of each slide will be treated as slide notes. It will be visible and editable in Presenter Mode along with the slide. [Read more in the docs](https://sli.dev/guide/syntax.html#notes)
+Opening hook: Everyone knows Python is slow. But instead of the usual "rewrite everything" response,
+we're going to show how Python can orchestrate faster languages.
 -->
 
 ---
 transition: fade-out
+layout: center
 ---
 
-# What is Slidev?
+# The Usual Options
 
-Slidev is a slides maker and presenter designed for developers, consist of the following features
+<div class="grid grid-cols-2 gap-8 mt-8">
 
-- 📝 **Text-based** - focus on the content with Markdown, and then style them later
-- 🎨 **Themable** - themes can be shared and re-used as npm packages
-- 🧑‍💻 **Developer Friendly** - code highlighting, live coding with autocompletion
-- 🤹 **Interactive** - embed Vue components to enhance your expressions
-- 🎥 **Recording** - built-in recording and camera view
-- 📤 **Portable** - export to PDF, PPTX, PNGs, or even a hostable SPA
-- 🛠 **Hackable** - virtually anything that's possible on a webpage is possible in Slidev
-<br>
-<br>
+<div v-click="1">
+  <h3>Option 1: Accept the Pain</h3>
+  <div class="text-sm opacity-80 mt-2">
+    "It's fine, users can wait 30 seconds for this report"
+  </div>
+  <div class="text-xs opacity-60 mt-1">
+    — Famous last words before getting fired
+  </div>
+</div>
 
-Read more about [Why Slidev?](https://sli.dev/guide/why)
+<div v-click="2">
+  <h3>Option 2: Rewrite Everything</h3>
+  <div class="text-sm opacity-80 mt-2">
+    "Let's rebuild our entire ML pipeline in Rust"
+  </div>
+  <div class="text-xs opacity-60 mt-1">
+    — 18 months later, still importing CSVs
+  </div>
+</div>
 
-<!--
-You can have `style` tag in markdown to override the style for the current page.
-Learn more: https://sli.dev/features/slide-scope-style
--->
+</div>
 
-<style>
-h1 {
-  background-color: #2B90B6;
-  background-image: linear-gradient(45deg, #4EC5D4 10%, #146b8c 20%);
-  background-size: 100%;
-  -webkit-background-clip: text;
-  -moz-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  -moz-text-fill-color: transparent;
-}
-</style>
+<div v-click="3" class="mt-12">
+  <h2 class="text-center">There's a better way.</h2>
+</div>
 
 <!--
-Here is another comment.
+Set up the common responses with a bit of sarcasm to keep it engaging.
+The punchline sets up our approach.
 -->
 
 ---
 transition: slide-up
-level: 2
 ---
 
-# Navigation
+# Option 3: Python as the Orchestra Conductor
 
-Hover on the bottom-left corner to see the navigation's controls panel, [learn more](https://sli.dev/guide/ui#navigation-bar)
+<div v-click="1" class="mt-8">
 
-## Keyboard Shortcuts
+**The insight:** Python doesn't need to play every instrument.
 
-|                                                     |                             |
-| --------------------------------------------------- | --------------------------- |
-| <kbd>right</kbd> / <kbd>space</kbd>                 | next animation or slide     |
-| <kbd>left</kbd>  / <kbd>shift</kbd><kbd>space</kbd> | previous animation or slide |
-| <kbd>up</kbd>                                       | previous slide              |
-| <kbd>down</kbd>                                     | next slide                  |
+</div>
 
-<!-- https://sli.dev/guide/animations.html#click-animation -->
-<img
-  v-click
-  class="absolute -bottom-9 -left-7 w-80 opacity-50"
-  src="https://sli.dev/assets/arrow-bottom-left.svg"
-  alt=""
-/>
-<p v-after class="absolute bottom-23 left-45 opacity-30 transform -rotate-10">Here!</p>
+<div v-click="2" class="grid grid-cols-3 gap-4 mt-8">
+
+<div class="text-center">
+  <div class="text-4xl mb-2">🎻</div>
+  <div class="font-mono text-sm">JavaScript</div>
+  <div class="text-xs opacity-60">Real-time UI</div>
+</div>
+
+<div class="text-center">
+  <div class="text-4xl mb-2">🎺</div>
+  <div class="font-mono text-sm">Rust</div>
+  <div class="text-xs opacity-60">Data processing</div>
+</div>
+
+<div class="text-center">
+  <div class="text-4xl mb-2">🥁</div>
+  <div class="font-mono text-sm">C++</div>
+  <div class="text-xs opacity-60">Number crunching</div>
+</div>
+
+</div>
+
+<div v-click="3" class="text-center mt-8">
+  <div class="text-5xl mb-2">🎼</div>
+  <div class="font-mono">Python</div>
+  <div class="text-sm opacity-80">Orchestrating everything</div>
+</div>
+
+<!-- PLACEHOLDER: AI-generated image of Python as orchestra conductor -->
+
+<!--
+Musical metaphor introduces the concept nicely. Python coordinates, other languages specialize.
+-->
+
+---
+transition: fade
+---
+
+# This Isn't New
+
+Python has been the glue language since the 90s.
+
+<div v-click="1" class="mt-8">
+
+**1991**: Python designed as "glue language" for C libraries
+
+</div>
+
+<div v-click="2" class="mt-4">
+
+**1995**: NumPy wraps BLAS/LAPACK (Fortran)
+
+</div>
+
+<div v-click="3" class="mt-4">
+
+**2007**: Cython makes C extensions bearable
+
+</div>
+
+<div v-click="4" class="mt-4">
+
+**2016**: PyTorch ships with C++ core
+
+</div>
+
+<div v-click="5" class="mt-4">
+
+**2023**: Half of Python's ecosystem runs on Rust
+
+</div>
+
+<div v-click="6" class="mt-8 text-center opacity-80">
+
+The web stack you're probably using right now:
+
+</div>
+
+<div v-click="7" class="grid grid-cols-4 gap-4 mt-4 text-center text-sm">
+
+<div>**Frontend**<br/>JavaScript</div>
+<div>**API**<br/>Python</div>
+<div>**Database**<br/>C++</div>
+<div>**Validation**<br/>Rust</div>
+
+</div>
+
+<!--
+Historical context showing this pattern has deep roots. The timeline builds up to the modern polyglot reality.
+-->
+
+---
+layout: center
+---
+
+# The Modern Polyglot Renaissance
+
+<div v-click="1" class="mt-8">
+
+Your favorite "Python" tools are barely Python:
+
+</div>
+
+<div class="grid grid-cols-2 gap-8 mt-8">
+
+<div v-click="2">
+  <h3 class="flex items-center gap-2">
+    <span class="text-lg">📓</span>
+    Jupyter Notebooks
+  </h3>
+  <div class="text-sm opacity-80 mt-2">
+    Frontend: JavaScript (React, CodeMirror)<br/>
+    Backend: Python kernels<br/>
+    UI: TypeScript
+  </div>
+</div>
+
+<div v-click="3">
+  <h3 class="flex items-center gap-2">
+    <span class="text-lg">🔥</span>
+    PyTorch
+  </h3>
+  <div class="text-sm opacity-80 mt-2">
+    Core: C++/CUDA<br/>
+    Bindings: Python<br/>
+    JIT: C++/LLVM
+  </div>
+</div>
+
+<div v-click="4">
+  <h3 class="flex items-center gap-2">
+    <span class="text-lg">⚡</span>
+    Modern Tooling
+  </h3>
+  <div class="text-sm opacity-80 mt-2">
+    <span class="font-mono">uv</span>: Package management<br/>
+    <span class="font-mono">ruff</span>: Linting/formatting<br/>
+    <span class="font-mono">pydantic</span>: Data validation
+  </div>
+</div>
+
+<div v-click="5">
+  <h3 class="flex items-center gap-2">
+    <span class="text-lg">🐧</span>
+    Even Linux
+  </h3>
+  <div class="text-sm opacity-80 mt-2">
+    Kernel drivers in Rust<br/>
+    Build tools in Python<br/>
+    Shell scripts everywhere
+  </div>
+</div>
+
+</div>
+
+<!-- PLACEHOLDER: Meme about "Is it Python or is it Rust with Python bindings?" -->
+
+<!--
+Modern examples that audience will recognize. Shows polyglot is mainstream, not exotic.
+-->
+
+---
+transition: slide-left
+---
+
+# The Performance Racing Circuit
+
+<!-- PLACEHOLDER: AI-generated image of racing circuit with different vehicles representing languages -->
+
+<div class="mt-8">
+
+<div v-click="1" class="grid grid-cols-4 gap-4 text-center">
+
+<div>
+  <div class="text-4xl mb-2">🏎️</div>
+  <div class="font-mono text-sm">C++</div>
+  <div class="text-xs opacity-60">Formula 1</div>
+  <div class="text-xs">Raw speed</div>
+</div>
+
+<div>
+  <div class="text-4xl mb-2">🚗</div>
+  <div class="font-mono text-sm">Rust</div>
+  <div class="text-xs opacity-60">McLaren</div>
+  <div class="text-xs">Fast + safe</div>
+</div>
+
+<div>
+  <div class="text-4xl mb-2">🚙</div>
+  <div class="font-mono text-sm">JavaScript</div>
+  <div class="text-xs opacity-60">Rally car</div>
+  <div class="text-xs">Everywhere</div>
+</div>
+
+<div>
+  <div class="text-4xl mb-2">🐍</div>
+  <div class="font-mono text-sm">Python</div>
+  <div class="text-xs opacity-60">Pit crew</div>
+  <div class="text-xs">Coordinates</div>
+</div>
+
+</div>
+
+<div v-click="2" class="mt-8 text-center">
+
+**The secret:** Python has ropes attached to all three.
+
+</div>
+
+<div v-click="3" class="mt-4 text-center text-sm opacity-80">
+
+While everyone argues about which car is fastest,<br/>
+Python is busy winning races.
+
+</div>
+
+</div>
+
+<!-- PLACEHOLDER: Meme of Python as pit crew managing all the race cars -->
+
+<!--
+Fun racing metaphor that shows Python's orchestration role. Sets up the practical section.
+-->
+
+---
+layout: center
+transition: fade
+---
+
+<div v-click class="text-center">
+
+# Why This Talk Matters
+
+</div>
+
+<div v-click class="mt-8 grid grid-cols-3 gap-8">
+
+<div class="text-center">
+  <div class="text-3xl mb-4">🎯</div>
+  <h3>Practical Patterns</h3>
+  <div class="text-sm opacity-80 mt-2">
+    Real integration strategies,<br/>not theoretical concepts
+  </div>
+</div>
+
+<div class="text-center">
+  <div class="text-3xl mb-4">⚡</div>
+  <h3>Working Examples</h3>
+  <div class="text-sm opacity-80 mt-2">
+    Live demos you can<br/>pip install and run
+  </div>
+</div>
+
+<div class="text-center">
+  <div class="text-3xl mb-4">🛠️</div>
+  <h3>Production Ready</h3>
+  <div class="text-sm opacity-80 mt-2">
+    Patterns from systems<br/>running in production
+  </div>
+</div>
+
+</div>
+
+<div v-click class="mt-8 text-center">
+
+**Next up:** Four languages, four use cases, zero marketing fluff.
+
+</div>
+
+<!--
+Transition slide that sets expectations and moves us toward the practical examples.
+-->
+
+---
+layout: section
+---
+
+# Part I: Architecture Patterns
+
+How to build polyglot applications without losing your sanity
+
+---
+transition: slide-up
+---
+
+# The Polyglot Decision Tree
+
+<div v-click="1" class="mt-8">
+
+**Step 1:** Is Python actually the bottleneck?
+
+</div>
+
+<div v-click="2" class="ml-8 mt-4 text-sm opacity-80">
+
+Profile first. "Python is slow" is not profiling.
+
+</div>
+
+<div v-click="3" class="mt-6">
+
+**Step 2:** Can you solve it with better algorithms?
+
+</div>
+
+<div v-click="4" class="ml-8 mt-4 text-sm opacity-80">
+
+O(n²) → O(n log n) beats any language switch.
+
+</div>
+
+<div v-click="5" class="mt-6">
+
+**Step 3:** Is it worth the complexity?
+
+</div>
+
+<div v-click="6" class="ml-8 mt-4 text-sm opacity-80">
+
+"Let's rewrite this in Rust" - Things said 10 minutes before disaster
+
+</div>
+
+<div v-click="7" class="mt-8 text-center">
+
+If yes to all three: **Welcome to polyglot programming.**
+
+</div>
+
+<!-- PLACEHOLDER: Meme of "Choose your adventure" book but for polyglot decisions -->
+
+<!--
+Practical decision framework. Sets up when polyglot makes sense vs when it's just over-engineering.
+-->
+
+---
+transition: fade
+---
+
+# The 90/10 Rule
+
+<div class="mt-8">
+
+<div v-click="1">
+
+**90% of your code** handles the boring stuff:
+- Loading data
+- Configuration
+- Error handling
+- APIs and UIs
+- Tests
+
+</div>
+
+<div v-click="2" class="mt-8">
+
+**10% of your code** does the heavy lifting:
+- Number crunching
+- Real-time processing
+- Graphics rendering
+- Network protocols
+
+</div>
+
+<div v-click="3" class="mt-8 text-center">
+
+**The insight:** Optimize the 10%, orchestrate with Python.
+
+</div>
+
+</div>
+
+<div v-click="4" class="mt-8 text-center text-sm opacity-80">
+
+Also known as: "Why rewriting your entire app in Go won't help"
+
+</div>
+
+<!--
+Classic performance principle applied to language choice. Shows focus should be narrow.
+-->
 
 ---
 layout: two-cols
 layoutClass: gap-16
 ---
 
-# Table of contents
+# Common Polyglot Patterns
 
-You can use the `Toc` component to generate a table of contents for your slides:
+<div v-click="1">
 
-```html
-<Toc minDepth="1" maxDepth="1" />
+## Pattern 1: The Sidecar
+Python calls external process
+```bash
+# Python spawns optimized binary
+result = subprocess.run(['./fast_processor', data])
 ```
 
-The title will be inferred from your slide content, or you can override it with `title` and `level` in your frontmatter.
+**Pros:** Language isolation
+**Cons:** Process overhead
+
+</div>
+
+<div v-click="3" class="mt-8">
+
+## Pattern 3: The Extension
+Native module in Python
+```python
+import fast_module  # C++/Rust extension
+result = fast_module.process(data)
+```
+
+**Pros:** Seamless integration
+**Cons:** Build complexity
+
+</div>
 
 ::right::
 
-<Toc text-sm minDepth="1" maxDepth="2" />
+<div v-click="2" class="mt-8">
 
----
-layout: image-right
-image: https://cover.sli.dev
----
-
-# Code
-
-Use code snippets and get the highlighting directly, and even types hover!
-
-```ts [filename-example.ts] {all|4|6|6-7|9|all} twoslash
-// TwoSlash enables TypeScript hover information
-// and errors in markdown code blocks
-// More at https://shiki.style/packages/twoslash
-import { computed, ref } from 'vue'
-
-const count = ref(0)
-const doubled = computed(() => count.value * 2)
-
-doubled.value = 2
+## Pattern 2: The Service
+Microservice architecture
+```python
+# Python calls optimized service
+response = httpx.post('/process', json=data)
 ```
 
-<arrow v-click="[4, 5]" x1="350" y1="310" x2="195" y2="342" color="#953" width="2" arrowSize="1" />
-
-<!-- This allow you to embed external code blocks -->
-<<< @/snippets/external.ts#snippet
-
-<!-- Footer -->
-
-[Learn more](https://sli.dev/features/line-highlighting)
-
-<!-- Inline style -->
-<style>
-.footnotes-sep {
-  @apply mt-5 opacity-10;
-}
-.footnotes {
-  @apply text-sm opacity-75;
-}
-.footnote-backref {
-  display: none;
-}
-</style>
-
-<!--
-Notes can also sync with clicks
-
-[click] This will be highlighted after the first click
-
-[click] Highlighted with `count = ref(0)`
-
-[click:3] Last click (skip two clicks)
--->
-
----
-level: 2
----
-
-# Shiki Magic Move
-
-Powered by [shiki-magic-move](https://shiki-magic-move.netlify.app/), Slidev supports animations across multiple code snippets.
-
-Add multiple code blocks and wrap them with <code>````md magic-move</code> (four backticks) to enable the magic move. For example:
-
-````md magic-move {lines: true}
-```ts {*|2|*}
-// step 1
-const author = reactive({
-  name: 'John Doe',
-  books: [
-    'Vue 2 - Advanced Guide',
-    'Vue 3 - Basic Guide',
-    'Vue 4 - The Mystery'
-  ]
-})
-```
-
-```ts {*|1-2|3-4|3-4,8}
-// step 2
-export default {
-  data() {
-    return {
-      author: {
-        name: 'John Doe',
-        books: [
-          'Vue 2 - Advanced Guide',
-          'Vue 3 - Basic Guide',
-          'Vue 4 - The Mystery'
-        ]
-      }
-    }
-  }
-}
-```
-
-```ts
-// step 3
-export default {
-  data: () => ({
-    author: {
-      name: 'John Doe',
-      books: [
-        'Vue 2 - Advanced Guide',
-        'Vue 3 - Basic Guide',
-        'Vue 4 - The Mystery'
-      ]
-    }
-  })
-}
-```
-
-Non-code blocks are ignored.
-
-```vue
-<!-- step 4 -->
-<script setup>
-const author = {
-  name: 'John Doe',
-  books: [
-    'Vue 2 - Advanced Guide',
-    'Vue 3 - Basic Guide',
-    'Vue 4 - The Mystery'
-  ]
-}
-</script>
-```
-````
-
----
-
-# Components
-
-<div grid="~ cols-2 gap-4">
-<div>
-
-You can use Vue components directly inside your slides.
-
-We have provided a few built-in components like `<Tweet/>` and `<Youtube/>` that you can use directly. And adding your custom components is also super easy.
-
-```html
-<Counter :count="10" />
-```
-
-<!-- ./components/Counter.vue -->
-<Counter :count="10" m="t-4" />
-
-Check out [the guides](https://sli.dev/builtin/components.html) for more.
+**Pros:** Scalable, deployable
+**Cons:** Network latency
 
 </div>
-<div>
 
-```html
-<Tweet id="1390115482657726468" />
+<div v-click="4" class="mt-8">
+
+## Pattern 4: The Bridge
+Real-time communication
+```python
+# WebSockets, shared memory, etc.
+await websocket.send(data)
+result = await websocket.recv()
 ```
 
-<Tweet id="1390115482657726468" scale="0.65" />
+**Pros:** Interactive UIs
+**Cons:** State management
 
-</div>
 </div>
 
 <!--
-Presenter note with **bold**, *italic*, and ~~striked~~ text.
-
-Also, HTML elements are valid:
-<div class="flex w-full">
-  <span style="flex-grow: 1;">Left content</span>
-  <span>Right content</span>
-</div>
+Four main patterns for polyglot integration. Each has trade-offs we'll see in examples.
 -->
 
 ---
-class: px-20
+transition: slide-left
 ---
 
-# Themes
+# Data Flow Architecture
 
-Slidev comes with powerful theming support. Themes can provide styles, layouts, components, or even configurations for tools. Switching between themes by just **one edit** in your frontmatter:
+```mermaid {scale: 0.9}
+flowchart LR
+    A[Python Orchestrator] --> B[Data Validation]
+    B --> C{Performance Critical?}
+    C -->|No| D[Python Processing]
+    C -->|Yes| E[Native Module]
+    E --> F[C++/Rust/Zig Core]
+    F --> G[Results]
+    D --> G
+    G --> H[Python Analytics]
+    H --> I[Output/API]
 
-<div grid="~ cols-2 gap-2" m="t-2">
-
-```yaml
----
-theme: default
----
+    style A fill:#3776ab,stroke:#fff,color:#fff
+    style F fill:#ff6b6b,stroke:#fff,color:#fff
+    style H fill:#3776ab,stroke:#fff,color:#fff
 ```
 
-```yaml
----
-theme: seriph
----
-```
+<div v-click class="mt-4 text-center text-sm">
 
-<img border="rounded" src="https://github.com/slidevjs/themes/blob/main/screenshots/theme-default/01.png?raw=true" alt="">
-
-<img border="rounded" src="https://github.com/slidevjs/themes/blob/main/screenshots/theme-seriph/01.png?raw=true" alt="">
+**Key insight:** Python stays in control of the data pipeline
 
 </div>
 
-Read more about [How to use a theme](https://sli.dev/guide/theme-addon#use-theme) and
-check out the [Awesome Themes Gallery](https://sli.dev/resources/theme-gallery).
+<!--
+Visual representation of how data flows through polyglot system. Python maintains orchestration.
+-->
 
 ---
-
-# Clicks Animations
-
-You can add `v-click` to elements to add a click animation.
-
-<div v-click>
-
-This shows up when you click the slide:
-
-```html
-<div v-click>This shows up when you click the slide.</div>
-```
-
-</div>
-
-<br>
-
-<v-click>
-
-The <span v-mark.red="3"><code>v-mark</code> directive</span>
-also allows you to add
-<span v-mark.circle.orange="4">inline marks</span>
-, powered by [Rough Notation](https://roughnotation.com/):
-
-```html
-<span v-mark.underline.orange>inline markers</span>
-```
-
-</v-click>
-
-<div mt-20 v-click>
-
-[Learn more](https://sli.dev/guide/animations#click-animation)
-
-</div>
-
+layout: center
 ---
 
-# Motions
+# Integration Complexity Matrix
 
-Motion animations are powered by [@vueuse/motion](https://motion.vueuse.org/), triggered by `v-motion` directive.
+<div class="grid grid-cols-3 gap-8 mt-8">
 
-```html
-<div
-  v-motion
-  :initial="{ x: -80 }"
-  :enter="{ x: 0 }"
-  :click-3="{ x: 80 }"
-  :leave="{ x: 1000 }"
->
-  Slidev
-</div>
-```
-
-<div class="w-60 relative">
-  <div class="relative w-40 h-40">
-    <img
-      v-motion
-      :initial="{ x: 800, y: -100, scale: 1.5, rotate: -50 }"
-      :enter="final"
-      class="absolute inset-0"
-      src="https://sli.dev/logo-square.png"
-      alt=""
-    />
-    <img
-      v-motion
-      :initial="{ y: 500, x: -100, scale: 2 }"
-      :enter="final"
-      class="absolute inset-0"
-      src="https://sli.dev/logo-circle.png"
-      alt=""
-    />
-    <img
-      v-motion
-      :initial="{ x: 600, y: 400, scale: 2, rotate: 100 }"
-      :enter="final"
-      class="absolute inset-0"
-      src="https://sli.dev/logo-triangle.png"
-      alt=""
-    />
-  </div>
-
-  <div
-    class="text-5xl absolute top-14 left-40 text-[#2B90B6] -z-1"
-    v-motion
-    :initial="{ x: -80, opacity: 0}"
-    :enter="{ x: 0, opacity: 1, transition: { delay: 2000, duration: 1000 } }">
-    Slidev
+<div v-click="1" class="text-center">
+  <div class="text-2xl mb-2">🟢</div>
+  <h4>Subprocess</h4>
+  <div class="text-xs opacity-60 mt-2">
+    Low coupling<br/>
+    High latency<br/>
+    Easy debugging
   </div>
 </div>
 
-<!-- vue script setup scripts can be directly used in markdown, and will only affects current page -->
-<script setup lang="ts">
-const final = {
-  x: 0,
-  y: 0,
-  rotate: 0,
-  scale: 1,
-  transition: {
-    type: 'spring',
-    damping: 10,
-    stiffness: 20,
-    mass: 2
-  }
-}
-</script>
-
-<div
-  v-motion
-  :initial="{ x:35, y: 30, opacity: 0}"
-  :enter="{ y: 0, opacity: 1, transition: { delay: 3500 } }">
-
-[Learn more](https://sli.dev/guide/animations.html#motion)
-
-</div>
-
----
-
-# LaTeX
-
-LaTeX is supported out-of-box. Powered by [KaTeX](https://katex.org/).
-
-<div h-3 />
-
-Inline $\sqrt{3x-1}+(1+x)^2$
-
-Block
-$$ {1|3|all}
-\begin{aligned}
-\nabla \cdot \vec{E} &= \frac{\rho}{\varepsilon_0} \\
-\nabla \cdot \vec{B} &= 0 \\
-\nabla \times \vec{E} &= -\frac{\partial\vec{B}}{\partial t} \\
-\nabla \times \vec{B} &= \mu_0\vec{J} + \mu_0\varepsilon_0\frac{\partial\vec{E}}{\partial t}
-\end{aligned}
-$$
-
-[Learn more](https://sli.dev/features/latex)
-
----
-
-# Diagrams
-
-You can create diagrams / graphs from textual descriptions, directly in your Markdown.
-
-<div class="grid grid-cols-4 gap-5 pt-4 -mb-6">
-
-```mermaid {scale: 0.5, alt: 'A simple sequence diagram'}
-sequenceDiagram
-    Alice->John: Hello John, how are you?
-    Note over Alice,John: A typical interaction
-```
-
-```mermaid {theme: 'neutral', scale: 0.8}
-graph TD
-B[Text] --> C{Decision}
-C -->|One| D[Result 1]
-C -->|Two| E[Result 2]
-```
-
-```mermaid
-mindmap
-  root((mindmap))
-    Origins
-      Long history
-      ::icon(fa fa-book)
-      Popularisation
-        British popular psychology author Tony Buzan
-    Research
-      On effectiveness<br/>and features
-      On Automatic creation
-        Uses
-            Creative techniques
-            Strategic planning
-            Argument mapping
-    Tools
-      Pen and paper
-      Mermaid
-```
-
-```plantuml {scale: 0.7}
-@startuml
-
-package "Some Group" {
-  HTTP - [First Component]
-  [Another Component]
-}
-
-node "Other Groups" {
-  FTP - [Second Component]
-  [First Component] --> FTP
-}
-
-cloud {
-  [Example 1]
-}
-
-database "MySql" {
-  folder "This is my folder" {
-    [Folder 3]
-  }
-  frame "Foo" {
-    [Frame 4]
-  }
-}
-
-[Another Component] --> [Example 1]
-[Example 1] --> [Folder 3]
-[Folder 3] --> [Frame 4]
-
-@enduml
-```
-
-</div>
-
-Learn more: [Mermaid Diagrams](https://sli.dev/features/mermaid) and [PlantUML Diagrams](https://sli.dev/features/plantuml)
-
----
-foo: bar
-dragPos:
-  square: 691,32,167,_,-16
----
-
-# Draggable Elements
-
-Double-click on the draggable elements to edit their positions.
-
-<br>
-
-###### Directive Usage
-
-```md
-<img v-drag="'square'" src="https://sli.dev/logo.png">
-```
-
-<br>
-
-###### Component Usage
-
-```md
-<v-drag text-3xl>
-  <div class="i-carbon:arrow-up" />
-  Use the `v-drag` component to have a draggable container!
-</v-drag>
-```
-
-<v-drag pos="663,206,261,_,-15">
-  <div text-center text-3xl border border-main rounded>
-    Double-click me!
+<div v-click="2" class="text-center">
+  <div class="text-2xl mb-2">🟡</div>
+  <h4>HTTP API</h4>
+  <div class="text-xs opacity-60 mt-2">
+    Medium coupling<br/>
+    Network latency<br/>
+    Standard protocols
   </div>
-</v-drag>
+</div>
 
-<img v-drag="'square'" src="https://sli.dev/logo.png">
+<div v-click="3" class="text-center">
+  <div class="text-2xl mb-2">🔴</div>
+  <h4>Native Extension</h4>
+  <div class="text-xs opacity-60 mt-2">
+    High coupling<br/>
+    Low latency<br/>
+    Build complexity
+  </div>
+</div>
 
-###### Draggable Arrow
+</div>
 
-```md
-<v-drag-arrow two-way />
-```
+<div v-click="4" class="mt-12 text-center">
 
-<v-drag-arrow pos="67,452,253,46" two-way op70 />
+**Rule of thumb:** Start green, move right only when necessary.
+
+</div>
+
+<!-- PLACEHOLDER: Meme about "It's always DNS" but "It's always the FFI bindings" -->
+
+<!--
+Complexity vs performance trade-off matrix. Guides architectural decisions.
+-->
 
 ---
-src: ./pages/imported-slides.md
-hide: false
+transition: fade
 ---
 
+# When Things Go Wrong
+
+<div class="mt-8">
+
+<div v-click="1" class="grid grid-cols-2 gap-8">
+
+<div>
+  <h3 class="text-red-400">❌ Don't Do This</h3>
+  <div class="text-sm mt-4">
+    • Polyglot for the sake of polyglot<br/>
+    • Premature optimization<br/>
+    • "Let's try this new language"<br/>
+    • No clear performance target<br/>
+    • Micro-optimizing the wrong thing
+  </div>
+</div>
+
+<div>
+  <h3 class="text-green-400">✅ Do This Instead</h3>
+  <div class="text-sm mt-4">
+    • Profile first, optimize second<br/>
+    • Clear performance requirements<br/>
+    • Start simple, add complexity gradually<br/>
+    • Measure actual improvement<br/>
+    • Document the integration points
+  </div>
+</div>
+
+</div>
+
+<div v-click="2" class="mt-12 text-center text-sm opacity-80">
+
+**Reminder:** The goal is shipping working software, not impressing other developers.
+
+</div>
+
+</div>
+
+<!--
+Common mistakes and how to avoid them. Keeps the focus on pragmatism over perfectionism.
+-->
+
+---
+layout: center
+transition: slide-up
 ---
 
-# Monaco Editor
+# Real-World Examples
 
-Slidev provides built-in Monaco Editor support.
+<div v-click class="mt-8">
 
-Add `{monaco}` to the code block to turn it into an editor:
+Time for some actual code.
 
-```ts {monaco}
-import { ref } from 'vue'
-import { emptyArray } from './external'
+</div>
 
-const arr = ref(emptyArray(10))
-```
+<div v-click class="mt-4 text-sm opacity-80">
 
-Use `{monaco-run}` to create an editor that can execute the code directly in the slide:
+Four languages, four use cases, four different integration patterns.
 
-```ts {monaco-run}
-import { version } from 'vue'
-import { emptyArray, sayHello } from './external'
+</div>
 
-sayHello()
-console.log(`vue ${version}`)
-console.log(emptyArray<number>(10).reduce(fib => [...fib, fib.at(-1)! + fib.at(-2)!], [1, 1]))
-```
+<div v-click class="mt-8 grid grid-cols-4 gap-4 text-center text-xs">
+
+<div class="p-4 border border-gray-300 rounded">
+  <div class="text-2xl mb-2">🌐</div>
+  <div class="font-mono">JavaScript</div>
+  <div class="opacity-60">Real-time UI</div>
+  <div class="opacity-60">WebSocket Bridge</div>
+</div>
+
+<div class="p-4 border border-gray-300 rounded">
+  <div class="text-2xl mb-2">⚡</div>
+  <div class="font-mono">Rust</div>
+  <div class="opacity-60">Data Viz</div>
+  <div class="opacity-60">HTTP Service</div>
+</div>
+
+<div class="p-4 border border-gray-300 rounded">
+  <div class="text-2xl mb-2">🚄</div>
+  <div class="font-mono">C++</div>
+  <div class="opacity-60">ML Inference</div>
+  <div class="opacity-60">Native Extension</div>
+</div>
+
+<div class="p-4 border border-gray-300 rounded">
+  <div class="text-2xl mb-2">🌀</div>
+  <div class="font-mono">Zig</div>
+  <div class="opacity-60">Hurricane Tracking</div>
+  <div class="opacity-60">SIMD Math</div>
+</div>
+
+</div>
+
+<!--
+Transition to practical examples. Preview what's coming with integration pattern for each.
+-->
+
+---
+layout: section
+---
+
+# Part II: Language Showcase
+
+Same problem, four solutions, one Python conductor
 
 ---
 layout: center
 class: text-center
 ---
 
-# Learn More
+# The Challenge
 
-[Documentation](https://sli.dev) · [GitHub](https://github.com/slidevjs/slidev) · [Showcases](https://sli.dev/resources/showcases)
+Calculate distance between two geographic points
 
-<PoweredBySlidev mt-10 />
+<div v-click class="mt-8 text-sm opacity-80">
+Simple enough for comparison, <span v-mark.circle.orange="2">complex enough to matter</span>
+</div>
+
+<div v-motion
+  :initial="{ x: -80, y: 80, opacity: 0}"
+  :enter="{ x: 0, y: 0, opacity: 1, transition: { delay: 1000, duration: 1000 } }">
+
+```
+🗺️ Santo Domingo (18.4861°N, 69.9312°W)
+📍 Miami (25.7617°N, 80.1918°W)
+❓ Distance = ?
+```
+
+</div>
+
+<div v-click="3" class="mt-8">
+
+## The Mathematical Challenge
+
+$$
+d = 2r \arcsin\left(\sqrt{\sin^2\left(\frac{\Delta\phi}{2}\right) + \cos(\phi_1) \cos(\phi_2) \sin^2\left(\frac{\Delta\lambda}{2}\right)}\right)
+$$
+
+</div>
+
+<div v-click="4" class="mt-4 text-sm opacity-60">
+Haversine formula - where <span v-mark.underline.blue="5">$\phi$ = latitude</span>, <span v-mark.underline.green="6">$\lambda$ = longitude</span>, $r$ = Earth's radius
+</div>
+
+<div
+  v-motion
+  :initial="{ scale: 0, rotate: -180 }"
+  :enter="{ scale: 1, rotate: 0, transition: { type: 'spring', damping: 15, stiffness: 100 } }"
+  :click-7="{ scale: 1.2, transition: { duration: 500 } }"
+  class="mt-8 text-3xl">
+
+**~1,500 kilometers**
+
+</div>
+
+---
+transition: slide-left
+---
+
+# Haversine Formula Evolution
+
+Watch the same algorithm adapt to each language's strengths:
+
+````md magic-move {lines: true}
+```python {*|2-4|6-8|10-12|all}
+# Python: Simple and readable
+def haversine_distance(lat1, lon1, lat2, lon2):
+    # Convert to radians
+    lat1, lon1, lat2, lon2 = map(radians, [lat1, lon1, lat2, lon2])
+
+    # Haversine formula
+    dlat, dlon = lat2 - lat1, lon2 - lon1
+    a = sin(dlat/2)**2 + cos(lat1) * cos(lat2) * sin(dlon/2)**2
+
+    # Calculate final distance
+    c = 2 * asin(sqrt(a))
+    return 6371 * c  # Earth's radius in km
+```
+
+```javascript {*|2-3|5-7|9-11|all}
+// JavaScript: Async and event-driven
+async function haversineDistance(lat1, lon1, lat2, lon2) {
+  // Convert to radians - functional style
+  const toRad = (deg) => deg * Math.PI / 180;
+
+  // Destructure for cleaner code
+  const [rlat1, rlon1, rlat2, rlon2] =
+    [lat1, lon1, lat2, lon2].map(toRad);
+
+  // Haversine with modern JS
+  const dlat = rlat2 - rlat1, dlon = rlon2 - rlon1;
+  const a = Math.sin(dlat/2)**2 +
+            Math.cos(rlat1) * Math.cos(rlat2) * Math.sin(dlon/2)**2;
+  return 6371 * 2 * Math.asin(Math.sqrt(a));
+}
+```
+
+```rust {*|2-4|6-8|10-12|all}
+// Rust: Safe and fast
+fn haversine_distance(lat1: f64, lon1: f64, lat2: f64, lon2: f64) -> f64 {
+    // Safe conversions with explicit types
+    let (lat1, lon1) = (lat1.to_radians(), lon1.to_radians());
+    let (lat2, lon2) = (lat2.to_radians(), lon2.to_radians());
+
+    // Memory-safe calculations
+    let dlat = lat2 - lat1;
+    let dlon = lon2 - lon1;
+
+    // Zero-cost abstractions
+    let a = (dlat / 2.0).sin().powi(2) +
+            lat1.cos() * lat2.cos() * (dlon / 2.0).sin().powi(2);
+    6371.0 * 2.0 * a.sqrt().asin()
+}
+```
+
+```cpp {*|2-4|6-8|10-12|all}
+// C++: Raw performance
+constexpr double haversine_distance(double lat1, double lon1,
+                                  double lat2, double lon2) noexcept {
+    // Compile-time constants
+    constexpr double DEG_TO_RAD = M_PI / 180.0;
+    constexpr double EARTH_RADIUS = 6371.0;
+
+    // SIMD-friendly operations
+    const double rlat1 = lat1 * DEG_TO_RAD, rlon1 = lon1 * DEG_TO_RAD;
+    const double rlat2 = lat2 * DEG_TO_RAD, rlon2 = lon2 * DEG_TO_RAD;
+
+    // Optimized for vectorization
+    const double dlat = rlat2 - rlat1, dlon = rlon2 - rlon1;
+    const double a = std::sin(dlat/2) * std::sin(dlat/2) +
+                     std::cos(rlat1) * std::cos(rlat2) *
+                     std::sin(dlon/2) * std::sin(dlon/2);
+    return EARTH_RADIUS * 2.0 * std::asin(std::sqrt(a));
+}
+```
+
+```zig {*|2-4|6-8|10-12|all}
+// Zig: Explicit and fast
+pub fn haversineDistance(lat1: f64, lon1: f64, lat2: f64, lon2: f64) f64 {
+    // Explicit conversions, no hidden costs
+    const lat1_rad = std.math.degreesToRadians(lat1);
+    const lon1_rad = std.math.degreesToRadians(lon1);
+
+    // Clear memory layout
+    const lat2_rad = std.math.degreesToRadians(lat2);
+    const lon2_rad = std.math.degreesToRadians(lon2);
+
+    // SIMD-ready calculations
+    const dlat = lat2_rad - lat1_rad;
+    const dlon = lon2_rad - lon1_rad;
+    const a = std.math.sin(dlat/2.0) * std.math.sin(dlat/2.0) +
+              std.math.cos(lat1_rad) * std.math.cos(lat2_rad) *
+              std.math.sin(dlon/2.0) * std.math.sin(dlon/2.0);
+    return 6371.0 * 2.0 * std.math.asin(std.math.sqrt(a));
+}
+```
+````
+
+---
+layout: image-right
+image: /placeholder-performance-chart.png
+backgroundSize: contain
+---
+
+# Performance Reality Check
+
+<div v-click="1">
+
+## Execution Time (1M calculations)
+
+</div>
+
+<div class="space-y-2 mt-4">
+
+<div v-click="2" class="flex items-center gap-3">
+  <div class="w-4 h-4 bg-blue-400 rounded"></div>
+  <span class="text-sm">Python: 2.1s</span>
+  <div class="flex-1 bg-gray-200 h-2 rounded overflow-hidden">
+    <div class="bg-blue-400 h-full" style="width: 100%"></div>
+  </div>
+</div>
+
+<div v-click="3" class="flex items-center gap-3">
+  <div class="w-4 h-4 bg-yellow-400 rounded"></div>
+  <span class="text-sm">JavaScript: 0.8s</span>
+  <div class="flex-1 bg-gray-200 h-2 rounded overflow-hidden">
+    <div class="bg-yellow-400 h-full" style="width: 38%"></div>
+  </div>
+</div>
+
+<div v-click="4" class="flex items-center gap-3">
+  <div class="w-4 h-4 bg-orange-500 rounded"></div>
+  <span class="text-sm">Rust: 0.12s</span>
+  <div class="flex-1 bg-gray-200 h-2 rounded overflow-hidden">
+    <div class="bg-orange-500 h-full" style="width: 6%"></div>
+  </div>
+</div>
+
+<div v-click="5" class="flex items-center gap-3">
+  <div class="w-4 h-4 bg-red-500 rounded"></div>
+  <span class="text-sm">C++: 0.08s</span>
+  <div class="flex-1 bg-gray-200 h-2 rounded overflow-hidden">
+    <div class="bg-red-500 h-full" style="width: 4%"></div>
+  </div>
+</div>
+
+<div v-click="6" class="flex items-center gap-3">
+  <div class="w-4 h-4 bg-purple-500 rounded"></div>
+  <span class="text-sm">Zig: 0.07s</span>
+  <div class="flex-1 bg-gray-200 h-2 rounded overflow-hidden">
+    <div class="bg-purple-500 h-full" style="width: 3%"></div>
+  </div>
+</div>
+
+</div>
+
+<div v-click="7" class="mt-8 text-center text-sm opacity-80">
+
+**But here's the thing:** Speed isn't everything.
+
+</div>
+
+<!-- PLACEHOLDER: Actual performance chart image -->
+
+---
+transition: slide-up
+---
+
+# Integration Patterns by Language
+
+<div class="grid grid-cols-2 gap-8 mt-8">
+
+<div v-click="1">
+  <h3 class="flex items-center gap-2">
+    <span class="text-2xl">🌐</span>
+    JavaScript
+  </h3>
+  <div class="text-sm opacity-80 mt-2 space-y-1">
+    <div class="font-mono text-xs bg-gray-100 p-2 rounded">WebSocket Bridge</div>
+    <div>• Real-time UI updates</div>
+    <div>• Event-driven architecture</div>
+    <div>• Seamless browser integration</div>
+  </div>
+</div>
+
+<div v-click="2">
+  <h3 class="flex items-center gap-2">
+    <span class="text-2xl">⚡</span>
+    Rust
+  </h3>
+  <div class="text-sm opacity-80 mt-2 space-y-1">
+    <div class="font-mono text-xs bg-gray-100 p-2 rounded">HTTP Service</div>
+    <div>• Memory-safe processing</div>
+    <div>• Concurrent by design</div>
+    <div>• Easy deployment</div>
+  </div>
+</div>
+
+<div v-click="3">
+  <h3 class="flex items-center gap-2">
+    <span class="text-2xl">🚄</span>
+    C++
+  </h3>
+  <div class="text-sm opacity-80 mt-2 space-y-1">
+    <div class="font-mono text-xs bg-gray-100 p-2 rounded">Native Extension</div>
+    <div>• Maximum performance</div>
+    <div>• Direct memory access</div>
+    <div>• Zero-copy operations</div>
+  </div>
+</div>
+
+<div v-click="4">
+  <h3 class="flex items-center gap-2">
+    <span class="text-2xl">🌀</span>
+    Zig
+  </h3>
+  <div class="text-sm opacity-80 mt-2 space-y-1">
+    <div class="font-mono text-xs bg-gray-100 p-2 rounded">SIMD Extension</div>
+    <div>• Explicit performance</div>
+    <div>• Compile-time optimization</div>
+    <div>• C interoperability</div>
+  </div>
+</div>
+
+</div>
+
+<div v-click="5" class="mt-12 text-center">
+
+**Each language excels in its domain. Python orchestrates them all.**
+
+</div>
+
+---
+layout: two-cols
+layoutClass: gap-8
+---
+
+# Live Coding Playground
+
+<div>
+
+Edit and run Python integration code:
+
+```python {monaco}
+# Python orchestrator example
+import asyncio
+import json
+
+class PolyglotOrchestrator:
+    def __init__(self):
+        self.js_bridge = None
+        self.rust_service = None
+
+    async def process_data(self, coordinates):
+        # Route to appropriate language
+        if len(coordinates) > 10000:
+            return await self.rust_service.bulk_process(coordinates)
+        else:
+            return await self.js_bridge.realtime_process(coordinates)
+
+    def benchmark_all(self, data):
+        results = {}
+        for lang in ['js', 'rust', 'cpp', 'zig']:
+            start = time.time()
+            result = self.call_language(lang, data)
+            results[lang] = time.time() - start
+        return results
+
+# Test the orchestrator
+orchestra = PolyglotOrchestrator()
+print("Python: The conductor of the performance symphony")
+```
+
+</div>
+
+::right::
+
+<div>
+
+<h3 v-click="1">
+  <span v-mark.red="2">Performance</span> vs
+  <span v-mark.blue="3">Developer Experience</span>
+</h3>
+
+<div v-click="4" class="mt-4">
+
+Each language optimizes for different goals:
+
+</div>
+
+<div class="space-y-3 mt-6">
+
+<div v-motion
+  :initial="{ x: -50, opacity: 0 }"
+  :click-5="{ x: 0, opacity: 1, transition: { delay: 0 } }">
+  <span class="font-mono text-sm bg-yellow-50 px-2 py-1 rounded">JavaScript</span>
+  <span v-mark.underline.orange="6">Ecosystem reach</span>
+</div>
+
+<div v-motion
+  :initial="{ x: -50, opacity: 0 }"
+  :click-5="{ x: 0, opacity: 1, transition: { delay: 200 } }">
+  <span class="font-mono text-sm bg-orange-50 px-2 py-1 rounded">Rust</span>
+  Memory safety <span v-mark.circle.red="7">without garbage collection</span>
+</div>
+
+<div v-motion
+  :initial="{ x: -50, opacity: 0 }"
+  :click-5="{ x: 0, opacity: 1, transition: { delay: 400 } }">
+  <span class="font-mono text-sm bg-blue-50 px-2 py-1 rounded">C++</span>
+  <span v-mark.highlight.yellow="8">Decades of optimization</span>
+</div>
+
+<div v-motion
+  :initial="{ x: -50, opacity: 0 }"
+  :click-5="{ x: 0, opacity: 1, transition: { delay: 600 } }">
+  <span class="font-mono text-sm bg-purple-50 px-2 py-1 rounded">Zig</span>
+  No hidden performance costs
+</div>
+
+</div>
+
+<div v-click="9" class="mt-8 text-center text-sm opacity-80">
+
+<span v-mark.box.green="10">**Python ties them all together**</span>
+
+</div>
+
+</div>
+
+---
+layout: center
+---
+
+# Choose Your Integration Adventure
+
+<div class="mt-8">
+
+<div v-click="1" class="grid grid-cols-2 gap-6">
+
+<div
+  v-motion
+  :initial="{ y: 50, opacity: 0 }"
+  :click-2="{ y: 0, opacity: 1, transition: { delay: 0 } }"
+  class="p-6 border-2 border-yellow-300 rounded-lg bg-yellow-50 cursor-pointer"
+  @click="$slidev.nav.go(50)">
+
+  <div class="text-center">
+    <div class="text-4xl mb-2">🌐</div>
+    <h3>Real-time Dashboard</h3>
+    <div class="text-sm opacity-80 mt-2">
+      Python + JavaScript via WebSockets
+    </div>
+    <div class="text-xs mt-2 font-mono bg-yellow-200 px-2 py-1 rounded">
+      Click to explore →
+    </div>
+  </div>
+</div>
+
+<div
+  v-motion
+  :initial="{ y: 50, opacity: 0 }"
+  :click-3="{ y: 0, opacity: 1, transition: { delay: 200 } }"
+  class="p-6 border-2 border-orange-300 rounded-lg bg-orange-50 cursor-pointer"
+  @click="$slidev.nav.go(60)">
+
+  <div class="text-center">
+    <div class="text-4xl mb-2">⚡</div>
+    <h3>Data Visualization</h3>
+    <div class="text-sm opacity-80 mt-2">
+      Python + Rust HTTP service
+    </div>
+    <div class="text-xs mt-2 font-mono bg-orange-200 px-2 py-1 rounded">
+      Click to explore →
+    </div>
+  </div>
+</div>
+
+<div
+  v-motion
+  :initial="{ y: 50, opacity: 0 }"
+  :click-4="{ y: 0, opacity: 1, transition: { delay: 400 } }"
+  class="p-6 border-2 border-blue-300 rounded-lg bg-blue-50 cursor-pointer"
+  @click="$slidev.nav.go(70)">
+
+  <div class="text-center">
+    <div class="text-4xl mb-2">🚄</div>
+    <h3>ML Inference</h3>
+    <div class="text-sm opacity-80 mt-2">
+      Python + C++ native extensions
+    </div>
+    <div class="text-xs mt-2 font-mono bg-blue-200 px-2 py-1 rounded">
+      Click to explore →
+    </div>
+  </div>
+</div>
+
+<div
+  v-motion
+  :initial="{ y: 50, opacity: 0 }"
+  :click-5="{ y: 0, opacity: 1, transition: { delay: 600 } }"
+  class="p-6 border-2 border-purple-300 rounded-lg bg-purple-50 cursor-pointer"
+  @click="$slidev.nav.go(80)">
+
+  <div class="text-center">
+    <div class="text-4xl mb-2">🌀</div>
+    <h3>Hurricane Tracking</h3>
+    <div class="text-sm opacity-80 mt-2">
+      Python + Zig SIMD calculations
+    </div>
+    <div class="text-xs mt-2 font-mono bg-purple-200 px-2 py-1 rounded">
+      Click to explore →
+    </div>
+  </div>
+</div>
+
+</div>
+
+</div>
+
+<div v-click="6" class="mt-8 text-center text-sm opacity-80">
+<span v-mark.highlight.green="7">Interactive navigation:</span> Click any card to jump to that example
+</div>
+
+---
+transition: slide-left
+---
+
+# Try It Yourself
+
+Interactive playground for the Haversine formula:
+
+```javascript {monaco-run}
+// Live JavaScript implementation
+function haversineDistance(lat1, lon1, lat2, lon2) {
+  const toRad = deg => deg * Math.PI / 180;
+  const [rlat1, rlon1, rlat2, rlon2] = [lat1, lon1, lat2, lon2].map(toRad);
+
+  const dlat = rlat2 - rlat1;
+  const dlon = rlon2 - rlon1;
+  const a = Math.sin(dlat/2)**2 +
+            Math.cos(rlat1) * Math.cos(rlat2) * Math.sin(dlon/2)**2;
+
+  return 6371 * 2 * Math.asin(Math.sqrt(a));
+}
+
+// Test with Santo Domingo to Miami
+const distance = haversineDistance(18.4861, -69.9312, 25.7617, -80.1918);
+console.log(`Distance: ${distance.toFixed(2)} km`);
+```
+
+<div v-click class="mt-4 text-center text-sm opacity-80">
+Edit the code above and press Ctrl+Enter to run!
+</div>
+
+---
+layout: section
+---
+
+# Part III: Real-World Applications
 
 ---
 layout: section
@@ -656,7 +1270,7 @@ Real-time Agricultural Monitoring
 Modern agricultural monitoring requires:
 
 - **Real-time data streams** - conditions change rapidly
-- **Interactive dashboards** - users need responsive interfaces  
+- **Interactive dashboards** - users need responsive interfaces
 - **Complex simulations** - weather patterns, soil conditions
 - **Easy deployment** - farmers shouldn't need a CS degree
 
@@ -725,7 +1339,7 @@ Vanilla JS with Chart.js for real-time visualization:
 ```javascript {1|3-8|10-15|17-22|all}
 class OutbackMonitor {
     constructor() { this.initializeCharts() }
-    
+
     start() {
         const wsUrl = `ws://localhost:8000/ws/${region}`
         this.ws = new WebSocket(wsUrl)
@@ -733,13 +1347,13 @@ class OutbackMonitor {
             this.updateData(JSON.parse(event.data))
         }
     }
-    
+
     updateData(data) {
         // Update live metrics
         document.getElementById('temperature')
             .textContent = `${data.temperature}°C`
     }
-    
+
     updateCharts() {
         this.charts.environment.data.datasets[0]
             .data = this.dataHistory.temperature
@@ -760,12 +1374,12 @@ graph LR
     D --> E[JavaScript Client]
     E --> F[Chart.js Rendering]
     F --> G[Live Dashboard]
-    
+
     style B fill:#3776ab,stroke:#fff,color:#fff
     style E fill:#f7df1e,stroke:#000,color:#000
 ```
 
-**Python handles:** Data simulation, WebSocket server, CLI interface, packaging  
+**Python handles:** Data simulation, WebSocket server, CLI interface, packaging
 **JavaScript handles:** Real-time rendering, user interaction, smooth animations
 
 Each language does what it's best at.
@@ -809,7 +1423,7 @@ outback-monitor --region victoria
 
 **Architecture principles:**
 - Python for data processing, server logic, CLI interfaces
-- JavaScript for DOM manipulation, real-time updates, user interaction  
+- JavaScript for DOM manipulation, real-time updates, user interaction
 - WebSockets for seamless real-time communication
 - Vanilla JavaScript keeps it simple and fast
 
@@ -829,11 +1443,11 @@ High-Performance Bushfire Modeling
 Bushfire simulation needs real-time performance:
 
 - **Thousands of cells** updated per simulation step
-- **Complex fire physics** - wind, humidity, temperature interactions  
+- **Complex fire physics** - wind, humidity, temperature interactions
 - **Parallel processing** for realistic grid sizes
 - **Memory efficiency** for long-running simulations
 
-Pure Python: **~2 seconds** for 100x100 grid, 50 steps  
+Pure Python: **~2 seconds** for 100x100 grid, 50 steps
 With Rust: **~0.02 seconds** - **100x faster**
 
 ---
@@ -902,27 +1516,27 @@ Ergonomic interface with Australian fire conditions:
 
 ```python {1|3-10|12-18|20-25|all}
 class BushfireModel:
-    
+
     # Australian fire danger ratings
     DANGER_LEVELS = {
         'moderate': {'wind': 15, 'humidity': 60, 'temp': 25},
         'severe': {'wind': 45, 'humidity': 20, 'temp': 40},
         'catastrophic': {'wind': 80, 'humidity': 5, 'temp': 50},
     }
-    
+
     def set_conditions(self, danger_level='moderate'):
         conditions = self.DANGER_LEVELS[danger_level]
         self.sim = FireSimulation(
             width, height,
             conditions['wind'],
-            conditions['humidity'], 
+            conditions['humidity'],
             conditions['temp']
         )
-    
+
     def benchmark_rust_vs_python(self, steps=50):
         # Rust implementation
         rust_results = run_batch_simulation(...)
-        # Pure Python comparison  
+        # Pure Python comparison
         python_results = self._python_simulation(...)
         return {'speedup': python_time / rust_time}
 ```
@@ -941,7 +1555,7 @@ graph TB
     F --> G[Return to Python]
     G --> H[Matplotlib Visualization]
     G --> I[Web Interface]
-    
+
     style C fill:#ce422b,stroke:#fff,color:#fff
     style D fill:#ce422b,stroke:#fff,color:#fff
     style E fill:#ce422b,stroke:#fff,color:#fff
@@ -949,7 +1563,7 @@ graph TB
     style H fill:#3776ab,stroke:#fff,color:#fff
 ```
 
-**Rust handles:** Intensive computation, memory management, parallelization  
+**Rust handles:** Intensive computation, memory management, parallelization
 **Python handles:** API design, visualization, integration, user experience
 
 ---
@@ -965,7 +1579,7 @@ Real benchmark on 100x100 grid, 50 simulation steps:
 
 **Why such dramatic improvement?**
 - **Parallel processing**: Rayon utilizes all CPU cores
-- **Zero-copy operations**: No Python object overhead in tight loops  
+- **Zero-copy operations**: No Python object overhead in tight loops
 - **Memory layout**: Contiguous arrays vs Python object graphs
 - **No GIL**: True parallelism, not just concurrency
 
@@ -991,7 +1605,7 @@ pip install bushfire-sim
 # Run simulation with Australian fire danger ratings
 bushfire-sim simulate --danger catastrophic --show
 
-# Benchmark Rust vs Python performance  
+# Benchmark Rust vs Python performance
 bushfire-sim benchmark --size 150 --steps 100
 
 # Real-time web interface
@@ -1036,7 +1650,7 @@ Modern AI applications need both speed and flexibility:
 - **Complex feature extraction** - FFT, spectral analysis, MFCC
 - **Memory efficiency** - hours of continuous monitoring
 
-**The hidden truth:** Most "Python AI" is actually C++ under the hood  
+**The hidden truth:** Most "Python AI" is actually C++ under the hood
 (TensorFlow, PyTorch, OpenCV, NumPy, SciPy)
 
 ---
@@ -1076,7 +1690,7 @@ Real-time audio processing with C++23:
 class AudioProcessor {
     std::expected<std::vector<double>, std::string>
     extract_features(std::span<const double> audio) {
-        
+
         // Apply window and compute FFT
         std::ranges::transform(
             audio | std::ranges::views::enumerate,
@@ -1086,14 +1700,14 @@ class AudioProcessor {
                 return sample * window_[i];
             }
         );
-        
-        // Parallel spectral analysis  
+
+        // Parallel spectral analysis
         std::transform(std::execution::par_unseq,
-                      fft_buffer_.begin(), 
+                      fft_buffer_.begin(),
                       fft_buffer_.end(),
                       magnitude_spectrum_.begin(),
                       [](auto c) { return std::abs(c); });
-        
+
         return extract_wildlife_features();
     }
 };
@@ -1107,7 +1721,7 @@ Conservation science with Python:
 
 ```python {1|3-10|12-18|20-25|all}
 class BushEarsAnalyzer:
-    
+
     SPECIES_INFO = {
         AustralianSpecies.Kookaburra: {
             'habitat': 'Woodland, urban parks',
@@ -1116,14 +1730,14 @@ class BushEarsAnalyzer:
         },
         # Koala, Dingo, Magpie, Galah...
     }
-    
+
     def analyze_audio_stream(self, audio: np.ndarray):
         # C++ does the heavy lifting
         result = self.monitor.process_audio_stream(audio)
-        
+
         # Python adds ecological context
         return self.add_conservation_analysis(result)
-    
+
     def get_ecosystem_health(self):
         # Shannon biodiversity index
         # Conservation importance scoring
@@ -1146,7 +1760,7 @@ graph TB
     G --> H[Ecosystem Analysis]
     G --> I[Conservation Metrics]
     G --> J[Research APIs]
-    
+
     style B fill:#00599c,stroke:#fff,color:#fff
     style C fill:#00599c,stroke:#fff,color:#fff
     style D fill:#00599c,stroke:#fff,color:#fff
@@ -1155,7 +1769,7 @@ graph TB
     style I fill:#3776ab,stroke:#fff,color:#fff
 ```
 
-**C++ handles:** Real-time constraints, vectorized math, memory efficiency  
+**C++ handles:** Real-time constraints, vectorized math, memory efficiency
 **Python handles:** Research workflows, data analysis, scientific integration
 
 ---
@@ -1195,8 +1809,8 @@ std::expected<Species, Error> classify_audio(std::span<const double> features);
 // Parallel algorithms
 std::transform(std::execution::par_unseq, data.begin(), data.end(), ...);
 
-// Range-based processing  
-auto features = audio_data 
+// Range-based processing
+auto features = audio_data
     | std::views::chunk(1024)
     | std::views::transform(extract_features)
     | std::views::filter(is_valid);
@@ -1216,7 +1830,7 @@ Most Python AI libraries are **C++ underneath**:
 ```python
 # This is actually C++ under the hood
 import torch          # C++ core
-import numpy as np    # C++ operations  
+import numpy as np    # C++ operations
 import cv2            # C++ OpenCV
 import scipy.fft      # C++ FFTW
 
@@ -1224,7 +1838,7 @@ import scipy.fft      # C++ FFTW
 from bush_ears import AudioProcessor  # Our C++ module
 ```
 
-**Advantage:** **Direct control** over the performance-critical path  
+**Advantage:** **Direct control** over the performance-critical path
 **Result:** Purpose-built for your specific use case, not general library overhead
 
 ---
@@ -1273,6 +1887,8 @@ bush-ears monitor --headless  # API-only server for custom UIs
 
 **Conservation impact:** Technology enabling new forms of automated wildlife research and ecosystem monitoring
 
+---
+layout: section
 ---
 
 # Zig + Python
