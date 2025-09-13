@@ -81,10 +81,6 @@ layout: center
 
 </div>
 
-<div v-click="3" class="mt-12 text-center">
-  <h2>There's a better way.</h2>
-</div>
-
 <!--
 Set up the common responses with a bit of sarcasm to keep it engaging.
 The punchline sets up our approach.
@@ -92,7 +88,7 @@ The punchline sets up our approach.
 
 ---
 layout: image-right
-image: ./images/placeholder.jpg
+image: ./images/maestro.png
 transition: slide-up
 ---
 
@@ -124,8 +120,7 @@ Python doesn't need to play every instrument.
 </div>
 
 <div v-click="3" class="text-center mt-8">
-  <div class="font-mono text-lg">Python</div>
-  <div class="text-sm opacity-80">Orchestrates everything</div>
+  <div class="font-mono text-lg">but rather orchestrates everything</div>
 </div>
 
 
@@ -179,16 +174,16 @@ transition: fade
 
 <div v-click="6" class="mt-8 text-center opacity-80">
 
-The web stack you're probably using right now:
+The web stack you're probably using right now might have a bit of Python in it:
 
 </div>
 
 <div v-click="7" class="grid grid-cols-4 gap-4 mt-4 text-center text-sm">
 
-<div>**Frontend**<br/>JavaScript</div>
-<div>**API**<br/>Python</div>
-<div>**Database**<br/>C++</div>
-<div>**Validation**<br/>Rust</div>
+<div> <em>Frontend</em> <br/>JavaScript</div>
+<div><em>API</em><br/>Python</div>
+<div><em>Database</em><br/>C++</div>
+<div><em>Validation</em><br/>Rust</div>
 
 </div>
 
@@ -198,14 +193,14 @@ Historical context showing this pattern has deep roots. The timeline builds up t
 
 ---
 layout: image-right
-image: ./images/placeholder.jpg
+image: ./images/pyrust.webp
 ---
 
-# The Modern Polyglot Renaissance
+# Notable Examples Today
 
 <div v-click="1" class="mt-8">
 
-Your favorite "Python" tools are barely Python:
+You might recognise:
 
 </div>
 
@@ -250,87 +245,10 @@ Your favorite "Python" tools are barely Python:
 </div>
 
 <!--
-IMAGE GENERATION: Is it Python or Rust with Python bindings?
-Style: Black and white New Yorker style gag cartoon
-Description: Two developers standing in front of a whiteboard covered in code. One developer is pointing at the code saying "It's definitely Python!" while the other says "No, it's Rust with Python bindings!" The code on the whiteboard should be ambiguous, showing something like "import polars" or "from ruff import". Caption at bottom: "The eternal question in modern Python development."
--->
-
-<!--
 Modern examples that audience will recognize. Shows polyglot is mainstream, not exotic.
 TIMING: 3 minutes for historical context
 KEY POINT: Everyone already uses polyglot without realizing it
 AUDIENCE CHECK: "How many use NumPy? That's Fortran/C under the hood!"
--->
-
----
-transition: slide-left
----
-
-# Performance Racing Circuit
-
-<img src="./images/placeholder.jpg" alt="Racing circuit" class="mb-4 mx-auto opacity-50" style="max-width: 600px" />
-
-<!--
-IMAGE GENERATION: Programming languages as race cars
-Style: Technical diagram / infographic style
-Description: Top-down view of a racing circuit. Different programming languages as vehicles: C++ as a Formula 1 car (sleek, fast), Rust as a McLaren (modern, safe), JavaScript as a rally car (versatile, everywhere), and Python as the pit crew team (not racing but coordinating everything). The pit lane should be prominent with Python crew members managing all the cars. Track should have labels like "Performance Corner", "Memory Management Straight", "Concurrency Chicane".
--->
-
-<div class="mt-8">
-
-<div v-click="1" class="grid grid-cols-4 gap-4 text-center">
-
-<div>
-  <div class="font-mono text-sm">C++</div>
-  <div class="text-xs opacity-60">Formula 1</div>
-  <div class="text-xs">Raw speed</div>
-</div>
-
-<div>
-  <div class="font-mono text-sm">Rust</div>
-  <div class="text-xs opacity-60">McLaren</div>
-  <div class="text-xs">Fast + safe</div>
-</div>
-
-<div>
-  <div class="font-mono text-sm">JavaScript</div>
-  <div class="text-xs opacity-60">Rally car</div>
-  <div class="text-xs">Everywhere</div>
-</div>
-
-<div>
-  <div class="font-mono text-sm">Python</div>
-  <div class="text-xs opacity-60">Pit crew</div>
-  <div class="text-xs">Coordinates</div>
-</div>
-
-</div>
-
-<div v-click="2" class="mt-8 text-center">
-
-Python controls all three.
-
-</div>
-
-<div v-click="3" class="mt-4 text-center text-sm opacity-80">
-
-While everyone argues about speed,<br/>
-Python wins races.
-
-</div>
-
-</div>
-
-<img src="./images/placeholder.jpg" alt="Python pit crew" class="mt-4 mx-auto opacity-50" style="max-width: 400px" />
-
-<!--
-IMAGE GENERATION: Python as pit crew chief
-Style: Black and white New Yorker style gag cartoon
-Description: A Formula 1 pit stop scene. The race car (labeled "C++") is in the pit with wheels being changed. The pit crew chief (wearing a shirt with Python logo) is holding a clipboard and stopwatch, coordinating the team. One crew member is saying "But we could optimize the tire change algorithm!" The chief responds "Just change the tires, we'll optimize in Python later." Caption: "Sometimes the best optimization is knowing when not to optimize."
--->
-
-<!--
-Fun racing metaphor that shows Python's orchestration role. Sets up the practical section.
 -->
 
 ---
@@ -393,7 +311,7 @@ SPEAKER NOTES - ARCHITECTURE:
 - The decision tree is critical - not every project needs polyglot
 -->
 
-How to build polyglot applications without losing your sanity
+Building blocks of polyglot applications
 
 <!--
 TIMING: 10 minutes for architecture patterns section
@@ -406,11 +324,11 @@ image: ./images/placeholder.jpg
 transition: slide-up
 ---
 
-# The Polyglot Decision Tree
+# Make a Decision Tree
 
 <div v-click="1" class="mt-8">
 
-**Step 1:** Is Python actually the bottleneck?
+Is Python actually the actual bottleneck?
 
 </div>
 
@@ -422,7 +340,7 @@ Profile first. "Python is slow" is not profiling.
 
 <div v-click="3" class="mt-6">
 
-**Step 2:** Can you solve it with better algorithms?
+Can you solve it with better algorithms?
 
 </div>
 
@@ -434,7 +352,7 @@ O(n²) → O(n log n) beats any language switch.
 
 <div v-click="5" class="mt-6">
 
-**Step 3:** Is it worth the complexity?
+Is it worth the complexity?
 
 </div>
 
@@ -485,7 +403,7 @@ transition: fade
 
 <div v-click="3" class="mt-8 text-center">
 
-**The insight:** Optimize the 10%, orchestrate with Python.
+Optimise the 10% and offload the rest. More often than not rewriting an entire app won't help.
 
 </div>
 
@@ -501,12 +419,6 @@ transition: fade
 
 </div>
 
-<div v-click="4" class="mt-8 text-center text-sm opacity-80">
-
-Also known as: "Why rewriting your entire app in Go won't help"
-
-</div>
-
 <!--
 Classic performance principle applied to language choice. Shows focus should be narrow.
 -->
@@ -515,7 +427,7 @@ Classic performance principle applied to language choice. Shows focus should be 
 layout: center
 ---
 
-# Common Polyglot Patterns
+# Common Patterns
 
 ---
 layout: two-cols
@@ -609,12 +521,6 @@ flowchart LR
     style H fill:#3776ab,stroke:#fff,color:#fff
 ```
 
-<div v-click class="mt-4 text-center text-sm">
-
-Python stays in control of the data pipeline
-
-</div>
-
 <!--
 Visual representation of how data flows through polyglot system. Python maintains orchestration.
 -->
@@ -677,43 +583,36 @@ Complexity vs performance trade-off matrix. Guides architectural decisions.
 -->
 
 ---
+layout: center
 transition: fade
 ---
 
 # When Things Go Wrong
 
-<div class="mt-8">
+
 
 <div v-click="1" class="grid grid-cols-2 gap-8">
 
 <div>
   <h3 class="text-red-400">Don't</h3>
   <div>
-    • Polyglot for the sake of it<br/>
-    • Premature optimization<br/>
-    • "Let's try this new language"<br/>
-    • No performance target<br/>
-    • Micro-optimize the wrong thing
+    • Rewrite in another language for the sake of it<br/>
+    • Add all features at once<br/>
+    • Assume you can rewrite faster than you can optimise<br/>
+    • Start without performance target<br/>
+    • Be careful not to micro-optimise the wrong thing
   </div>
 </div>
 
 <div>
   <h3 class="text-green-400">Do</h3>
-  <div class="text-sm mt-4">
+  <div>
     • Profile first<br/>
     • Clear requirements<br/>
     • Start simple<br/>
     • Measure improvement<br/>
     • Document integration
   </div>
-</div>
-
-</div>
-
-<div v-click="2" class="mt-12 text-center text-sm opacity-80">
-
-Ship working software. Period.
-
 </div>
 
 </div>
@@ -1047,7 +946,7 @@ valgrind --leak-check=full python test_integration.py
 
 - **Development time:** 2-5x longer initial development
 - **Debugging complexity:** Cross-language stack traces
-- **Team expertise:** Need polyglot developers
+- **Team expertise:** Need devs with different skills
 - **Build infrastructure:** CI/CD complexity
 - **Maintenance:** Multiple dependency chains
 
@@ -1055,7 +954,7 @@ valgrind --leak-check=full python test_integration.py
 
 <div v-click class="mt-8 text-center">
 
-**Rule of thumb:** Need 10x performance gain to justify complexity
+**Rule of thumb:** You need 10x performance gain to justify complexity
 
 </div>
 
@@ -1167,8 +1066,7 @@ EMPHASIZE: These aren't reasons to avoid polyglot, just reality
 -->
 
 ---
-layout: image-right
-image: ./images/placeholder.jpg
+layout: center
 ---
 
 # JS + Python Async
@@ -1282,7 +1180,6 @@ C++ threads + Python callbacks = GIL nightmare
 
 Release GIL explicitly, use queues for comms
 
-
 <!--
 IMAGE GENERATION: GIL bottleneck visualization
 Style: Black and white New Yorker style gag cartoon
@@ -1319,8 +1216,8 @@ result = zig_lib.matrix_multiply(
 # Segfault on AVX instructions
 ```
 
-Language X's assumptions != Language Y's guarantees
-Check alignment, copy if needed, or use aligned allocators
+Language X's assumptions != Language Y's guarantees /
+Check alignment or copy if needed
 
 ---
 
@@ -3426,14 +3323,14 @@ All examples from this talk: **github.com/[your-username]/pycon-polyglot**
 </div>
 
 ---
-layout: center
+layout: end
 ---
 
 # Final Thought
 
 <div v-click class="mt-8 text-center">
 
-Python won.
+Python has its stablished place as a glue language.
 
 </div>
 
@@ -3442,34 +3339,12 @@ Python won.
 Not by being fastest.<br/>
 By being the best orchestrator.
 
-</div>
-
-<div v-click class="mt-8 text-center">
-
-Use that power wisely.
-
-<!--
-FINAL MOMENT: Pause after "Python won" - let it sink in
-TIMING: 1 minute for closing
-Q&A PREP: Common questions:
-- "What about Go?" (Great for services, not for extensions)
-- "What about WASM?" (Promising but not mature for Python)
-- "How do you debug this?" (With patience and good logging)
--->
-
-</div>
 
 <div class="mt-12 text-center text-sm opacity-60">
 
-**Contact:** [your-email] | **Slides:** [url]
+**Contact:** [ramon@artesan.sh] | **Slides:** [https://github.com/ramonpzg/polyglot]
 
 </div>
-
-<!--
-IMAGE GENERATION: Debugging across language boundaries
-Style: Black and white New Yorker style gag cartoon
-Description: A developer sitting at a desk with multiple monitors. Each monitor shows a different debugger: "gdb" for C++, "pdb" for Python, "Chrome DevTools" for JavaScript, "rust-gdb" for Rust. The developer has multiple arms (like a Hindu deity) trying to use all debuggers simultaneously. A colleague walking by asks: "Found the bug yet?" Developer responds: "I've narrowed it down to somewhere between Python, JavaScript, Rust, C++, or the boundaries between them." Caption: "Polyglot debugging: Now with 4x the stack traces!"
--->
 
 ---
 
