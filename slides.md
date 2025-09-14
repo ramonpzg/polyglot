@@ -320,7 +320,7 @@ CRITICAL SECTION: This is where we provide real value
 
 ---
 layout: image-left
-image: ./images/placeholder.jpg
+image: ./images/adventure.png
 transition: slide-up
 ---
 
@@ -367,13 +367,6 @@ Is it worth the complexity?
 If yes to all embrace the polyglot
 
 </div>
-
-
-<!--
-IMAGE GENERATION: Choose Your Own Polyglot Adventure book cover
-Style: Retro 1980s "Choose Your Own Adventure" book cover parody
-Description: Book cover titled "Choose Your Own Polyglot Adventure" with subtitle "Will You Survive the FFI?" Shows a developer at a crossroads with three paths: left path labeled "Rewrite Everything in Rust" leading to a mountain, middle path "Keep it Pure Python" leading to a swamp labeled "Performance Issues", right path "Go Polyglot" leading to a complex but beautiful city. Vintage book cover aesthetic with worn edges.
--->
 
 <!--
 Practical decision framework. Sets up when polyglot makes sense vs when it's just over-engineering.
@@ -526,8 +519,7 @@ Visual representation of how data flows through polyglot system. Python maintain
 -->
 
 ---
-layout: image-right
-image: ./images/placeholder.jpg
+layout: center
 ---
 
 # Integration Matrix
@@ -626,8 +618,6 @@ layout: section
 ---
 
 # Build Patterns
-
-How polyglot projects actually get built
 
 <!--
 TIMING: 8 minutes for build patterns
@@ -861,7 +851,7 @@ steps:
 
 ---
 
-# Testing Polyglot Code
+# Testing Multiple Languages Code
 
 <div class="grid grid-cols-2 gap-8">
 
@@ -1001,20 +991,20 @@ cibuildwheel --platform linux
 
 <div v-click="2" class="mt-8 text-center">
 
-Users never see the polyglot complexity. Just Python.
+Python only
 
 </div>
 
 ---
 
-# When Builds Break
+# Builds will Break
 
 
 **Common failure points:**
 
 ```bash
 # JavaScript: The node_modules abyss
-Error: Cannot find module 'left-pad'
+Error: Cannot find module '...'
 # Solution: rm -rf node_modules package-lock.json && npm install
 
 # Rust: Linking errors
@@ -1053,536 +1043,14 @@ Build failures teach you about linking, ABIs, and why Docker exists.
 
 ---
 layout: section
----
-
-# War Stories
-
-Where polyglot goes wrong
-
-<!--
-TIMING: 10 minutes for war stories
-TONE: Humor is good here - everyone has these problems
-EMPHASIZE: These aren't reasons to avoid polyglot, just reality
--->
-
----
-layout: center
----
-
-# JS + Python Async
-
-e.g., Real-time dashboard for trading system
-
-```javascript
-// JavaScript WebSocket handler
-ws.on('message', async (data) => {
-  const result = await processData(data)
-  ws.send(result)  // Sent out of order!
-})
-```
-
-```python
-# Python side assumes ordered messages
-async def handle_stream(websocket):
-    sequence = 0
-    async for message in websocket:
-        if message.seq != sequence + 1:
-            # 💥 Messages arrived out of order
-            raise ProtocolError("Sequence broken")
-```
-Takeaway
-
-- JavaScript's event loop != Python's assumptions about ordering
-- Explicit sequence numbers and buffering on both sides
-
-<!--
-IMAGE GENERATION: Async message ordering chaos
-Style: Black and white New Yorker style gag cartoon
-Description: A restaurant kitchen scene. A waiter (labeled "JavaScript") is rapidly passing orders to a chef (labeled "Python"). The orders are flying through the air in chaos - some arriving out of order, some colliding mid-air. The chef looks panicked, holding orders numbered "3", "1", "5" while looking for "2" and "4". The waiter cheerfully says "They're all async, you'll figure it out!" Caption: "When JavaScript's event loop meets Python's expectations."
-
-SPEAKER NOTE: This usually gets a laugh - pause for effect
--->
-
----
-layout: two-cols-header
----
-
-# Rust + Python: The Ownership Battle
-
-::left::
-
-**The setup:** High-frequency data processor
-
-**What went wrong:**
-```rust
-#[pyfunction]
-fn process_data(data: &PyList) -> PyResult<Vec<f64>> {
-    // Rust borrows data immutably
-    let results = parallel_process(&data)?;
-
-    // Meanwhile in another thread...
-    // Python modifies the list 💥
-    Ok(results)
-}
-```
-
-::right::
-
-```python
-# Python has no concept of Rust's borrowing rules
-data = [1, 2, 3, 4, 5]
-future = rust_module.process_data_async(data)
-data.append(6)  # Modified while Rust is borrowing!
-result = await future  # Segfault or corrupted data
-```
-
-**The lesson:** Rust's safety guarantees end at the FFI boundary
-
-**The fix:** Always copy data at boundaries or use Arc<Mutex<>>
-
-<style>
-.two-cols-header {
-  column-gap: 25px; /* Adjust the gap size as needed */
-}
-</style>
-
----
-layout: image-right
-image: ./images/placeholder.jpg
----
-
-# The GIL Deadlock
-
-**The setup:** ML inference engine with callbacks
-
-**What went wrong:**
-```cpp
-// C++ thread pool for inference
-void infer(py::function callback) {
-    std::thread([callback]() {
-        auto result = run_model();
-        callback(result);  // 💥 Tries to acquire GIL
-    }).detach();
-}
-```
-
-```python
-# Python callback needs GIL
-def handle_result(result):
-    # GIL is held by main thread
-    self.results.append(result)
-# Main thread
-model.infer(handle_result)
-time.sleep(1)  # Holds GIL during sleep!
-```
-
-C++ threads + Python callbacks = GIL nightmare
-
-Release GIL explicitly, use queues for comms
-
-<!--
-IMAGE GENERATION: GIL bottleneck visualization
-Style: Black and white New Yorker style gag cartoon
-Description: A narrow doorway labeled "GIL" (Global Interpreter Lock). On one side, multiple C++ threads (drawn as runners) are queued up trying to get through. On the other side, a single Python thread is leisurely walking through while the others wait. One C++ thread says to another: "I thought parallel meant parallel." The other responds: "Welcome to Python." Caption: "The GIL: Where parallelism goes to become concurrent."
--->
-
----
-
-# Zig + Python: The ABI Assumption
-
-**The setup:** SIMD-optimized math library
-
-**What went wrong:**
-```zig
-// Zig assumes C ABI
-export fn matrix_multiply(a: [*]f64, b: [*]f64, out: [*]f64, n: usize) void {
-    // SIMD operations assume aligned memory
-    @setRuntimeSafety(false);
-    // Process 4 doubles at once (32-byte aligned)
-    const vec_a = @ptrCast(*const @Vector(4, f64), a);
-    // 💥 Python's numpy array not aligned!
-}
-```
-
-```python
-# Python/NumPy doesn't guarantee alignment
-a = np.random.rand(1000, 1000)  # Maybe aligned, maybe not
-result = zig_lib.matrix_multiply(
-    a.ctypes.data,  # Could be misaligned!
-    b.ctypes.data,
-    out.ctypes.data,
-    1000
-)
-# Segfault on AVX instructions
-```
-
-Language X's assumptions != Language Y's guarantees /
-Check alignment or copy if needed
-
----
-
-# Error Handling Across Boundaries
-
-<div class="grid grid-cols-2 gap-8">
-
-<div>
-
-**The Problem:**
-
-Each language has different error models:
-- Python: Exceptions
-- Rust: Result<T, E>
-- JavaScript: Exceptions + Promises
-- C++: Exceptions (maybe)
-- Zig: Error unions
-
-```python
-try:
-    result = rust_func()
-except Exception as e:
-    # Is this a Rust panic?
-    # A Python exception?
-    # Memory corruption?
-    # Who knows!
-    pass
-```
-
-</div>
-
-<div>
-
-**The Solution:**
-
-Standardize at boundaries:
-
-```rust
-#[pyfunction]
-fn safe_process(data: &PyAny) -> PyResult<PyObject> {
-    match internal_process(data) {
-        Ok(result) => Ok(result.into_py(py)),
-        Err(e) => match e {
-            Error::InvalidInput(msg) =>
-                Err(PyValueError::new_err(msg)),
-            Error::Internal(msg) =>
-                Err(PyRuntimeError::new_err(msg)),
-            _ => Err(PyException::new_err("Unknown"))
-        }
-    }
-}
-```
-
-Always map to Python exceptions at boundary.
-
-</div>
-
-</div>
-
----
-
-# Memory Management
-
-```python
-# Looks innocent enough
-def process_video(video_path):
-    frames = rust_module.decode_video(video_path)  # Returns 4GB of frames
-    processed = cpp_module.apply_filters(frames)   # Copies? References?
-    result = js_bridge.stream_to_client(processed) # Who owns memory now?
-    return result  # When does memory get freed?
-```
-
-<div v-click="1">
-
-**Memory ownership across languages:**
-
-| From → To | Ownership Transfer | Gotcha |
-|-----------|-------------------|---------|
-| Python → Rust | Rust borrows or copies | Python can mutate during borrow |
-| Rust → Python | Python owns new object | Must increment refcount |
-| Python → C++ | C++ copies or views | Views invalid after Python GC |
-| C++ → Python | Depends on binding | Memory leaks if unclear |
-| JS → Python | Always copies | Network serialization cost |
-
-</div>
-
-<div v-click="2" class="mt-8">
-
-**The Three Rules:**
-1. Copy at boundaries (safe but slow)
-2. Transfer ownership explicitly (fast but complex)
-3. Never share mutable state (unless you love debugging)
-
-</div>
-
----
-
-# Debugging Part 1
-
-Simulating cross-language stack traces with Pyodide:
-
-```python {monaco-run}
-# Run this in your browser - powered by Pyodide!
-import json
-import time
-
-class PolyglotDebugger:
-    def __init__(self):
-        self.call_stack = []
-        self.error_count = 0
-
-    def trace_call(self, lang, func_name, args):
-        """Track calls across language boundaries"""
-        entry = {
-            'language': lang,
-            'function': func_name,
-            'args': str(args)[:30],
-            'timestamp': time.time()
-        }
-        self.call_stack.append(entry)
-        return f"→ {lang}: {func_name}"
-
-    def simulate_polyglot_execution(self):
-        """Simulate a typical polyglot call chain"""
-        print("=== SIMULATING POLYGLOT EXECUTION ===\n")
-
-        # Python initiates
-        print(self.trace_call("Python", "handle_request", {"endpoint": "/api/process"}))
-
-        # Calls JavaScript for validation
-        print(self.trace_call("JavaScript", "validateInput", {"data": "user_input"}))
-
-        # JS calls Rust for heavy computation
-        print(self.trace_call("Rust", "compute_parallel", {"size": 10000}))
-
-        # Rust calls C++ for SIMD operations
-        print(self.trace_call("C++", "simd_multiply", {"matrices": 2}))
-
-        # Error occurs!
-        print("\n✗ ERROR: Segmentation fault in C++!")
-        self.print_stack()
-
-    def print_stack(self):
-        print("\n=== POLYGLOT STACK TRACE ===")
-        for i, call in enumerate(reversed(self.call_stack)):
-            print(f"#{i} {call['language']}: {call['function']}({call['args']})")
-        print("=============================")
-
-# Run the simulation
-debugger = PolyglotDebugger()
-debugger.simulate_polyglot_execution()
-
-print("\n💡 The error is in C++, but originated from Python!")
-print("📝 Each language adds a layer to the stack.")
-```
-
----
-
-# Debugging Part 2
-
-Interactive boundary debugging pattern:
-
-```python {monaco-run}
-# Practical debugging wrapper for polyglot calls
-import time
-from typing import Any, Callable
-
-class BoundaryDebugger:
-    """Add this to every language boundary in your polyglot project"""
-
-    def __init__(self, verbose=True):
-        self.verbose = verbose
-        self.call_history = []
-
-    def wrap_call(self, language: str, func_name: str):
-        """Decorator to wrap polyglot function calls"""
-        def decorator(func: Callable):
-            def wrapper(*args, **kwargs):
-                call_id = len(self.call_history)
-
-                # Log entry
-                if self.verbose:
-                    print(f"[{call_id}] ENTER {language}::{func_name}")
-                    print(f"     Args: {args[:2] if args else 'none'}")  # Truncate for display
-
-                start_time = time.perf_counter()
-                error = None
-                result = None
-
-                try:
-                    # Simulate the actual call
-                    result = func(*args, **kwargs)
-                except Exception as e:
-                    error = str(e)
-                    if self.verbose:
-                        print(f"[{call_id}] ERROR in {language}: {error}")
-                    raise
-                finally:
-                    elapsed = (time.perf_counter() - start_time) * 1000
-
-                    # Log exit
-                    if self.verbose:
-                        print(f"[{call_id}] EXIT  {language}::{func_name} ({elapsed:.2f}ms)")
-
-                    # Record call
-                    self.call_history.append({
-                        'id': call_id,
-                        'language': language,
-                        'function': func_name,
-                        'duration_ms': elapsed,
-                        'error': error
-                    })
-
-                return result
-            return wrapper
-        return decorator
-
-    def get_slowest_calls(self, n=3):
-        """Find performance bottlenecks"""
-        sorted_calls = sorted(self.call_history,
-                            key=lambda x: x['duration_ms'],
-                            reverse=True)
-        return sorted_calls[:n]
-
-# Example usage
-debugger = BoundaryDebugger()
-
-@debugger.wrap_call("Python", "process_data")
-def process_data(data):
-    time.sleep(0.01)  # Simulate work
-    return len(data)
-
-@debugger.wrap_call("Rust", "heavy_compute")
-def heavy_compute(size):
-    time.sleep(0.02)  # Simulate Rust processing
-    return size * 2
-
-@debugger.wrap_call("JavaScript", "update_ui")
-def update_ui(result):
-    time.sleep(0.005)  # Simulate UI update
-    return f"Updated: {result}"
-
-# Run the wrapped functions
-print("=== EXECUTING POLYGLOT PIPELINE ===\n")
-data = "Hello from Pyodide!"
-result1 = process_data(data)
-result2 = heavy_compute(result1)
-result3 = update_ui(result2)
-
-print(f"\n=== PERFORMANCE ANALYSIS ===")
-for call in debugger.get_slowest_calls():
-    print(f"{call['language']}: {call['function']} took {call['duration_ms']:.2f}ms")
-```
-
----
-
-# Debugging Part 3
-
-Memory tracking across boundaries:
-
-```python {monaco-run}
-# Track memory ownership across language boundaries
-import sys
-import gc
-
-class MemoryTracker:
-    """Track object lifecycle across polyglot boundaries"""
-
-    def __init__(self):
-        self.objects = {}
-        self.ownership = {}
-
-    def register_object(self, obj_id: str, language: str, size_bytes: int):
-        """Register object creation"""
-        self.objects[obj_id] = {
-            'language': language,
-            'size': size_bytes,
-            'transferred_to': None,
-            'alive': True
-        }
-        print(f"✓ {language} created {obj_id} ({size_bytes} bytes)")
-
-    def transfer_ownership(self, obj_id: str, from_lang: str, to_lang: str):
-        """Track ownership transfer between languages"""
-        if obj_id in self.objects:
-            self.objects[obj_id]['transferred_to'] = to_lang
-            print(f"→ {obj_id}: {from_lang} → {to_lang}")
-        else:
-            print(f"⚠ Unknown object: {obj_id}")
-
-    def release_object(self, obj_id: str, language: str):
-        """Mark object as released"""
-        if obj_id in self.objects:
-            obj = self.objects[obj_id]
-            if obj['alive']:
-                obj['alive'] = False
-                print(f"✗ {language} released {obj_id}")
-            else:
-                print(f"⚠ DOUBLE FREE: {obj_id} already released!")
-        else:
-            print(f"⚠ Trying to free unknown object: {obj_id}")
-
-    def check_leaks(self):
-        """Find potential memory leaks"""
-        print("\n=== MEMORY LEAK CHECK ===")
-        leaks = [k for k, v in self.objects.items() if v['alive']]
-        if leaks:
-            for obj_id in leaks:
-                obj = self.objects[obj_id]
-                print(f"LEAK: {obj_id} ({obj['size']} bytes) from {obj['language']}")
-        else:
-            print("✓ No memory leaks detected")
-
-# Simulate polyglot memory management
-tracker = MemoryTracker()
-
-print("=== SIMULATING POLYGLOT MEMORY FLOW ===\n")
-
-# Python creates data
-tracker.register_object("numpy_array_1", "Python", 8000)
-
-# Transfer to Rust for processing
-tracker.transfer_ownership("numpy_array_1", "Python", "Rust")
-
-# Rust creates result
-tracker.register_object("rust_result_1", "Rust", 4000)
-
-# Transfer back to Python
-tracker.transfer_ownership("rust_result_1", "Rust", "Python")
-
-# Python properly releases Rust result
-tracker.release_object("rust_result_1", "Python")
-
-# Oops! Forgot to release the numpy array
-# tracker.release_object("numpy_array_1", "Rust")  # Commented out to show leak
-
-# Check for leaks
-tracker.check_leaks()
-
-print("\n💡 Common issues:")
-print("• Python GC vs manual memory management")
-print("• Reference counting across FFI boundaries")
-print("• Ownership confusion between languages")
-```
-
-<div v-click class="mt-4 text-sm opacity-80">
-
-**Real tools for production debugging:**
-- `valgrind --leak-check=full` for memory leaks
-- `py-spy top` for Python profiling
-- `gdb` with Python extensions for native code
-- Structured logging with correlation IDs
-
-</div>
-
----
-layout: center
 transition: slide-up
 ---
 
-# Real-World Examples
+# Code Examples
 
 <div v-click class="mt-8">
 
-Time for some actual code.
+Show me the code
 
 </div>
 
@@ -1628,9 +1096,7 @@ Transition to practical examples. Preview what's coming with integration pattern
 layout: section
 ---
 
-# Part II: Language Showcase
-
-Same problem, four solutions, one Python conductor
+# Part II: Working with Different Languages
 
 <!--
 TIMING: 5 minutes for language showcase
@@ -1674,7 +1140,7 @@ $$
 </div>
 
 <div v-click="4" class="mt-4 text-sm opacity-60">
-Haversine formula - where <span v-mark.underline.blue="5">$\phi$ = latitude</span>, <span v-mark.underline.green="6">$\lambda$ = longitude</span>, $r$ = Earth's radius
+Haversine formula - where <span v-mark.underline.blue="5"> Φ = latitude </span>, <span v-mark.underline.green="6">λ = longitude</span>, r = Earth's radius
 </div>
 
 <div
@@ -1851,7 +1317,7 @@ backgroundSize: contain
 
 <div v-click="7" class="mt-8 text-center text-sm opacity-80">
 
-**But here's the thing:** Speed isn't everything.
+Speed matters but it still "depends"
 
 </div>
 
@@ -1914,247 +1380,6 @@ transition: slide-up
 <div v-click="5" class="mt-12 text-center">
 
 Each language excels. Python orchestrates.
-
-</div>
-
----
-layout: two-cols
-layoutClass: gap-8
----
-
-# Live Coding Playground
-
-<div>
-
-Edit and run Python integration code:
-
-```python {monaco}
-# Python orchestrator example
-import asyncio
-import json
-
-class PolyglotOrchestrator:
-    def __init__(self):
-        self.js_bridge = None
-        self.rust_service = None
-
-    async def process_data(self, coordinates):
-        # Route to appropriate language
-        if len(coordinates) > 10000:
-            return await self.rust_service.bulk_process(coordinates)
-        else:
-            return await self.js_bridge.realtime_process(coordinates)
-
-    def benchmark_all(self, data):
-        results = {}
-        for lang in ['js', 'rust', 'cpp', 'zig']:
-            start = time.time()
-            result = self.call_language(lang, data)
-            results[lang] = time.time() - start
-        return results
-
-# Test the orchestrator
-orchestra = PolyglotOrchestrator()
-print("Python: The conductor of the performance symphony")
-```
-
-</div>
-
-::right::
-
-<div>
-
-<h3 v-click="1">
-  <span v-mark.red="2">Performance</span> vs
-  <span v-mark.blue="3">Developer Experience</span>
-</h3>
-
-<div v-click="4" class="mt-4">
-
-Each language optimizes for different goals:
-
-</div>
-
-<div class="space-y-3 mt-6">
-
-<div v-motion
-  :initial="{ x: -50, opacity: 0 }"
-  :click-5="{ x: 0, opacity: 1, transition: { delay: 0 } }">
-  <span class="font-mono text-sm bg-yellow-50 px-2 py-1 rounded">JavaScript</span>
-  <span v-mark.underline.orange="6">Ecosystem reach</span>
-</div>
-
-<div v-motion
-  :initial="{ x: -50, opacity: 0 }"
-  :click-5="{ x: 0, opacity: 1, transition: { delay: 200 } }">
-  <span class="font-mono text-sm bg-orange-50 px-2 py-1 rounded">Rust</span>
-  Memory safety <span v-mark.circle.red="7">without garbage collection</span>
-</div>
-
-<div v-motion
-  :initial="{ x: -50, opacity: 0 }"
-  :click-5="{ x: 0, opacity: 1, transition: { delay: 400 } }">
-  <span class="font-mono text-sm bg-blue-50 px-2 py-1 rounded">C++</span>
-  <span v-mark.highlight.yellow="8">Decades of optimization</span>
-</div>
-
-<div v-motion
-  :initial="{ x: -50, opacity: 0 }"
-  :click-5="{ x: 0, opacity: 1, transition: { delay: 600 } }">
-  <span class="font-mono text-sm bg-purple-50 px-2 py-1 rounded">Zig</span>
-  No hidden performance costs
-</div>
-
-</div>
-
-<div v-click="9" class="mt-8 text-center text-sm opacity-80">
-
-<span v-mark.box.green="10">**Python ties them all together**</span>
-
-</div>
-
-</div>
-
-<!-----
-layout: center
----
-
-# Choose Your Integration Adventure
-
-<div class="mt-8">
-
-<div v-click="1" class="grid grid-cols-2 gap-6">
-
-<div
-  v-motion
-  :initial="{ y: 50, opacity: 0 }"
-  :click-2="{ y: 0, opacity: 1, transition: { delay: 0 } }"
-  class="p-6 border-2 border-yellow-300 rounded-lg bg-yellow-50 cursor-pointer hover:scale-105 transition-transform"
-  @click="$slidev.nav.go(50)">
-
-  <div class="text-center">
-    <h3>Real-time Dashboard</h3>
-    <div class="text-sm opacity-80 mt-2">
-      Python + JavaScript via WebSockets
-    </div>
-    <div class="text-xs mt-2 font-mono bg-yellow-200 px-2 py-1 rounded">
-      Click to explore →
-    </div>
-  </div>
-</div>
-
-<div
-  v-motion
-  :initial="{ y: 50, opacity: 0 }"
-  :click-3="{ y: 0, opacity: 1, transition: { delay: 200 } }"
-  class="p-6 border-2 border-orange-300 rounded-lg bg-orange-50 cursor-pointer hover:scale-105 transition-transform"
-  @click="$slidev.nav.go(60)">
-
-  <div class="text-center">
-    <h3>Data Visualization</h3>
-    <div class="text-sm opacity-80 mt-2">
-      Python + Rust HTTP service
-    </div>
-    <div class="text-xs mt-2 font-mono bg-orange-200 px-2 py-1 rounded">
-      Click to explore →
-    </div>
-  </div>
-</div>
-
-<div
-  v-motion
-  :initial="{ y: 50, opacity: 0 }"
-  :click-4="{ y: 0, opacity: 1, transition: { delay: 400 } }"
-  class="p-6 border-2 border-blue-300 rounded-lg bg-blue-50 cursor-pointer hover:scale-105 transition-transform"
-  @click="$slidev.nav.go(70)">
-
-  <div class="text-center">
-    <h3>ML Inference</h3>
-    <div class="text-sm opacity-80 mt-2">
-      Python + C++ native extensions
-    </div>
-    <div class="text-xs mt-2 font-mono bg-blue-200 px-2 py-1 rounded">
-      Click to explore →
-    </div>
-  </div>
-</div>
-
-<div
-  v-motion
-  :initial="{ y: 50, opacity: 0 }"
-  :click-5="{ y: 0, opacity: 1, transition: { delay: 600 } }"
-  class="p-6 border-2 border-purple-300 rounded-lg bg-purple-50 cursor-pointer hover:scale-105 transition-transform"
-  @click="$slidev.nav.go(80)">
-
-  <div class="text-center">
-    <h3>Hurricane Tracking</h3>
-    <div class="text-sm opacity-80 mt-2">
-      Python + Zig SIMD calculations
-    </div>
-    <div class="text-xs mt-2 font-mono bg-purple-200 px-2 py-1 rounded">
-      Click to explore →
-    </div>
-  </div>
-</div>
-
-</div>
-
-</div>
-
-<div v-click="6" class="mt-8 text-center text-sm opacity-80">
-<span v-mark.highlight.green="7">Interactive navigation:</span> Click any card to jump to that example
-</div>-->
-
----
-transition: slide-left
----
-
-# Live Polyglot: PyScript + Pyodide
-
-Python running directly in your browser (no server needed):
-
-```python {monaco-run}
-# Python via Pyodide - runs in browser!
-import math
-import json
-
-def haversine_distance(lat1, lon1, lat2, lon2):
-    """Calculate distance between two points on Earth"""
-    R = 6371  # Earth's radius in km
-
-    # Convert to radians
-    lat1, lon1, lat2, lon2 = map(math.radians, [lat1, lon1, lat2, lon2])
-
-    # Haversine formula
-    dlat = lat2 - lat1
-    dlon = lon2 - lon1
-    a = math.sin(dlat/2)**2 + math.cos(lat1) * math.cos(lat2) * math.sin(dlon/2)**2
-    c = 2 * math.asin(math.sqrt(a))
-
-    return R * c
-
-# Test with Caribbean coordinates
-santo_domingo = (18.4861, -69.9312)
-miami = (25.7617, -80.1918)
-distance = haversine_distance(*santo_domingo, *miami)
-
-print(f"Distance: {distance:.2f} km")
-print(f"Flight time: ~{distance/800:.1f} hours")
-
-# Now let's compare with JavaScript performance
-import time
-start = time.perf_counter()
-for _ in range(10000):
-    haversine_distance(*santo_domingo, *miami)
-elapsed = (time.perf_counter() - start) * 1000
-print(f"Python (Pyodide): {elapsed:.2f}ms for 10k calculations")
-```
-
-<div v-click class="mt-4">
-
-**The polyglot twist:** Pyodide is CPython compiled to WebAssembly using Emscripten (C++)!
-
-Python → C → WebAssembly → JavaScript VM → Your browser
 
 </div>
 
@@ -2367,7 +1592,7 @@ class OutbackMonitor {
 
 ---
 
-# Why This Architecture Works
+# Architecture
 
 ```mermaid {scale: 0.8}
 graph LR
@@ -2383,6 +1608,7 @@ graph LR
 ```
 
 **Python handles:** Data simulation, WebSocket server, CLI interface, packaging
+
 **JavaScript handles:** Real-time rendering, user interaction, smooth animations
 
 Each language does what it's best at.
@@ -2421,7 +1647,7 @@ outback-monitor --region victoria
 
 **When it makes sense:**
 - Real-time web interfaces
-- Interactive visualizations
+- Interactive visualisations
 - Existing JavaScript ecosystem needs
 
 **Pattern:** WebSocket bridge or embedded static files
@@ -2449,7 +1675,7 @@ EMPHASIZE: maturin makes it easy
 
 # The Problem
 
-Bushfire simulation needs real-time performance:
+Bushfire simulation benefits from real-time performance because:
 
 - **Thousands of cells** updated per simulation step
 - **Complex fire physics** - wind, humidity, temperature interactions
@@ -2457,6 +1683,7 @@ Bushfire simulation needs real-time performance:
 - **Memory efficiency** for long-running simulations
 
 Pure Python: **~2 seconds** for 100x100 grid, 50 steps
+
 With Rust: **~0.02 seconds** - **100x faster**
 
 ---
@@ -2482,7 +1709,7 @@ Pure Python: 2.15 seconds (too slow for real-time)
 
 ---
 
-**Step 3: Polyglot Solution**
+**Step 3: Multi-language Solution**
 ```bash
 pip install bushfire-sim
 bushfire-sim simulate --danger catastrophic --show
@@ -2575,7 +1802,7 @@ class BushfireModel:
 
 ---
 
-# Why Rust + Python Works
+# Rust + Python
 
 ```mermaid {scale: 0.45}
 graph LR
@@ -2596,6 +1823,7 @@ graph LR
 ```
 
 **Rust handles:** Intensive computation, memory management, parallelization
+
 **Python handles:** API design, visualization, integration, user experience
 
 ---
@@ -2610,7 +1838,7 @@ Real benchmark on 100x100 grid, 50 simulation steps:
 | **Rust + Python** | **0.021s** | **~5MB** | **100x** |
 
 **Why such dramatic improvement?**
-- **Parallel processing**: Rayon utilizes all CPU cores
+- **Parallel processing**: Rayon uses all CPU cores
 - **Zero-copy operations**: No Python object overhead in tight loops
 - **Memory layout**: Contiguous arrays vs Python object graphs
 - **No GIL**: True parallelism, not just concurrency
@@ -2929,7 +2157,8 @@ bush-ears monitor --headless  # API-only server for custom UIs
 layout: section
 ---
 
-Zig + Python
+# Zig + Python
+
 Real-Time Meteorological Computing for the Caribbean
 
 <!--
@@ -2949,7 +2178,7 @@ Caribbean meteorology demands both precision and speed:
 - **Massive coordinate processing** - Haversine calculations for thousands of points
 - **Memory efficiency** - continuous monitoring during hurricane season
 
-**The computational truth:** Most "Python weather" is actually C/Fortran under the hood
+Most "Python weather prediction" is offloaded to C/Fortran under the hood
 (NumPy, SciPy, MetPy, Cartopy)
 
 ---
@@ -3205,16 +2434,12 @@ What you actually need to know
 
 ---
 
-# The Truth About Polyglot
+# Notes on Multi-Language Development
 
 <div v-click="1" class="mt-8">
 
-**A polyglot project can fail because:**
+**A project may fail because:**
 
-<!--
-REALITY CHECK: Be honest here - builds trust
-TIMING: 2 minutes
--->
 - Wrong problem identification
 - Underestimating integration cost
 - Team lacks multi-language expertise
@@ -3224,7 +2449,7 @@ TIMING: 2 minutes
 
 <div v-click="2" class="mt-8">
 
-**Successful polyglot projects:**
+**Projects may succeed because:**
 - Profile first, found actual bottleneck
 - Clear performance requirements (10x improvement minimum)
 - Single language can't solve it
@@ -3235,38 +2460,6 @@ TIMING: 2 minutes
 <div v-click="3" class="mt-8 text-center">
 
 Success rate: ~20% in my experience.
-
-</div>
-
----
-
-# Tomorrow Morning
-
-<div class="mt-8">
-
-**Step 1:** Profile your slowest endpoint
-```bash
-python -m cProfile -o profile.out your_app.py
-snakeviz profile.out
-```
-
-**Step 2:** If it's CPU-bound and takes >1 second:
-```python
-# Extract the hot loop to a separate function
-def hot_function(data):
-    # This is your optimization target
-    pass
-```
-
-**Step 3:** Prototype in target language
-- JavaScript: If you need real-time UI
-- Rust: If you need memory safety + speed
-- C++: If you need absolute performance
-- Zig: If you need SIMD/vectorization
-
-**Step 4:** Measure actual improvement
-
-If < 10x improvement: **Stop. Not worth it.**
 
 </div>
 
@@ -3318,12 +2511,12 @@ lldb for C++/Rust debugging
 
 <div v-click class="mt-8 text-center text-sm opacity-80">
 
-All examples from this talk: **github.com/[your-username]/pycon-polyglot**
+All examples from this talk: **github.com/ramonpzg/polyglot**
 
 </div>
 
 ---
-layout: end
+layout: section
 ---
 
 # Final Thought
@@ -3345,31 +2538,3 @@ By being the best orchestrator.
 **Contact:** [ramon@artesan.sh] | **Slides:** [https://github.com/ramonpzg/polyglot]
 
 </div>
-
----
-
-# Image Generation Guide
-
-**All placeholder images point to: `./images/placeholder.jpg`**
-
-## Complete Image Generation Prompts
-
-**Orchestra Conductor (Slide 3):** Python as orchestra conductor - Professional illustration, tech conference appropriate. A blue and yellow Python snake logo dressed as an orchestra conductor, holding a baton, standing on a podium. In the orchestra pit are smaller logos/mascots: JavaScript (yellow JS square), Rust (black gear with R), C++ (blue C++ text), and Zig (orange zigzag). The Python conductor is clearly in charge, directing the other languages. Background should be minimal, focus on the conductor metaphor.
-
-**Python or Rust Meme (Slide 5):** Black and white New Yorker style gag cartoon. Two developers standing in front of a whiteboard covered in code. One developer is pointing at the code saying "It's definitely Python!" while the other says "No, it's Rust with Python bindings!" The code on the whiteboard should be ambiguous, showing something like "import polars" or "from ruff import". Caption at bottom: "The eternal question in modern Python development."
-
-**Racing Circuit (Slide 6):** Programming languages as race cars - Technical diagram/infographic style. Top-down view of a racing circuit. Different programming languages as vehicles: C++ as a Formula 1 car (sleek, fast), Rust as a McLaren (modern, safe), JavaScript as a rally car (versatile, everywhere), and Python as the pit crew team (not racing but coordinating everything). The pit lane should be prominent with Python crew members managing all the cars. Track should have labels like "Performance Corner", "Memory Management Straight", "Concurrency Chicane".
-
-**Pit Crew Meme (Slide 6):** Black and white New Yorker style gag cartoon. A Formula 1 pit stop scene. The race car (labeled "C++") is in the pit with wheels being changed. The pit crew chief (wearing a shirt with Python logo) is holding a clipboard and stopwatch, coordinating the team. One crew member is saying "But we could optimize the tire change algorithm!" The chief responds "Just change the tires, we'll optimize in Python later." Caption: "Sometimes the best optimization is knowing when not to optimize."
-
-**Choose Your Adventure (Slide 10):** Retro 1980s "Choose Your Own Adventure" book cover parody. Book cover titled "Choose Your Own Polyglot Adventure" with subtitle "Will You Survive the FFI?" Shows a developer at a crossroads with three paths: left path labeled "Rewrite Everything in Rust" leading to a mountain, middle path "Keep it Pure Python" leading to a swamp labeled "Performance Issues", right path "Go Polyglot" leading to a complex but beautiful city. Vintage book cover aesthetic with worn edges.
-
-**FFI Bindings Meme (Slide 15):** Black and white New Yorker style gag cartoon. A detective scene in an office. A detective is pointing at a crime board with strings connecting various items: "Segfault", "Memory leak", "Mysterious crash", "Works on my machine". All strings lead to a photo in the center labeled "FFI Bindings". The detective is saying to their partner: "It's ALWAYS the FFI bindings." Partner responds: "But we checked those three times!" Caption: "The usual suspect."
-
-**Async Chaos (Slide 27):** Black and white New Yorker style gag cartoon. A restaurant kitchen scene. A waiter (labeled "JavaScript") is rapidly passing orders to a chef (labeled "Python"). The orders are flying through the air in chaos - some arriving out of order, some colliding mid-air. The chef looks panicked, holding orders numbered "3", "1", "5" while looking for "2" and "4". The waiter cheerfully says "They're all async, you'll figure it out!" Caption: "When JavaScript's event loop meets Python's expectations."
-
-**GIL Bottleneck (Slide 29):** Black and white New Yorker style gag cartoon. A narrow doorway labeled "GIL" (Global Interpreter Lock). On one side, multiple C++ threads (drawn as runners) are queued up trying to get through. On the other side, a single Python thread is leisurely walking through while the others wait. One C++ thread says to another: "I thought parallel meant parallel." The other responds: "Welcome to Python." Caption: "The GIL: Where parallelism goes to become concurrent."
-
-**Performance Chart (Slide 40):** Clean, modern data visualization/infographic. Bar chart showing performance comparison for 1 million Haversine calculations. Python (2.1s) shown as long blue bar. JavaScript (0.8s) as medium yellow bar. Rust (0.12s) as short orange bar. C++ (0.08s) as tiny red bar. Zig (0.07s) as tiny purple bar. Include small icons for each language. Title: "1 Million Distance Calculations". Subtitle: "Shorter bars = faster execution". Clean, professional style suitable for technical presentation.
-
-**Final Debugging Meme (End):** Black and white New Yorker style gag cartoon. A developer sitting at a desk with multiple monitors. Each monitor shows a different debugger: "gdb" for C++, "pdb" for Python, "Chrome DevTools" for JavaScript, "rust-gdb" for Rust. The developer has multiple arms (like a Hindu deity) trying to use all debuggers simultaneously. A colleague walking by asks: "Found the bug yet?" Developer responds: "I've narrowed it down to somewhere between Python, JavaScript, Rust, C++, or the boundaries between them." Caption: "Polyglot debugging: Now with 4x the stack traces!"
