@@ -1,0 +1,29 @@
+[project]
+name = "bush-ears"
+version = "0.1.0"
+description = "Real-time Australian wildlife audio identification for ecosystem health monitoring"
+readme = "README.md"
+authors = [
+    { name = "Ramon Perez", email = "ramonpzg@protonmail.com" }
+]
+requires-python = ">=3.12"
+dependencies = [
+    "numpy>=1.24.0",
+    "click>=8.0.0",
+    "fastapi>=0.104.0",
+    "uvicorn>=0.24.0",
+    "websockets>=12.0",
+    "matplotlib>=3.7.0",
+    "scipy>=1.10.0",
+]
+
+[project.scripts]
+bush-ears = "bush_ears.cli:main"
+
+[tool.scikit-build]
+minimum-version = "build-system.requires"
+build-dir = "build/{wheel_tag}"
+
+[build-system]
+requires = ["scikit-build-core>=0.10", "pybind11"]
+build-backend = "scikit_build_core.build"
