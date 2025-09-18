@@ -39,7 +39,7 @@ That's not news.
 
 </div>
 
-<div @click="$slidev.nav.next" class="mt-12 py-1" hover:bg="white op-10">
+<div @click="$slidev.nav.next" class="mt-12 py-1 hover:bg-white hover:bg-opacity-10">
   <div v-click>
     There's a third option <carbon:arrow-right />
   </div>
@@ -2532,6 +2532,7 @@ Python has its stablished place as a glue language.
 Not by being fastest.<br/>
 By being the best orchestrator.
 
+</div>
 
 <div class="mt-12 text-center text-sm opacity-60">
 
