@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VisFlow - 3D Interactive Data Visualization Studio</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📊</text></svg>">
+    <link rel="stylesheet" href="/static/style.css">
+    
+    <!-- Monaco Editor -->
+    <script src="https://unpkg.com/monaco-editor@0.45.0/min/vs/loader.js"></script>
+    
+    <!-- Three.js -->
+    <script src="https://unpkg.com/three@0.158.0/build/three.min.js"></script>
+    <script src="https://unpkg.com/three@0.158.0/examples/js/controls/OrbitControls.js"></script>
+    
+    <!-- Additional Three.js utilities -->
+    <script src="https://unpkg.com/three@0.158.0/examples/js/loaders/GLTFLoader.js"></script>
+    <script src="https://unpkg.com/three@0.158.0/examples/js/postprocessing/EffectComposer.js"></script>
+</head>
+<body>
+    <!-- Top Navigation Bar -->
+    <header class="navbar">
+        <div class="navbar-brand">
+            <h1>📊 VisFlow</h1>
+            <span class="subtitle">3D Data Visualization Studio</span>
+        </div>
+        
+        <nav class="navbar-nav">
+            <button id="file-upload-btn" class="nav-btn" title="Upload Data File">
+                📁 Upload
+            </button>
+            <button id="examples-btn" class="nav-btn" title="Load Example Dataset">
+                🎯 Examples
+            </button>
+            <button id="export-btn" class="nav-btn" title="Export Visualization">
+                💾 Export
+            </button>
+            <button id="settings-btn" class="nav-btn" title="Settings">
+                ⚙️ Settings
+            </button>
+            <div class="connection-status" id="connection-status">
+                <span class="status-dot offline" id="status-dot"></span>
+                <span id="status-text">Connecting...</span>
+            </div>
+        </nav>
+        
+        <!-- Hidden file input -->
+        <input type="file" id="file-input" accept=".csv,.json" style="display: none;">
+    </header>
+
+    <!-- Main Application Layout -->
+    <div class="main-container">
+        <!-- Left Panel: Code Editor -->
+        <div class="left-panel" id="left-panel">
+            <div class="panel-header">
+                <h3>Python Code Editor</h3>
+                <div class="editor-controls">
+                    <button id="run-code-btn" class="primary-btn" title="Execute Code (Ctrl+R)">
+                        ▶️ Run
+                    </button>
+                    <button id="clear-editor-btn" class="secondary-btn" title="Clear Editor">
+                        🗑️ Clear
+                    </button>
+                </div>
+            </div>
+            
+            <div class="code-editor-container">
+                <div id="code-editor"></div>
+            </div>
+            
+            <!-- Quick Examples -->
+            <div class="quick-examples">
+                <h4>Quick Start Examples:</h4>
+                <div class="example-buttons">
+                    <button class="example-btn" data-example="fire-risk">🔥 Fire Risk</button>
+                    <button class="example-btn" data-example="particle-system">✨ Particles</button>
+                    <button class="example-btn" data-example="heatmap">🌡️ Heatmap</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Resizable Divider -->
+        <div class="resizer" id="horizontal-resizer"></div>
+
+        <!-- Right Panel: 3D Visualization -->
+        <div class="right-panel" id="right-panel">
+            <div class="panel-header">
+                <h3>3D Visualization</h3>
+                <div class="viz-controls">
+                    <button id="reset-camera-btn" class="control-btn" title="Reset Camera">
+                        🎯 Reset View
+                    </button>
+                    <button id="toggle-wireframe-btn" class="control-btn" title="Toggle Wireframe">
+                        🕸️ Wireframe
+                    </button>
+                    <button id="screenshot-btn" class="control-btn" title="Take Screenshot">
+                        📷 Screenshot
+                    </button>
+                </div>
+            </div>
+            
+            <div class="visualization-container">
+                <canvas id="three-canvas"></canvas>
+                
+                <!-- Loading Overlay -->
+                <div class="loading-overlay" id="loading-overlay">
+                    <div class="spinner"></div>
+                    <p>Processing data...</p>
+                </div>
+                
+                <!-- Welcome Screen -->
+                <div class="welcome-screen" id="welcome-screen">
+                    <div class="welcome-content">
+                        <h2>Welcome to VisFlow</h2>
+                        <p>Upload a dataset or select an example to get started!</p>
+                        
+                        <div class="welcome-actions">
+                            <button class="welcome-btn" onclick="document.getElementById('file-input').click()">
+                                📁 Upload CSV File
+                            </button>
+                            <button class="welcome-btn" id="load-bushfire-example">
+                                🔥 Bushfire Example
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Visualization Stats -->
+            <div class="viz-stats" id="viz-stats">
+                <div class="stat-item">
+                    <span class="stat-label">Objects:</span>
+                    <span class="stat-value" id="object-count">0</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Triangles:</span>
+                    <span class="stat-value" id="triangle-count">0</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">FPS:</span>
+                    <span class="stat-value" id="fps-counter">60</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bottom Panel: Data Preview & Logs (Collapsible) -->
+    <div class="bottom-panel" id="bottom-panel">
+        <div class="panel-toggle" id="bottom-panel-toggle">
+            <span>📊 Data & Logs</span>
+            <button class="toggle-btn">▲</button>
+        </div>
+        
+        <div class="bottom-content" id="bottom-content">
+            <div class="tabs">
+                <button class="tab-btn active" data-tab="data">📊 Data Preview</button>
+                <button class="tab-btn" data-tab="logs">📝 Console Logs</button>
+                <button class="tab-btn" data-tab="output">💻 Python Output</button>
+            </div>
+            
+            <div class="tab-content active" id="data-tab">
+                <div class="data-preview">
+                    <div class="dataset-selector">
+                        <select id="dataset-select">
+                            <option value="">No datasets loaded</option>
+                        </select>
+                        <button id="refresh-datasets-btn" class="small-btn">🔄</button>
+                    </div>
+                    
+                    <div class="data-table-container">
+                        <table id="data-table">
+                            <thead id="table-head"></thead>
+                            <tbody id="table-body"></tbody>
+                        </table>
+                        
+                        <div class="no-data-message" id="no-data-message">
+                            <p>No data to display. Upload a file or load an example dataset.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="tab-content" id="logs-tab">
+                <div class="console-logs">
+                    <div class="logs-header">
+                        <button id="clear-logs-btn" class="small-btn">🗑️ Clear</button>
+                    </div>
+                    <pre id="logs-content"></pre>
+                </div>
+            </div>
+            
+            <div class="tab-content" id="output-tab">
+                <div class="python-output">
+                    <div class="output-header">
+                        <button id="clear-output-btn" class="small-btn">🗑️ Clear</button>
+                    </div>
+                    <pre id="python-output-content"></pre>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modals -->
+    
+    <!-- Examples Modal -->
+    <div class="modal" id="examples-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Example Datasets</h2>
+                <button class="close-btn" data-modal="examples-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="examples-grid" id="examples-grid">
+                    <!-- Populated dynamically -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Settings Modal -->
+    <div class="modal" id="settings-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Settings</h2>
+                <button class="close-btn" data-modal="settings-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="settings-group">
+                    <h3>Editor</h3>
+                    <label>
+                        <input type="checkbox" id="auto-run-checkbox"> Auto-run code on changes
+                    </label>
+                    <label>
+                        Theme:
+                        <select id="theme-select">
+                            <option value="vs-dark">Dark</option>
+                            <option value="vs">Light</option>
+                        </select>
+                    </label>
+                </div>
+                
+                <div class="settings-group">
+                    <h3>Visualization</h3>
+                    <label>
+                        <input type="checkbox" id="anti-aliasing-checkbox" checked> Anti-aliasing
+                    </label>
+                    <label>
+                        <input type="checkbox" id="shadows-checkbox" checked> Shadows
+                    </label>
+                    <label>
+                        Max particles:
+                        <input type="number" id="max-particles-input" value="100000" min="1000" max="1000000">
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading Scripts -->
+    <script>
+        // Initialize Monaco Editor and load the main application
+        require.config({ 
+            paths: { 
+                'vs': 'https://unpkg.com/monaco-editor@0.45.0/min/vs' 
+            } 
+        });
+        
+        require(['vs/editor/editor.main'], function() {
+            // Monaco is now loaded, initialize the app
+            window.dispatchEvent(new CustomEvent('monaco-ready'));
+        });
+    </script>
+    
+    <!-- Main Application Script -->
+    <script src="/static/app.js"></script>
+</body>
+</html>

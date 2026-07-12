@@ -1,0 +1,24 @@
+[build-system]
+requires = ["scikit-build-core", "pybind11"]
+build-backend = "scikit_build_core.build"
+
+[project]
+name = "numcrunch"
+version = "0.1.0"
+description = "High-performance scientific computing with C++23"
+readme = "README.md"
+requires-python = ">=3.8"
+dependencies = [
+  "numpy>=1.24.0",
+  "pandas>=2.0.0",
+]
+
+[tool.scikit-build]
+cmake.minimum-version = "3.25"
+cmake.build-type = "Release"
+wheel.expand-macos-universal-tags = true
+
+[tool.scikit-build.cmake.define]
+CMAKE_CXX_STANDARD = "23"
+PYBIND11_FINDPYTHON = "ON"
+

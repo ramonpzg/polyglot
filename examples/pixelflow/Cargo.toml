@@ -1,0 +1,32 @@
+[package]
+name = "pixelflow"
+version = "0.1.0"
+edition = "2021"
+description = "Real-time satellite image processing for Australian environmental monitoring"
+license = "MIT OR Apache-2.0"
+
+[lib]
+name = "pixelflow"
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+# Parallelism (optional via feature)
+rayon = { version = "1.8", optional = true }
+
+# WASM bindings (optional via feature)
+wasm-bindgen = { version = "0.2", optional = true }
+
+# Python bindings (optional via feature)
+pyo3 = { version = "0.20", features = ["extension-module"], optional = true }
+numpy = { version = "0.20", optional = true }
+
+[features]
+default = ["parallel"]
+parallel = ["rayon"]
+python = ["pyo3", "numpy"]
+wasm = ["wasm-bindgen"]
+
+[[bin]]
+name = "pixelflow-cli"
+path = "src/main.rs"
+

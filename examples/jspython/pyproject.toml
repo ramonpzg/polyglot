@@ -1,0 +1,22 @@
+[project]
+name = "visflow"
+version = "0.1.0"
+description = "3D Interactive Data Visualization Studio"
+dependencies = [
+    "fastapi>=0.104.0",
+    "uvicorn>=0.24.0",
+    "websockets>=12.0",
+    "pandas>=2.1.0",
+    "numpy>=1.24.0",
+    "python-multipart>=0.0.6"
+]
+
+[project.scripts]
+visflow = "visflow.__main__:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/visflow"]

@@ -1,0 +1,37 @@
+[build-system]
+requires = ["maturin>=1.6,<2"]
+build-backend = "maturin"
+
+[project]
+name = "coolproject"
+version = "0.1.0"
+description = "Rust+Python GPU hillshade demo (Uluru vibe)."
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = [
+  "fastapi>=0.111",
+  "uvicorn[standard]>=0.30",
+  "numpy>=1.26",
+  "pillow>=10.0",
+]
+authors = [{ name = "You", email = "you@example.com" }]
+license = { text = "MIT" }
+
+[project.urls]
+Homepage = "https://example.com"
+
+[project.scripts]
+coolproject = "coolproject.cli:main"
+
+[tool.maturin]
+python-source = "src"
+manifest-path = "crates/hillshade-py/Cargo.toml"
+module-name = "coolproject._hillshade"
+features = ["pyo3/extension-module"]
+
+[workspace]
+members = [
+    "crates/hillshade-core",
+    "crates/hillshade-py",
+]
+resolver = "2"
