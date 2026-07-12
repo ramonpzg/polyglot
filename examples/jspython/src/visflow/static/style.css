@@ -1,0 +1,167 @@
+/* VisFlow Styles */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #1e1e1e;
+    color: #ffffff;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+header {
+    background-color: #2d2d30;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #3c3c3c;
+}
+
+header h1 {
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.toolbar {
+    display: flex;
+    gap: 0.5rem;
+}
+
+button {
+    background-color: #007acc;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background-color 0.2s;
+}
+
+button:hover {
+    background-color: #005a9e;
+}
+
+.main-content {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+}
+
+.panel {
+    padding: 1rem;
+    overflow: auto;
+}
+
+.editor-panel {
+    width: 30%;
+    background-color: #1e1e1e;
+    border-right: 1px solid #3c3c3c;
+}
+
+#code-editor {
+    width: 100%;
+    height: 100%;
+    background-color: #1e1e1e;
+    color: #d4d4d4;
+    font-family: 'Consolas', 'Courier New', monospace;
+    font-size: 14px;
+    border: none;
+    resize: none;
+    outline: none;
+}
+
+.visualization-panel {
+    width: 70%;
+    background-color: #1a1a1a;
+}
+
+#visualization-container {
+    width: 100%;
+    height: 100%;
+}
+
+.bottom-panel {
+    height: 30%;
+    background-color: #252526;
+    border-top: 1px solid #3c3c3c;
+    display: flex;
+    overflow: hidden;
+}
+
+.panel-section {
+    flex: 1;
+    padding: 1rem;
+    overflow: auto;
+    border-right: 1px solid #3c3c3c;
+}
+
+.panel-section:last-child {
+    border-right: none;
+}
+
+.panel-section h3 {
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+    color: #cccccc;
+}
+
+#data-preview table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+}
+
+#data-preview th,
+#data-preview td {
+    padding: 0.5rem;
+    text-align: left;
+    border-bottom: 1px solid #3c3c3c;
+}
+
+#data-preview th {
+    background-color: #2d2d30;
+    font-weight: 600;
+}
+
+#data-preview tr:hover {
+    background-color: #2a2d2e;
+}
+
+#logs {
+    font-family: 'Consolas', 'Courier New', monospace;
+    font-size: 0.9rem;
+    color: #cccccc;
+    white-space: pre-wrap;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #1e1e1e;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #3c3c3c;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555555;
+}

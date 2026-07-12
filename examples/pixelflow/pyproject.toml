@@ -1,0 +1,14 @@
+[build-system]
+requires = ["maturin>=1.4,<2.0"]
+build-backend = "maturin"
+
+[project]
+name = "pixelflow"
+description = "Real-time satellite image processing for Australian environmental monitoring"
+version = "0.1.0"
+dependencies = ["numpy>=1.24.0"]
+
+[tool.maturin]
+features = ["python"]
+module-name = "pixelflow"
+

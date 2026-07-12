@@ -1,14 +1,52 @@
-node_modules
-.DS_Store
-dist
-*.local
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+build/
+target/
+zig-cache/
+.zig-cache/
+zig-out/
 .vite-inspect
 .remote-assets
 components.d.ts
-archive
+
+# Python caches/environments
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+venv/
+*.egg-info/
+
+# Native/package build artifacts
+*.so
+*.dylib
+*.dll
+*.a
+*.o
+*.rlib
+*.rmeta
+*.d
+*.whl
+*.tar.gz
+
+# Local/private files
 .env
-hey
-.venv
-.ropeproject
-examples
+*.local
 .npmrc
+.DS_Store
+.ropeproject/
+.claude/
+
+# Local working archives / experimental scratch projects / generated demo outputs
+archive/
+hey/
+examples/montecurious/
+slides_backup_*.md
+slides_bk_*.md
+slides_original_backup.md
+projects/bushfire-sim/bushfire_*.png

@@ -1,0 +1,94 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>coolproject — GPU Hillshade</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+      :root {
+        color-scheme: dark;
+      }
+      body {
+        margin: 0;
+        font-family:
+          ui-sans-serif,
+          system-ui,
+          -apple-system,
+          Segoe UI,
+          Roboto,
+          "Helvetica Neue",
+          Arial;
+        background: #0b0d10;
+        color: #e5e7eb;
+      }
+      header {
+        padding: 10px 16px;
+        display: flex;
+        gap: 16px;
+        align-items: center;
+        border-bottom: 1px solid #1f2937;
+        position: sticky;
+        top: 0;
+        background: #0b0d10cc;
+        backdrop-filter: blur(6px);
+      }
+      .slider {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .slider input {
+        width: 220px;
+      }
+      .wrap {
+        display: grid;
+        grid-template-columns: 1fr;
+        place-items: center;
+        padding: 12px;
+      }
+      canvas,
+      img {
+        max-width: 95vw;
+        max-height: 85vh;
+        border-radius: 8px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+        image-rendering: pixelated;
+      }
+      small {
+        color: #9ca3af;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="slider">
+        <label>Azimuth</label>
+        <input
+          id="azimuth"
+          type="range"
+          min="0"
+          max="360"
+          step="1"
+          value="315"
+        />
+        <span id="azv">315°</span>
+      </div>
+      <div class="slider">
+        <label>Altitude</label>
+        <input
+          id="altitude"
+          type="range"
+          min="5"
+          max="85"
+          step="1"
+          value="35"
+        />
+        <span id="altv">35°</span>
+      </div>
+      <small id="status">connecting…</small>
+    </header>
+    <div class="wrap">
+      <img id="view" alt="hillshade" />
+    </div>
+    <script src="/static/app.js"></script>
+  </body>
+</html>

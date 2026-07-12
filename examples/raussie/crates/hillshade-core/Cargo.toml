@@ -1,0 +1,10 @@
+[package]
+name = "hillshade-core"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+anyhow = "1"
+bytemuck = { version = "1", features = ["derive"] }
+pollster = "0.3"
+wgpu = "0.20"

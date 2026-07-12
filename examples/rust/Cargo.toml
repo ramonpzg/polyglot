@@ -1,0 +1,17 @@
+[package]
+name = "video-filters"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+name = "video_filters"
+crate-type = ["cdylib"]
+
+[dependencies]
+pyo3 = "0.20"
+rayon = "1.8"
+
+[profile.release]
+lto = true
+codegen-units = 1
+opt-level = 3
